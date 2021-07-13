@@ -1,0 +1,20 @@
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  header {
+    padding: 24px 96px;
+    font-size: 1rem;
+  }
+
+  header nav {
+    gap: 40px;
+  }
+
+  /* ================================================= */
+  
+  main {
+    padding: 112px 96px 16px 96px;
+  }
+}

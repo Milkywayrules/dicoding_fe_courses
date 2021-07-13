@@ -1,0 +1,138 @@
+/* ================================================= */
+
+header {
+  position: fixed;
+  z-index: 99999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--very-dark);
+  box-shadow: 0 0 10px 2px var(--super-dark);
+
+  font-size: .875rem;
+}
+
+header #navbar-logo {
+  color: var(--light);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+header #navbar-logo > span {
+  color: var(--dark);
+}
+header #navbar-logo:hover {
+  color: var(--primary);
+}
+
+header nav {
+  display: flex;
+  gap: 16px;
+}
+
+header a {
+  color: var(--text-default);
+}
+
+header a:hover {
+  color: var(--primary);
+}
+
+/* ================================================= */
+
+main {
+  width: 100%;
+  padding: 96px 24px 16px 24px;
+}
+
+main #page-title {
+  color: var(--light);
+}
+
+main #page-desc {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+main #page-desc > span {
+  color: var(--text-darker);
+}
+
+main #cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+main .card-wrapper {
+  background-color: var(--very-dark);
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 0 10px 0px var(--very-dark);
+}
+
+main .card-wrapper:hover {
+  box-shadow: 0 0 10px 5px var(--primary-darker);
+}
+
+/* maintain image aspect-ratio */
+main .card-wrapper .img-card-wrapper {
+  width: 100%;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+/* maintain image aspect-ratio */
+main .card-wrapper img {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+main .card-wrapper .content-card-wrapper {
+  padding: 24px 24px;
+}
+
+main .card-wrapper .content-card-wrapper h2 {
+  color: var(--light);
+}
+
+main .card-wrapper .content-card-wrapper p {
+  margin-top: 8px;
+}
+
+main .card-wrapper .content-card-wrapper .readmore {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.875rem;
+}
+
+/* ================================================= */
+
+main #profile-card {
+  display: none;
+}
+
+
+footer {
+  margin-top: 48px;
+  padding: 12px 24px;
+  color: var(--text-default);
+  background-color: var(--super-dark);
+  box-shadow: 0 0 20px 2px var(--very-dark);
+
+  font-size: .75rem;
+}
+
+footer div {
+  display: flex;
+}
+
+footer div p {
+  margin: 0 auto;
+}

@@ -1,0 +1,17 @@
+:root {
+  --super-dark: #111827; /* 900 */
+  --very-dark: #1F2937; /* 800 */
+  --dark: #4B5563; /* 600 */
+  --black: black;
+
+  --light: #F3F4F6; /* 100 */
+  --white: white;
+
+  --primary-darker: #10B981; /* 500 */
+  --primary: #34D399; /* 400 */
+  --primary-lighter: #A7F3D0; /* 200 */
+
+  --text-darker: #374151; /* 700 */
+  --text-default: #D1D5DB; /* 300 */
+  --text-lighter: #F9FAFB; /* 50 */
+}
