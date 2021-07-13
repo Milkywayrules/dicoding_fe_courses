@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10B981">
+
   <title>Verasic Story - Submission Belajar Dasar Pemrograman Web - Dio Ilham Djatiadi</title>
+  <link rel="icon" href="./favicon.ico" />
   
   <link rel="stylesheet" href="./assets/css/main.css">
   <script src="./assets/js/app.js" defer></script>
@@ -12,106 +15,67 @@
 <body>
 
   <header>
-    <a href="./" id="navbar-logo">D<span>io</span></a>
-    <nav>
-      <div>
-        <a href="https://github.com/Milkywayrules">Github</a>
-      </div>
-      <div>
-        <a href="https://linkedin.com/in/dioilham">LinkedIn</a>
-      </div>
-      <div>
-        <a href="https://instagram.com/dioilham">Instagram</a>
-      </div>
-    </nav>
+    <div id="header-wrapper">
+      <a href="./" id="navbar-logo">D<span>io</span></a>
+      <nav>
+        <div>
+          <a href="https://github.com/Milkywayrules">Github</a>
+        </div>
+        <div>
+          <a href="https://id.linkedin.com/in/dioilham">LinkedIn</a>
+        </div>
+        <div>
+          <a href="https://instagram.com/dioilham">Instagram</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h1 id="page-title">Verasic Story</h1>
-    <p id="page-desc">
-      Selamat datang, silakan nikmati cerita-cerita dari Verasic&nbsp;Story!
-      <br>
-      <span id="dev-note">
-        Semua konten diterjemahkan ke Bahasa Indonesia dan didapat dari 
-        <a href="https://web.dev/fast" rel="noopener noreferrer" target="_blank">
-          web.dev
-          <svg xmlns="http://www.w3.org/2000/svg" style="height: 16px; width: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
-      </span>
-    </p>
-    
-    <div id="cards-wrapper">
-      <!-- isinya banyak card -->
-
-      <article id="post1" class="card-wrapper">
-        <div>
-          <div class="img-card-wrapper">
-            <img src="./assets/img/story/pic-1.webp" width="100%" height="100%" alt="pic-1">
-          </div>
-          <div class="content-card-wrapper">
-            <a href="#qeqwe">
-              <h2>post_title</h2>
-            </a>
-            <p class="ellipsis">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id dolores accusantium autem libero non quae? Ab harum praesentium commodi earum.
-            </p>
-            <a href="#post1" class="readmore">Baca lebih lanjut -></a>
-          </div>
+    <div id="main-wrapper">
+      <h1 id="page-title">Verasic Story</h1>
+      <p id="page-desc">
+        Selamat datang, silakan nikmati cerita-cerita dari Verasic&nbsp;Story!
+        <br>
+        <span id="dev-note">
+          Semua konten diterjemahkan ke Bahasa Indonesia dan didapat dari 
+          <a href="https://web.dev/fast" rel="noopener noreferrer" target="_blank">
+            web.dev
+            <svg xmlns="http://www.w3.org/2000/svg" style="height: 16px; width: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </span>
+      </p>
+  
+      <div id="container">
+      
+        <div id="cards-wrapper">
+          <!-- generated contents goes here -->
         </div>
-      </article>
-
-      <article id="post2" class="card-wrapper">
-        <div>
-          <div class="img-card-wrapper">
-            <img src="./assets/img/story/pic-2.webp" width="100%" height="100%" alt="pic-2">
+  
+        <aside id="profile-card">
+          <div id="profile-img-wrapper">
+            <img src="./assets/img/ava2.jpg" alt="avatar">
           </div>
-          <div class="content-card-wrapper">
-            <a href="#qeqwe">
-              <h2>post_title</h2>
-            </a>
-            <p class="ellipsis">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id dolores accusantium autem libero non quae? Ab harum praesentium commodi earum.
-            </p>
-            <a href="#post2" class="readmore">Baca lebih lanjut -></a>
-          </div>
-        </div>
-      </article>
-
-      <article id="post3" class="card-wrapper">
-        <div>
-          <div class="img-card-wrapper">
-            <img src="./assets/img/story/ava.jpg" width="100%" height="100%" alt="pic-3">
-          </div>
-          <div class="content-card-wrapper">
-            <a href="#qeqwe">
-              <h2>post_title</h2>
-            </a>
-            <p class="ellipsis">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id dolores accusantium autem libero non quae? Ab harum praesentium commodi earum.
-            </p>
-            <a href="#post3" class="readmore">Baca lebih lanjut -></a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <aside id="profile-card">
-      <div>
-        <img src="xxx" alt="xxxx">
+          <a href="https://dioilham.com">
+            <p class="fullname">Dio Ilham Djatiadi</p>
+          </a>
+          <p class="role">Full-stack Web Developer</p>
+          <p class="desc">
+            Halo 👋 Ingat selalu untuk menjaga ibadah dan jaga diri kita serta sekitar dengan baik ya 💪🙏🍜
+          </p>
+        </aside>
+  
       </div>
-      <p>Dio Ilham Djatiadi</p>
-      <p>Full-stack Web Developer</p>
-    </aside>
+    </div>
   </main>
 
   <footer>
     <div>
       <p>
         <span>
-          © 2020-<script>document.write(new Date().getFullYear());</script> - 
+          © <script>document.write(new Date().getFullYear());</script> - 
         </span>
         <a href="https://dioilham.com" rel="noopener noreferrer" target="_blank">
           @Galaxxdev

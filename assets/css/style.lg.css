@@ -1,5 +1,95 @@
 @media (min-width: 1024px) {
+  header {
+    padding: 24px 192px;
+    font-size: 1em;
+  }
+
+  /* ================================================= */
+  
+  main {
+    padding: 112px 192px 32px 192px;
+  }
+  
+  main #cards-wrapper {
+    width: 70%;
+  }
+
+  /* ----------------------------- */
+
+  main #container {
+    gap: 48px;
+  }
+
   main #profile-card {
     display: block;
+    width: 35%;
+    padding: 32px;
+
+    background-color: var(--very-dark);
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 0px var(--primary);
+  }
+
+  main #profile-card:hover {
+    box-shadow: 0 0 10px 5px var(--primary-darker);
+    transition-property: box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  main #profile-card #profile-img-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  main #profile-card img {
+    height: inherit;
+    width: inherit;
+    border-radius: 20px;
+  }
+  main #profile-card img:hover {
+    --vs-translate-x: 0;
+    --vs-translate-y: 0;
+    --vs-rotate: 0;
+    --vs-skew-x: 0;
+    --vs-skew-y: 0;
+    --vs-scale-x: 1.75;
+    --vs-scale-y: 1.75;
+    transform: translateX(var(--vs-translate-x)) translateY(var(--vs-translate-y)) rotate(var(--vs-rotate)) skewX(var(--vs-skew-x)) skewY(var(--vs-skew-y)) scaleX(var(--vs-scale-x)) scaleY(var(--vs-scale-y));
+    transition: transform 1500ms cubic-bezier(0.8, 0, 0.2, 1);
+  }
+
+  main #profile-card p {
+    font-size: .875em;
+    line-height: 1.25em;
+  }
+
+  main #profile-card .fullname {
+    margin-top: 20px;
+    font-size: 1.125em;
+    font-weight: 700;
+    color: var(--text-lighter);
+  }
+  main #profile-card .fullname:hover {
+    color: var(--primary);
+  }
+  main #profile-card .role {
+    margin-top: 4px;
+    color: var(--text-darker);
+  }
+
+  main #profile-card .desc {
+    margin-top: 12px;
+  }
+}
+
+
+
+@media (min-width: 1280px) {
+  body {
+    font-size: 20px;
   }
 }

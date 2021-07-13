@@ -2,22 +2,27 @@
 
 header {
   position: fixed;
-  z-index: 99999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   padding: 16px 24px;
   background: var(--very-dark);
   box-shadow: 0 0 10px 2px var(--super-dark);
+  z-index: 99999;
+}
 
-  font-size: .875rem;
+header #header-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: .875em;
 }
 
 header #navbar-logo {
   color: var(--light);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 header #navbar-logo > span {
   color: var(--dark);
@@ -43,7 +48,13 @@ header a:hover {
 
 main {
   width: 100%;
-  padding: 96px 24px 16px 24px;
+  padding: 96px 24px 32px 24px;
+}
+
+main #main-wrapper {
+  
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 main #page-title {
@@ -56,7 +67,7 @@ main #page-desc {
 }
 
 main #page-desc > span {
-  color: var(--text-darker);
+  color: var(--dark);
 }
 
 main #cards-wrapper {
@@ -75,6 +86,7 @@ main .card-wrapper {
 
 main .card-wrapper:hover {
   box-shadow: 0 0 10px 5px var(--primary-darker);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* maintain image aspect-ratio */
@@ -95,11 +107,17 @@ main .card-wrapper img {
 }
 
 main .card-wrapper .content-card-wrapper {
-  padding: 24px 24px;
+  padding: 24px;
 }
 
 main .card-wrapper .content-card-wrapper h2 {
   color: var(--light);
+  display: inline-block;
+}
+
+main .card-wrapper .content-card-wrapper h2:hover {
+  color: var(--primary-lighter);
+  text-decoration: underline;
 }
 
 main .card-wrapper .content-card-wrapper p {
@@ -109,15 +127,16 @@ main .card-wrapper .content-card-wrapper p {
 main .card-wrapper .content-card-wrapper .readmore {
   display: inline-block;
   margin-top: 16px;
-  font-size: 0.875rem;
+  font-size: 0.875em;
 }
 
-/* ================================================= */
+/* ------------------------------ */
 
 main #profile-card {
   display: none;
 }
 
+/* ================================================= */
 
 footer {
   margin-top: 48px;
@@ -126,7 +145,7 @@ footer {
   background-color: var(--super-dark);
   box-shadow: 0 0 20px 2px var(--very-dark);
 
-  font-size: .75rem;
+  font-size: .75em;
 }
 
 footer div {
