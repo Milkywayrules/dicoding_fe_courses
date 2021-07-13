@@ -59,7 +59,7 @@ const articleTemplate = ({ _id, title, desc, url }) => `
   <article id="post-${_id}" class="card-wrapper">
     <div>
       <div class="img-card-wrapper">
-        <img src="./assets/img/story/pic-${_id}.webp" width="100%" height="100%" alt="story banner ${_id}">
+        <img loading="lazy" src="./assets/img/story/pic-${_id}.webp" width="100%" height="100%" alt="story banner ${_id}">
       </div>
       <div class="content-card-wrapper">
         <a href="${url}">
@@ -79,3 +79,5 @@ const cardsWrapper = document.getElementById("cards-wrapper");
 storiesItem.forEach((story) =>
   cardsWrapper.insertAdjacentHTML("beforeend", articleTemplate(story)),
 );
+
+document.getElementById('copyright-year').innerText = new Date().getFullYear();
