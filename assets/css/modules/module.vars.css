@@ -1,0 +1,17 @@
+:root {
+  --black: black;
+  --white: white;
+
+  --primary-50: #fff1f2; /* RS */
+  --primary-100: #ffe4e6; /* RS */
+  --primary-500: #f43f5e; /* RS */
+  --primary-600: #e11d48; /* RS */
+
+  --secondary-600: #475569; /* BLGR */
+  --secondary-800: #1e293b; /* BLGR */
+  --secondary-900: #0f172a; /* BLGR */
+
+  --text-50: #f8fafc; /* BLGR */
+  --text-100: #f1f5f9; /* BLGR */
+  --text-300: #cbd5e1; /* BLGR */
+}

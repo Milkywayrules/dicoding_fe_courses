@@ -1,0 +1,95 @@
+@import url(../classes/class.default.css);
+
+/* ============================================================== header */
+
+header {
+  position: fixed;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--secondary-800);
+  box-shadow: 0 0 10px 2px var(--secondary-900);
+  z-index: 99999;
+}
+
+header #header-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: .875em;
+}
+
+header #navbar-logo {
+  color: var(--text-50);
+  font-weight: 700;
+  font-size: 1.5em;
+}
+header #navbar-logo > span {
+  color: var(--secondary-600);
+}
+header #navbar-logo:hover {
+  color: var(--primary-500);
+}
+
+header nav {
+  display: flex;
+  gap: 16px;
+}
+
+header a {
+  color: var(--text-50);
+}
+
+header a:hover {
+  color: var(--primary-500);
+}
+
+/* ============================================================== main */
+
+main {
+  padding: 80px 24px;
+}
+
+main #main-title,
+main #main-desc {
+  text-align: center;
+}
+
+main #main-desc {
+  margin-top: 4px;
+  padding: 0 48px;
+  color: var(--text-300);
+}
+
+section[id="contents-wrapper"] {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+section #both-content-btn-wrapper-default {
+  display: flex;
+}
+
+/* ============================================================== footer */
+
+footer {
+  margin-top: 48px;
+  padding: 12px 24px;
+  color: var(--text-50);
+  background-color: var(--secondary-900);
+  box-shadow: 0 0 20px 2px var(--secondary-800);
+
+  font-size: .75em;
+}
+
+footer div {
+  display: flex;
+}
+
+footer div p {
+  margin: 0 auto;
+}

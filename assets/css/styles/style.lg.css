@@ -1,0 +1,10 @@
+@import url(../classes/class.lg.css);
+
+@media (min-width: 1024px) {
+  
+  header {
+    padding: 24px 192px;
+    font-size: 1em;
+  }
+  
+}

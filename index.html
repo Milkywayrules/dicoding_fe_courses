@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#10B981">
+  <meta name="author" content="Dio Ilham Djatiadi">
+  <meta name="description" content="Rak Buku - Submission Belajar Membuat Front-End Web Untuk Pemula - Dio Ilham Djatiadi">
+
+  <title>Rak Buku - Submission Belajar Membuat Front-End Web Untuk Pemula - Dio Ilham Djatiadi</title>
+  <link rel="favicon" href="./favicon.ico">
+
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <script src="./assets/js/app.js" type="module" defer></script>
+</head>
+<body>
+
+  <header>
+    <div id="header-wrapper">
+      <a href="./" id="navbar-logo">D<span>io</span></a>
+      <nav>
+        <div>
+          <a href="https://github.com/Milkywayrules">Github</a>
+        </div>
+        <div>
+          <a href="https://id.linkedin.com/in/dioilham">LinkedIn</a>
+        </div>
+        <div>
+          <a href="https://instagram.com/dioilham">Instagram</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 id="main-title">Rak Buku</h1>
+    <p id="main-desc">Kelola bacaanmu dengan mudah dan nyaman</p>
+
+    <section id="contents-wrapper">
+
+      <div id="both-content-btn-wrapper-default" class="hide-lg">
+        <button id="left-content-btn" class="left__content__btn toggle__btn__active" data-toggle-for="leftContent">subtitle</button>
+        <button id="right-content-btn" class="right__content__btn" data-toggle-for="rightContent">subtitle</button>
+      </div>
+
+      <div id="left-content-wrapper" class="both__content__wrapper">
+        <!-- <button id="left-content-btn-lg" class="left__content__btn" data-toggle-for="leftContent">subtitle</button> -->
+
+        <div id="left-content" class="both__content" data-toggle-from="leftContent">
+          <div id="form-wrapper" class="form__wrapper">
+            <label for="left-search-box">Cari buku belum dibaca</label>
+            <form id="left-form" class="search__form">
+              <input type="text" name="left-search-box" id="left-search-box" class="search__box" placeholder="Ketik nama buku" autofocus>
+              <button type="submit" class="search__btn">Cari</button>
+            </form>
+          </div>
+          <div id="left-cards" class="both__cards">
+            <article class="card">
+              <h3>Judul_buku_anda</h3>
+              <p>Pengarang</p>
+              <p>Tahun_terbit</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div id="right-content-wrapper" class="both__content__wrapper">
+        <!-- <button id="right-content-btn-lg" class="right__content__btn" data-toggle-for="rightContent">subtitle</button> -->
+
+        <div id="right-content" class="both__content" data-toggle-from="rightContent">
+          <div id="form-wrapper" class="form__wrapper">
+            <label for="right-search-box">Cari buku sudah dibaca</label>
+            <form id="right-form" class="search__form">
+              <input type="text" name="right-search-box" id="right-search-box" class="search__box" placeholder="Ketik nama buku" autofocus>
+              <button type="submit" class="search__btn">Cari</button>
+            </form>
+          </div>
+          <div id="right-cards" class="both__cards">
+            <article class="card">
+              <h3>Judul_buku_anda</h3>
+              <p>Pengarang</p>
+              <p>Tahun_terbit</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <p>
+        <span>
+          © <span id="copyright-year"></span> - 
+        </span>
+        <a href="https://dioilham.com" rel="noopener noreferrer" target="_blank">
+          @Galaxxdev
+        </a>
+      </p>
+    </div>
+  </footer>
+  
+</body>
+</html>
