@@ -6,6 +6,34 @@
  */
 const initToggleRak = () => {
   // initialize const element
+  const toggleArrows = document.querySelectorAll(".toggle-arrow");
+
+  // init const arrowsState
+  const arrowsState = [];
+
+  // do foreach
+  toggleArrows.forEach((arrow, idx) => {
+    const toggleArrowState = (activeState) => {
+      if (activeState) arrow.style.transform = `rotate(180deg)`; // aktif jadi ke atas
+      else arrow.style.transform = `rotate(0deg)`; // deactive jadi ke bawah (default)
+      return true;
+    };
+
+    let _temp = {}
+
+    _temp = {
+      _id: idx,
+      btnId: arrow.parentElement.id,
+      svgId: arrow.id,
+      toggleArrowState,
+    };
+
+    arrowsState.push(_temp);
+  });
+
+  // do the rest
+
+  // initialize const element
   // button toggle menu left (default & large breakpoint)
   const leftContentBtnEl = document.getElementById("left-content-btn");
   const leftContentBtnLgEl = document.getElementById("left-content-btn-lg");
@@ -49,19 +77,30 @@ const initToggleRak = () => {
    * Add event listener to all Rak toggle btn.
    *
    */
+  const obj = {}
+  let initState = false;
+
   allToggleBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const idBtn = btn.id;
-
-      // activate clicked button and deactivate others
-      // we do it now manually for the sake of dev speed
+      
+      // we do it now manually for the sake of dev speed.
+      // 
+      // if the btn is active. Just deactivate the clicked btn.
+      // else the btn is not active. Activate the clicked btn and deactivate others.
       if (btn.className.includes("toggle__btn__active")) {
+        // if left btn clicked
+        // else right btn clicked
         if (idBtn === "left-content-btn") {
           setRakDeactive(leftContentBtnEl, leftContentEl);
+          // leftArrowState = false;
         } else if (idBtn === "right-content-btn") {
           setRakDeactive(rightContentBtnEl, rightContentEl);
+          // rightArrowState = false;
         }
       } else {
+        // if left btn clicked
+        // else right btn clicked
         if (idBtn === "left-content-btn") {
           setRakActive(leftContentBtnEl, leftContentEl);
           setRakDeactive(rightContentBtnEl, rightContentEl);
@@ -70,6 +109,23 @@ const initToggleRak = () => {
           setRakDeactive(leftContentBtnEl, leftContentEl);
         }
       }
+      
+      // invert initstate (false to true) or invert obj[idBtn],
+      // used by clicked button to change the corresponding arrow direction.
+      obj[idBtn] = obj[idBtn] === undefined ? !initState : !obj[idBtn];
+
+      arrowsState.forEach(_ => {
+        // if exist that is the clicked btn (as clickedBtn)
+        // else undefined are the rest to be Not clicked btn (as !clickedBtn)
+        if (_.btnId === idBtn) {
+          _.toggleArrowState(obj[idBtn]);
+        } else {
+          // set the other except clickedBtn to false
+          obj[_.btnId] = false;
+          // always set arrow to not active = false
+          _.toggleArrowState(false);
+        }
+      });
     });
   });
 };

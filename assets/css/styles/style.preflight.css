@@ -1,8 +1,18 @@
 /* 
- *
- * only style scroll when the screen are large++
+ * 
+ * Only style the scroll when the screen are large++
  * I do here bcs this is the part of preflight.
- *
+ * 
+ * There's still some problem with this approach,
+ * result on Firefox and Chrome are different.
+ * But, Opera GX had/have/has the same result as Chrome.
+ * 
+ * The expectation is the result on Chrome and Opera GX.
+ * 
+ * Apparently, I satisfied with the Firefox result too.
+ * 
+ * I leave this note here for my future projects, sorry Reviewer xixi
+ * 
  */
 @media (min-width: 1024px) {
   /* SCROLLBAR STYLING */
@@ -11,6 +21,7 @@
     scrollbar-color: #444444 #777777;
   }
 
+  /* !: Stated here 🎉 */
   /* The emerging W3C standard that is currently Firefox-only */
   /* Works on Chrome/Edge/Safari */
   *::-webkit-scrollbar {
@@ -78,6 +89,11 @@ input {
   border: none;
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
+}
+
+svg {
+  height: 16px;
+  width: 16px;
 }
 
 /* img,

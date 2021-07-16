@@ -23,6 +23,9 @@
 }
 
 .left__content__btn {
+  display: flex;
+  justify-content: space-around;
+
   background-color: var(--secondary-800);
   color: var(--text-300);
   border-radius: 4px 0 0 0;
@@ -37,6 +40,9 @@
 }
 
 .right__content__btn {
+  display: flex;
+  justify-content: space-around;
+
   background-color: var(--secondary-800);
   color: var(--text-300);
   border-radius: 0 4px 0 0;

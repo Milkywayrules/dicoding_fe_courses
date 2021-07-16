@@ -7,6 +7,7 @@ initToggleRak();
 
 
 
+// arrowsState['left-content-btn'].toggleArrowState(false)
 
 
 
