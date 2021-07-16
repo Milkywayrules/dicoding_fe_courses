@@ -60,6 +60,7 @@
   border-top: solid 2px var(--primary-500);
   background-color: var(--secondary-700);
   color: var(--text-50);
+  font-weight: 700;
 }
 
 
