@@ -1,8 +1,9 @@
-import './modules/toggle-rak.js';
+import initToggleRak from './modules/toggle-rak.js';
 
 // set today's year to footer
 document.getElementById('copyright-year').innerText = new Date().getFullYear();
 
+initToggleRak();
 
 
 
