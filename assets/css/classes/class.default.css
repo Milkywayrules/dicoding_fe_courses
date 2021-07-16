@@ -1,5 +1,5 @@
 .ring {
-  --offset-shadow: 0 0 0 2px var(--secondary-900);
+  --offset-shadow: 0 0 0 2px var(--secondary-700);
   --ring-shadow: 0 0 0 4px var(--primary-500);
   box-shadow: var(--offset-shadow), var(--ring-shadow);
 }
@@ -62,10 +62,9 @@
   color: var(--text-50);
 }
 
-/* .both__content {
-  max-height: 200px;
-  overflow-y: auto;
-} */
+
+/* ============================================================== */
+
 
 .form__wrapper {
   padding: 24px 16px;
@@ -74,35 +73,42 @@
 
 .search__form {
   width: 100%;
-  position: relative;
   display: flex;
-  gap: 0;
   align-items: center;
   border-radius: 4px;
   background-color: var(--white);
-  justify-content: space-between;
-  margin-top: 4px;
 }
 
 .search__box {
   flex-grow: 1;
+  padding: .5rem 0 .5rem .75rem;
 }
 
 .search__btn {
-  padding: .3rem .9rem;
-  margin-right: 4px;
+  display: flex;
+  padding: .3rem .3rem .3rem .3rem;
+  margin-right: 2px;
   
-  background-color: var(--primary-600);
-  color: var(--white);
+  /* background-color: var(--primary-600); */
+  color: var(--primary-600);
+  border: 2px solid transparent;
+}
+.search__btn:hover {
+  color: var(--primary-300);
+}
+.search__btn:focus {
+  border: 2px solid var(--primary-500);
 }
 
 
 
 /* ================================================================ */
 
+
+
 .results__wrapper {
   padding-top: 20px;
-  height: 70vh;
+  height: 65vh;
   overflow-y: auto;
   margin-bottom: 20px;
 }
@@ -118,6 +124,9 @@
 }
 
 .card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 12px;
   border-radius: 4px;
 }

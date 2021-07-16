@@ -7,11 +7,9 @@
 const initToggleRak = () => {
   // initialize const element
   const toggleArrows = document.querySelectorAll(".toggle-arrow");
-
-  // init const arrowsState
   const arrowsState = [];
 
-  // do foreach
+  // Store toggle function unique to every btn
   toggleArrows.forEach((arrow, idx) => {
     const toggleArrowState = (activeState) => {
       if (activeState) arrow.style.transform = `rotate(180deg)`; // aktif jadi ke atas
@@ -19,16 +17,12 @@ const initToggleRak = () => {
       return true;
     };
 
-    let _temp = {}
-
-    _temp = {
+    arrowsState.push({
       _id: idx,
       btnId: arrow.parentElement.id,
       svgId: arrow.id,
       toggleArrowState,
-    };
-
-    arrowsState.push(_temp);
+    });
   });
 
   // do the rest
@@ -77,9 +71,10 @@ const initToggleRak = () => {
    * Add event listener to all Rak toggle btn.
    *
    */
-  const obj = {}
-  let initState = false;
+  const arrowsData = {}
+  let arrowInitState = false;
 
+  // Assign event listener and toggle process to left-content-btn and right-content-btn
   allToggleBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const idBtn = btn.id;
@@ -110,18 +105,18 @@ const initToggleRak = () => {
         }
       }
       
-      // invert initstate (false to true) or invert obj[idBtn],
+      // invert arrowInitstate (false to true) or invert obj[idBtn],
       // used by clicked button to change the corresponding arrow direction.
-      obj[idBtn] = obj[idBtn] === undefined ? !initState : !obj[idBtn];
+      arrowsData[idBtn] = arrowsData[idBtn] === undefined ? !arrowInitState : !arrowsData[idBtn];
 
       arrowsState.forEach(_ => {
         // if exist that is the clicked btn (as clickedBtn)
         // else undefined are the rest to be Not clicked btn (as !clickedBtn)
         if (_.btnId === idBtn) {
-          _.toggleArrowState(obj[idBtn]);
+          _.toggleArrowState(arrowsData[idBtn]);
         } else {
           // set the other except clickedBtn to false
-          obj[_.btnId] = false;
+          arrowsData[_.btnId] = false;
           // always set arrow to not active = false
           _.toggleArrowState(false);
         }

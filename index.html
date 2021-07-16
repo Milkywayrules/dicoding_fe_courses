@@ -58,14 +58,18 @@
       <div id="left-content-wrapper" class="both__content__wrapper">
         <!-- <button id="left-content-btn-lg" class="left__content__btn" data-toggle-for="leftContent">subtitle</button> -->
 
-        <div id="left-content" class="both__content hidden" data-toggle-from="leftContent">
+        <div id="left-content" class="both__content show" data-toggle-from="leftContent">
 
           <div id="form-wrapper" class="form__wrapper">
-            <label for="left-search-box">Cari buku belum dibaca</label>
+            <!-- <label for="left-search-box">Cari buku yang belum dibaca</label> -->
 
             <form id="left-form" class="search__form">
-              <input type="text" name="left-search-box" id="left-search-box" class="search__box" placeholder="Ketik nama buku" autofocus>
-              <button type="submit" class="search__btn">Cari</button>
+              <input type="text" name="left-search-box" id="left-search-box" class="search__box" placeholder="Masukkan kata kunci yang dicari">
+              <button type="submit" class="search__btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path style="stroke-width: 3px;" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
             </form>
           </div>
 
@@ -74,12 +78,19 @@
 
             <div id="left-cards" class="cards">
               <article tabindex="0" class="card">
-                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
-                <span>
-                  <p class="card__author">Chairil Anwar</p>
-                  &nbsp;-&nbsp;
-                  <p class="card__year">1987</p>
-                </span>
+                <div>
+                  <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                  <span>
+                    <p class="card__author">Chairil Anwar</p>
+                    &nbsp;-&nbsp;
+                    <p class="card__year">1987</p>
+                  </span>
+                </div>
+                <div>
+                  <svg style="width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                  </svg>
+                </div>
               </article>
 
               <article tabindex="0" class="card">
@@ -192,11 +203,15 @@
         <div id="right-content" class="both__content hidden" data-toggle-from="rightContent">
 
           <div id="form-wrapper" class="form__wrapper">
-            <label for="right-search-box">Cari buku sudah dibaca</label>
+            <!-- <label for="right-search-box">Cari buku yang sudah dibaca</label> -->
 
             <form id="right-form" class="search__form">
-              <input type="text" name="right-search-box" id="right-search-box" class="search__box" placeholder="Ketik nama buku" autofocus>
-              <button type="submit" class="search__btn">Cari</button>
+              <input type="text" name="right-search-box" id="right-search-box" class="search__box" placeholder="Masukkan kata kunci yang dicari">
+              <button type="submit" class="search__btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path style="stroke-width: 3px;" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
             </form>
           </div>
 

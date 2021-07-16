@@ -6,9 +6,28 @@ document.getElementById('copyright-year').innerText = new Date().getFullYear();
 initToggleRak();
 
 
+document.querySelectorAll("form").forEach((form) => {
+  const id = form.id;
 
-// arrowsState['left-content-btn'].toggleArrowState(false)
+  form.onsubmit = (e) => {
+    e.preventDefault()
 
+    console.log('form submitted');
+  }
+})
+
+document.querySelectorAll(".search__box").forEach((box) => {
+  const id = box.id;
+  const formEl = box.parentElement;
+
+  box.onfocus = (e) => {
+    formEl.classList.add("ring")
+  }
+
+  box.onblur = (e) => {
+    formEl.classList.remove("ring")
+  }
+})
 
 
 
