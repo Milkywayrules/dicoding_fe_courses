@@ -2,114 +2,43 @@ import render from './modules/render.js';
 import initToggleRak from './modules/handle-toggle-rak.js';
 import initSearchBook from './modules/handle-search-book.js';
 import cardBookHtmlTemplate from './components/card-book.js';
+import { parsedJsonData } from './modules/a.js';
+import env from './env.js'
 
 // set today's year to footer
 document.getElementById('copyright-year').innerText = new Date().getFullYear();
 
+// console.log(parsedJsonData);
+
+// localStorage.setItem(env.DB_KEY, JSON.stringify(parsedJsonData))
+
+const parsedJsonDataNew = JSON.parse(localStorage.getItem(env.DB_KEY))
+
+console.log(parsedJsonDataNew);
+
+
+let belongsToCards;
+parsedJsonDataNew.forEach(row => {
+  if (row.isComplete) {
+    belongsToCards = 'left-cards'
+  } else {
+    belongsToCards = 'right-cards'
+  }
+
+  const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
+
+  render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
+});
+
+
+
+
+
+
+
+
 initToggleRak();
 initSearchBook();
-
-const props = [
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Haryy Kopter",
-    author: "J.K. Rolling",
-    yearPublished: "1687",
-    isComplete: false,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Book",
-    author: "Dio Ilham Djatiadi",
-    yearPublished: "2021",
-    isComplete: true,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Critical Elephant",
-    author: "Someone",
-    yearPublished: "2004",
-    isComplete: false,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Watermelon Sugar",
-    author: "Britishy",
-    yearPublished: "2020",
-    isComplete: true,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Bumi",
-    author: "Eyang",
-    yearPublished: "2077",
-    isComplete: true,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Just in your dreams",
-    author: "Aseprite",
-    yearPublished: "1887",
-    isComplete: true,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Buku Cetak",
-    author: "Tan Malaka",
-    yearPublished: "1945",
-    isComplete: false,
-  },
-  {
-    id: +new Date + (Math.random().toLocaleString()*10000),
-    title: "Time Dilation",
-    author: "Hawk Instuff",
-    yearPublished: "1459",
-    isComplete: true,
-  },
-];
-
-const stringed = JSON.stringify(props);
-const parsed = JSON.parse(stringed);
-
-parsed.forEach((prop) => {
-  if (prop.isComplete) {
-    render("left-cards", "beforeend", cardBookHtmlTemplate(prop));
-  } else {
-    render("right-cards", "beforeend", cardBookHtmlTemplate(prop));
-  }
-})
-
-/**
- * I got this from Clement and Ben video.
- * Clement said he do this tricky cheat in AlgoExpert 
- * just to demo that this kind of approach is still works.
- * Side note: You can search the key too, not only the value,
- * even the curly brackets and colons.
- * 
- * ref: https://www.youtube.com/watch?v=6s0OVdoo4Q4
- */
-const clementBen1 = JSON.stringify(props[1]).toLocaleLowerCase().includes('iscompl');
-// console.log(clementBen1);
-
-
-// const clementBen2 = Object.values(props[1]).some((x) => {
-//   if (typeof x === 'string') {
-//     x.toLocaleLowerCase().includes('book');
-//   }
-// });
-// console.log(clementBen2);
-
-const clementBen3 = Object.values(props[1]).some((x) => {
-  x.toLocaleString().toLocaleLowerCase().includes('a')
-})
-console.log(clementBen3);
-
-
-
-
-// console.log(Object.values(stringed).filter((e) => e));
-
-
 
 
 

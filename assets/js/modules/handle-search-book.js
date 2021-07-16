@@ -1,33 +1,82 @@
+import cardBookHtmlTemplate from "../components/card-book.js";
+import env from "../env.js";
+import filterSearchRow, { parsedJsonData } from "./a.js";
+import render from "./render.js";
+
+//
+const searchFormsEl = document.querySelectorAll(".search__form");
+const searchBoxesEl = document.querySelectorAll(".search__box");
+
 /**
- * 
+ *
  * somtehing
- * 
+ *
  */
 const initSearchBook = () => {
   // get all form tag
-  document.querySelectorAll(".search__form").forEach((form) => {
-    const id = form.id;
-  
-    form.onsubmit = (e) => {
-      e.preventDefault()
-  
-      console.log('form submitted');
-    }
-  })
-  
+  searchFormsEl.forEach((sFormEl) => {
+    const id = sFormEl.id;
+
+    sFormEl.onsubmit = (ev) => {
+      ev.preventDefault();
+
+      console.log("form submitted");
+    };
+  });
+
   // get all search box for book
-  document.querySelectorAll(".search__box").forEach((box) => {
-    const id = box.id;
-    const formEl = box.parentElement;
-  
-    box.onfocus = (e) => {
-      formEl.classList.add("ring")
-    }
-  
-    box.onblur = (e) => {
-      formEl.classList.remove("ring")
-    }
-  })
-}
+  searchBoxesEl.forEach((sBoxEl) => {
+    const id = sBoxEl.id;
+    const formEl = sBoxEl.parentElement;
+    const relativeToWhichCards = id.split("-")[0].concat("-cards");
+
+    sBoxEl.onfocus = () => formEl.classList.add("ring");
+    sBoxEl.onblur = () => formEl.classList.remove("ring");
+
+    sBoxEl.oninput = (ev) => {
+      // search keyword from input
+      const keywordVal = ev.target.value;
+      // set sort direction by default
+      const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
+      // empty the html first before rendereing the new one
+      document.getElementById(relativeToWhichCards).innerHTML = null;
+
+      // if maxlength terpenuhi
+      if (ev.target.value.length === ev.target.maxLength) {
+        console.log("Run swal toast here");
+      }
+
+      // tell something
+      const searchRes = parsedJsonData
+        .map((data) => filterSearchRow(data, keywordVal))
+        .filter((fromArrMap) => fromArrMap !== undefined);
+        
+      // tell somtehing
+      if (searchRes.length === 0) {
+        render(
+          relativeToWhichCards,
+          sortDirection,
+          "<center><p style='color: #FDA4AF;'>Buku ngga ada nih...😭😭😭</p></center>",
+        );
+      } else {
+        searchRes.forEach((x) =>
+          render(relativeToWhichCards, sortDirection, cardBookHtmlTemplate(x)),
+        );
+      }
+    };
+  });
+};
 
 export default initSearchBook;
+
+// const a = parsedJsonData
+// .map((data) => filterSearchRow(data, keywordVal))
+// .filter((fromArrMap) =>
+//   fromArrMap !== undefined
+//     ? render(
+//         relativeToWhichCards,
+//         "beforeend",
+//         cardBookHtmlTemplate(fromArrMap),
+//       )
+//     : null
+// );
