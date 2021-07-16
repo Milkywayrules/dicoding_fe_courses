@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Toggle btn are now work
-Time: 6:41 PM 7/16/2021
+Last status: #2: UI are prettier now
+Time: 9:27 PM 7/16/2021
