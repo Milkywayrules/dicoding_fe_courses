@@ -13,12 +13,13 @@
 }
 
 
-
+/* ================================================================== */
 
 
 .both__content__wrapper {
-  background: var(--secondary-800);
+  background: var(--secondary-700);
   border-radius: 0 0 20px 20px;
+  overflow: hidden;
 }
 
 .left__content__btn {
@@ -26,6 +27,8 @@
   color: var(--text-300);
   border-radius: 4px 0 0 0;
   width: 50%;
+  border-top: solid 2px transparent;
+  margin-right: 2px;
 }
 
 .right__content__btn {
@@ -33,20 +36,24 @@
   color: var(--text-300);
   border-radius: 0 4px 0 0;
   width: 50%;
+  border-top: solid 2px transparent;
+  margin-left: 2px;
 }
 
 .toggle__btn__active {
   border-top: solid 2px var(--primary-500);
-  background-color: var(--secondary-600);
+  background-color: var(--secondary-700);
   color: var(--text-50);
 }
 
-.both__content {
-  padding-top: 12px;
-}
+/* .both__content {
+  max-height: 200px;
+  overflow-y: auto;
+} */
 
 .form__wrapper {
-  padding: 0 16px;
+  padding: 24px 16px;
+  box-shadow: 0 0px 20px 0 var(--secondary-800);
 }
 
 .search__form {
@@ -71,4 +78,52 @@
   
   background-color: var(--primary-600);
   color: var(--white);
+}
+
+
+
+/* ================================================================ */
+
+.results__wrapper {
+  padding-top: 20px;
+  height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.cards {
+  /* border: tomato 2px solid; */
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 20px;
+}
+
+.card {
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.card:hover {
+  background: var(--secondary-900);
+  box-shadow: 0 0 4px 2px var(--primary-600);
+}
+
+.card__title {
+  font-size: 1em;
+}
+
+.card span {
+  margin-top: 4px;
+  display: flex;
+  color: var(--text-300);
+}
+
+.card__author {
+  font-size: .875em;
+}
+
+.card__year {
+  font-size: .875em;
 }

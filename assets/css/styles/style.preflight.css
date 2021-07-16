@@ -30,6 +30,10 @@ a:hover {
   color: var(--primary-100);
 }
 
+label {
+  font-size: .875em;
+}
+
 button {
   outline: none;
   background: none;

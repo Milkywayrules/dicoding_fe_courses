@@ -41,35 +41,143 @@
     <section id="contents-wrapper">
 
       <div id="both-content-btn-wrapper-default" class="hide-lg">
-        <button id="left-content-btn" class="left__content__btn toggle__btn__active" data-toggle-for="leftContent">subtitle</button>
-        <button id="right-content-btn" class="right__content__btn" data-toggle-for="rightContent">subtitle</button>
+        <button id="left-content-btn" class="left__content__btn" data-toggle-for="leftContent">Sudah dibaca</button>
+        <button id="right-content-btn" class="right__content__btn" data-toggle-for="rightContent">Belum dibaca</button>
       </div>
 
       <div id="left-content-wrapper" class="both__content__wrapper">
         <!-- <button id="left-content-btn-lg" class="left__content__btn" data-toggle-for="leftContent">subtitle</button> -->
 
-        <div id="left-content" class="both__content" data-toggle-from="leftContent">
+        <div id="left-content" class="both__content show" data-toggle-from="leftContent">
+
           <div id="form-wrapper" class="form__wrapper">
             <label for="left-search-box">Cari buku belum dibaca</label>
+
             <form id="left-form" class="search__form">
               <input type="text" name="left-search-box" id="left-search-box" class="search__box" placeholder="Ketik nama buku" autofocus>
               <button type="submit" class="search__btn">Cari</button>
             </form>
           </div>
-          <div id="left-cards" class="both__cards">
-            <article class="card">
-              <h3>Judul_buku_anda</h3>
-              <p>Pengarang</p>
-              <p>Tahun_terbit</p>
-            </article>
+
+          <div class="results__wrapper">
+            <h2>Daftar buku</h2>
+
+            <div id="left-cards" class="cards">
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+
+              <article class="card">
+                <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+                <span>
+                  <p class="card__author">Chairil Anwar</p>
+                  &nbsp;-&nbsp;
+                  <p class="card__year">1987</p>
+                </span>
+              </article>
+            </div>
           </div>
+
         </div>
       </div>
 
       <div id="right-content-wrapper" class="both__content__wrapper">
         <!-- <button id="right-content-btn-lg" class="right__content__btn" data-toggle-for="rightContent">subtitle</button> -->
 
-        <div id="right-content" class="both__content" data-toggle-from="rightContent">
+        <div id="right-content" class="both__content hidden" data-toggle-from="rightContent">
           <div id="form-wrapper" class="form__wrapper">
             <label for="right-search-box">Cari buku sudah dibaca</label>
             <form id="right-form" class="search__form">
@@ -77,11 +185,14 @@
               <button type="submit" class="search__btn">Cari</button>
             </form>
           </div>
-          <div id="right-cards" class="both__cards">
+          <div id="right-cards" class="cards">
             <article class="card">
-              <h3>Judul_buku_anda</h3>
-              <p>Pengarang</p>
-              <p>Tahun_terbit</p>
+              <h3 class="card__title">Lahan Di Tanah Pertiwi</h3>
+              <span>
+                <p class="card__author">Chairil Anwar</p>
+                &nbsp;-&nbsp;
+                <p class="card__year">1987</p>
+              </span>
             </article>
           </div>
         </div>
