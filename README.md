@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Update search feature functionalities
-Time: 2:47 AM 7/17/2021
+Last status: #2: Add some utlis function to make my life easier
+Time: 3:55 PM 7/17/2021
