@@ -77,6 +77,9 @@ export const parsedJsonData = JSON.parse(stringed);
  * 
  * write this later.
  * 
+ * Don't min about the performance, i believe this algo can be simplified
+ * yet more efficient in the future (not by changing the logic, but refactor it)
+ * 
  * @param {prop} prop prop
  * @param {String} keyword Search keyword.
  * @returns undefined or the element

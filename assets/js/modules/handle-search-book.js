@@ -2,6 +2,7 @@ import cardBookHtmlTemplate from "../components/card-book.js";
 import env from "../env.js";
 import filterSearchRow, { parsedJsonData } from "./a.js";
 import render from "./render.js";
+import splitData from "./split-data.js";
 
 //
 const searchFormsEl = document.querySelectorAll(".search__form");
@@ -46,7 +47,10 @@ const initSearchBook = () => {
         console.log("Run swal toast here");
       }
 
+      // console.log(splitData(parsedJsonData));
+
       // tell something
+      // TODO: should i do filter here rather than map??????
       const searchRes = parsedJsonData
         .map((data) => filterSearchRow(data, keywordVal))
         .filter((fromArrMap) => fromArrMap !== undefined);

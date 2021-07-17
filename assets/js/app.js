@@ -4,31 +4,13 @@ import initSearchBook from './modules/handle-search-book.js';
 import cardBookHtmlTemplate from './components/card-book.js';
 import { parsedJsonData } from './modules/a.js';
 import env from './env.js'
+import getData from './modules/get-data.js';
+import setData from './set-data.js';
+import splitData from './modules/split-data.js';
 
 // set today's year to footer
 document.getElementById('copyright-year').innerText = new Date().getFullYear();
 
-// console.log(parsedJsonData);
-
-// localStorage.setItem(env.DB_KEY, JSON.stringify(parsedJsonData))
-
-const parsedJsonDataNew = JSON.parse(localStorage.getItem(env.DB_KEY))
-
-console.log(parsedJsonDataNew);
-
-
-let belongsToCards;
-parsedJsonDataNew.forEach(row => {
-  if (row.isComplete) {
-    belongsToCards = 'left-cards'
-  } else {
-    belongsToCards = 'right-cards'
-  }
-
-  const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
-
-  render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
-});
 
 
 
@@ -36,9 +18,42 @@ parsedJsonDataNew.forEach(row => {
 
 
 
-
+initAllData()
 initToggleRak();
 initSearchBook();
+
+
+// we do hoisting
+// we have to split the isComplete === true and the falsy one,
+// so we will have 2 datasets.
+function initAllData() {
+  // split by category (isComplete)
+  const splittedData = splitData(getData().data);
+
+  // loop every categories and loop every array of object (data)
+  Object
+    .keys(splittedData)
+    .forEach(key => {
+      // return splittedData[key]
+      splittedData[key].forEach(row => {
+        const belongsToCards = row.isComplete ? 'left-cards' : 'right-cards';
+        const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
+        
+        render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
+      })
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
