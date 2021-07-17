@@ -45,14 +45,6 @@ try {
 
 
 
-
-
-
-
-
-
-
-
 // we do hoisting
 // we have to split the isComplete === true and the falsy one,
 // so we will have 2 datasets.
@@ -75,6 +67,17 @@ function initRenderAllData(dbData) {
           render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
         })
       })
+
+      // I should refactor this and make sure the height and width
+      // are always the same with the realOptionModal.
+      // Like, get the element by tracking current cardBookHtmlTemplate() children.
+      const realOptionModal = document.querySelector(".card__modal")
+      const clientHeight = realOptionModal.clientHeight.toString() + 'px'
+      const clientWidth = realOptionModal.clientWidth.toString() + 'px'
+      const mimicOptionModal = document.getElementsByClassName("card__modal__mimic")[0]
+    
+      mimicOptionModal.style.height = clientHeight
+      mimicOptionModal.style.width = clientWidth
   }
 }
 
