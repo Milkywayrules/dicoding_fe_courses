@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Fitur search di kedua rak selesai
-Time: 4:47 PM 7/17/2021
+Last status: #2: Update somethinnnnnnnnnn
+Time: 10:14 PM 7/17/2021
