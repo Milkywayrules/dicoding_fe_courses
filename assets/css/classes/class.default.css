@@ -125,10 +125,11 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
+  padding: 12px 0 12px 0;
   border-radius: 4px;
 }
 
@@ -143,6 +144,11 @@
   outline: none;
   background: var(--secondary-900);
   box-shadow: 0 0 4px 2px var(--primary-600);
+}
+
+.card__content__wrapper {
+  padding: 0 12px;
+  width: 100%;
 }
 
 .card__title {
@@ -161,4 +167,16 @@
 
 .card__year {
   font-size: .875em;
+}
+
+.card__option__btn {
+  border-radius: 99999px;
+  padding: 2px;
+  margin: 6px;
+  color: var(--text-300);
+}
+.card__option__btn:focus {
+  color: var(--white);
+  background-color: var(--secondary-800);
+  box-shadow: 0 0 0px 2px var(--secondary-800);
 }

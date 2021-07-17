@@ -1,33 +1,34 @@
-import render from './modules/render.js';
 import initToggleRak from './modules/handle-toggle-rak.js';
 import initSearchBook from './modules/handle-search-book.js';
-import cardBookHtmlTemplate from './components/card-book.js';
-import env from './env.js'
+import render from './modules/render.js';
 import getData from './modules/get-data.js';
-// import setData from './set-data.js';
 import splitData from './modules/split-data.js';
 
-// set today's year to footer
-document.getElementById('copyright-year').innerText = new Date().getFullYear();
+import env from './env.js'
+import cardBookHtmlTemplate from './components/card-book.js';
 
+try {
+  // set today's year to footer
+  document.getElementById('copyright-year').innerText = new Date().getFullYear();
 
+  const dbData = getData().data;
 
-initRenderAllData()
-initToggleRak();
+  // render all data to document
+  initRenderAllData(dbData)
 
+  // 
+  initToggleRak();
 
+  if (dbData) {
+    // 
+    initSearchBook(splitData(dbData));
+  } else {
+    console.log('DB data is empty');
+  }
 
-// get all data from local storage
-const parsedJsonData = splitData(getData().data)
-
-
-initSearchBook(parsedJsonData);
-
-
-
-
-
-
+} catch (err) {
+  console.error(err);
+}
 
 
 
@@ -55,22 +56,26 @@ initSearchBook(parsedJsonData);
 // we do hoisting
 // we have to split the isComplete === true and the falsy one,
 // so we will have 2 datasets.
-function initRenderAllData() {
-  // split by category (isComplete)
-  const splittedData = splitData(getData().data);
-
-  // loop every categories and loop every array of object (data)
-  Object
-    .keys(splittedData)
-    .forEach(key => {
-      // return splittedData[key]
-      splittedData[key].forEach(row => {
-        const belongsToCards = row.isComplete ? 'left-cards' : 'right-cards';
-        const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
+function initRenderAllData(dbData) {
+  if (dbData) {
+    // split by category (isComplete)
+    const splittedData = splitData(dbData);
+  
+    // loop every categories and loop every array of object (data)
+    Object
+      .keys(splittedData)
+      .forEach(key => {
+        // remove this initial message when rak buku is not empty. We can just do innerHTML = null.
+        document.getElementById(`${key}-rakStillEmpty`).remove()
         
-        render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
+        splittedData[key].forEach(row => {
+          const belongsToCards = row.isComplete ? 'left-cards' : 'right-cards';
+          const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
+          
+          render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
+        })
       })
-    })
+  }
 }
 
 

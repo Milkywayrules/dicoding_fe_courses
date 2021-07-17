@@ -34,6 +34,10 @@ header #navbar-logo > span {
 header #navbar-logo:hover {
   color: var(--primary-500);
 }
+header #navbar-logo:focus {
+  color: var(--primary-500);
+  outline: 2px dotted var(--primary-500);
+}
 
 header nav {
   display: flex;
@@ -46,6 +50,10 @@ header a {
 
 header a:hover {
   color: var(--primary-500);
+}
+header a:focus {
+  color: var(--primary-500);
+  outline: 2px dotted var(--primary-500);
 }
 
 

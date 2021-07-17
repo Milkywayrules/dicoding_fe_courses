@@ -70,6 +70,9 @@ a {
 a:hover {
   color: var(--primary-100);
 }
+a:focus {
+  outline: 2px dotted var(--primary-500);
+}
 
 label {
   font-size: 0.875em;

@@ -1,8 +1,8 @@
 import cardBookHtmlTemplate from "../components/card-book.js";
 import env from "../env.js";
-import filterSearchRow, {parsedJsonData} from "./a.js";
+import filterSearchRow from "./filter-search.js";
 import render from "./render.js";
-import splitData from "./split-data.js";
+// import splitData from "./split-data.js";
 
 //
 const searchFormsEl = document.querySelectorAll(".search__form");
@@ -10,12 +10,13 @@ const searchBoxesEl = document.querySelectorAll(".search__box");
 
 /**
  *
- * somtehing
+ * Split data per category in object of array of object.
+ * In this case is isComplete splitter with true|false.
  *
  */
 // TODO: init searchbook every time localstorage data changes
 // pass a new data from local storage to init searchbook
-function initSearchBook (parsedJsonData) {
+function initSearchBook (splittedDataPerCategory) {
 
   // get all search form tag
   searchFormsEl.forEach((sFormEl) => {
@@ -28,10 +29,13 @@ function initSearchBook (parsedJsonData) {
     };
   });
 
-  
+
 
   // loop every search box
   searchBoxesEl.forEach(sBoxEl => {
+    // show search utilities (search form, box, and button)
+    sBoxEl.parentElement.parentElement.classList.replace("hidden", "show");
+
     // init const
     const id = sBoxEl.id
     const formEl = sBoxEl.parentElement
@@ -48,8 +52,6 @@ function initSearchBook (parsedJsonData) {
       const keywordVal = ev.target.value;
       // set sort direction by default
       const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
-      // empty the html first before rendereing the new one
-      document.getElementById(relativeToWhichCardsWrapper).innerHTML = null;
 
       // if maxlength terpenuhi
       if (ev.target.value.length === ev.target.maxLength) {
@@ -57,11 +59,20 @@ function initSearchBook (parsedJsonData) {
       }
       
       const rakData = relativeToWhichRakCategory === 'left'
-        ? parsedJsonData.true
-        : parsedJsonData.false
+        ? splittedDataPerCategory.true
+        : splittedDataPerCategory.false
+      
+      // if there is no data in this particular category (after splitted)
+      if (!rakData) return;
+
+
+      // empty the html first before rendereing the new one
+      document.getElementById(relativeToWhichCardsWrapper).innerHTML = null;
 
       // tell something
-      // TODO: should i do filter here rather than map??????
+      // TODO: read below \./
+      // should i do filter here rather than map??????
+      // should i throw a bunch of rows data into filterSearch or loop every row data like now???????????????
       const searchRes = rakData
         .map((data) => filterSearchRow(data, keywordVal))
         .filter((fromArrMap) => fromArrMap !== undefined);
@@ -71,9 +82,10 @@ function initSearchBook (parsedJsonData) {
         render(
           relativeToWhichCardsWrapper,
           sortDirection,
-          "<center><p style='color: #FDA4AF;'>Buku ngga ada... 😭😭😭</p></center>",
+          "<p style='color: #cbd5e1; margin: 16px auto 0;'>Buku ngga ada... 😭😭😭</p>",
         );
       } else {
+        // console.log(searchRes.length);
         searchRes.forEach((x) =>
           render(relativeToWhichCardsWrapper, sortDirection, cardBookHtmlTemplate(x)),
         );
@@ -83,15 +95,3 @@ function initSearchBook (parsedJsonData) {
 };
 
 export default initSearchBook;
-
-// const a = parsedJsonData
-// .map((data) => filterSearchRow(data, keywordVal))
-// .filter((fromArrMap) =>
-//   fromArrMap !== undefined
-//     ? render(
-//         relativeToWhichCards,
-//         "beforeend",
-//         cardBookHtmlTemplate(fromArrMap),
-//       )
-//     : null
-// );
