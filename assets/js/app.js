@@ -2,10 +2,9 @@ import render from './modules/render.js';
 import initToggleRak from './modules/handle-toggle-rak.js';
 import initSearchBook from './modules/handle-search-book.js';
 import cardBookHtmlTemplate from './components/card-book.js';
-import { parsedJsonData } from './modules/a.js';
 import env from './env.js'
 import getData from './modules/get-data.js';
-import setData from './set-data.js';
+// import setData from './set-data.js';
 import splitData from './modules/split-data.js';
 
 // set today's year to footer
@@ -13,20 +12,50 @@ document.getElementById('copyright-year').innerText = new Date().getFullYear();
 
 
 
-
-
-
-
-
-initAllData()
+initRenderAllData()
 initToggleRak();
-initSearchBook();
+
+
+
+// get all data from local storage
+const parsedJsonData = splitData(getData().data)
+
+
+initSearchBook(parsedJsonData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // we do hoisting
 // we have to split the isComplete === true and the falsy one,
 // so we will have 2 datasets.
-function initAllData() {
+function initRenderAllData() {
   // split by category (isComplete)
   const splittedData = splitData(getData().data);
 
@@ -43,20 +72,6 @@ function initAllData() {
       })
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

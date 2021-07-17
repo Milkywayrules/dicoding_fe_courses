@@ -2,7 +2,7 @@
 // import cardBookHtmlTemplate from '../components/card-book.js';
 
 
-export const props = [
+const props = [
   {
     id: +new Date() + Math.random().toLocaleString() * 10000,
     title: "Haryy Kopter",
