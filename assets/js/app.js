@@ -69,11 +69,6 @@ try {
 
 
 
-
-
-
-
-
 // we do hoisting
 // we have to split the isComplete === true and the falsy one,
 // so we will have 2 datasets.
@@ -98,13 +93,12 @@ function initRenderAllData(dbData) {
             sortDirection,
             cardBookHtmlTemplate(rowData),
             rowData,
+            dbData,
           );
         })
       })
   }
 }
-
-
 
 
 

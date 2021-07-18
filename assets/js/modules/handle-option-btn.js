@@ -1,4 +1,12 @@
+import env from "../env.js";
+import getData from "./get-data.js";
+import setData from "./set-data.js";
 import toggleShowOrHide from "./toggle-show-hide.js";
+
+// init once so every card data have one source of truth
+// and update the allData variable whenever data changes
+// so, it's kinda state here.
+let allData = getData(env.DB_KEY).data
 
 /**
  *
@@ -19,6 +27,13 @@ const initHandleOptionBtn = (rowData) => {
   const tabLastIdx = parseInt(allFocusableEl.length);
   const firstFocusableEl = allFocusableEl[0];
   const lastFocusableEl = allFocusableEl[tabLastIdx-1];
+
+  const checkBtn = document.getElementById(`${rowData.id}-checkBtn`)
+  const crossBtn = document.getElementById(`${rowData.id}-crossBtn`)
+  const editBtn = document.getElementById(`${rowData.id}-editBtn`)
+  const deleteBtn = document.getElementById(`${rowData.id}-deleteBtn`)
+
+  // console.log(checkBtn, crossBtn, editBtn, deleteBtn);
 
   // whether is now cardModal is active or not
   let isActiveCardModal;
@@ -51,12 +66,11 @@ const initHandleOptionBtn = (rowData) => {
     // -1 because we focus on cardModal first on every option btn trigger
     let idx = -1;
 
-    // add key event listener when cardModal is onFocus and active
-    document.onkeydown = (ev) => {
-      if (isActiveCardModal) {
+    if (isActiveCardModal) {
+      // add key event listener when cardModal is onFocus and active
+      document.onkeydown = (ev) => {
         // only trigger Tab key event when cardModal is active
         if (ev.key === "Tab" && ev.code === "Tab") {
-          console.log(ev);
           // whether ShiftKey is pressed alongside the TabKey or not.
           if (ev.shiftKey) {
             if (idx === 0 || idx === -1) {
@@ -101,9 +115,49 @@ const initHandleOptionBtn = (rowData) => {
           toggleShowOrHide(cardModalDecor, show, hidden);
           toggleShowOrHide(bgOverlay, show, hidden);
           // give back the focus to option btn
-          cardOptBtn.focus()
+          cardOptBtn.focus();
         };
       };
+
+
+      const toggleCompleteStatus = (rowData) => {
+        // spread the old and override with the new value.
+        const newRowData = {...rowData, isComplete: !rowData.isComplete}
+        // create a new array consist the newRowData override the old value.
+        const newAllData = allData.map(data => data.id === newRowData.id ? newRowData : data);
+        // update the initial data we get from db (this is kinda state but not really).
+        allData = newAllData
+        // update DB
+        setData(JSON.stringify(newAllData));
+      }
+
+      if (crossBtn) {
+        crossBtn.onclick = () => {
+          // set isComplete to false (un-done read), then up to localStorage
+          // rerender this particular card element to the opposite Rak
+          toggleCompleteStatus(rowData);
+          bgOverlay.click();
+        }
+      }
+
+      if (checkBtn) {
+        checkBtn.onclick = () => {
+          // set isComplete to true (done read), then up to localStorage
+          // rerender this particular card element to the opposite Rak
+          toggleCompleteStatus(rowData);
+          bgOverlay.click();
+        }
+      }
+
+      editBtn.onclick = () => {
+        console.log('edit btn clicked');
+      }
+
+      deleteBtn.onclick = () => {
+        console.log('delete btn clicked');
+      }
+
+
     };
   }
 
@@ -119,11 +173,9 @@ const initHandleOptionBtn = (rowData) => {
     toggleShowOrHide(cardModalMimic);
     toggleShowOrHide(cardModalDecor);
     toggleShowOrHide(bgOverlay);
+    // give back the focus to option btn
+    cardOptBtn.focus();
   };
-
-  cardModal.onblur = () => {
-    console.log('dialog unfocused');
-  }
 };
 
 export default initHandleOptionBtn;

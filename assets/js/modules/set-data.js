@@ -2,7 +2,7 @@ import env from "../env.js";
 
 /**
  *
- * some
+ * Don't forget to JSON.stringify() first, please.!.
  *
  * @param {Array} data Prefer array, but it can be a string or whatever.
  * @param {String} key local storage key name.

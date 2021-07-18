@@ -1,11 +1,38 @@
+// 
+const svg = {
+  check: `<svg class="svg__check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>`,
+  cross: `<svg class="svg__cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>`,
+};
+
+// 
+const checkBtn = (id) => `
+  <button id="${id}-checkBtn" tabindex="0">
+    ${svg.check}
+    Tandai sudah selesai
+  </button>
+`;
+
+// 
+const crossBtn = (id) => `
+  <button id="${id}-crossBtn" tabindex="0">
+    ${svg.cross}
+    Tandai belum selesai
+  </button>
+`;
+
+
 /**
- * 
+ *
  * Create HTML string template to be rendered with filled props.
- * 
+ *
  * @param {Object} param0 Filled with props.
  * @returns HTML string template to be rendered.
  */
-const cardBookHtmlTemplate = ({ id, title, author, yearPublished }) => (`
+const cardBookHtmlTemplate = ({ id, title, author, yearPublished, isComplete }) => `
 <div id="${id}-cardWrapper" class="card__wrapper">
   <article id="${id}" tabindex="0" class="card">
     <div class="card__content__wrapper">
@@ -25,24 +52,19 @@ const cardBookHtmlTemplate = ({ id, title, author, yearPublished }) => (`
 
     <div id="${id}-modal" class="card__modal hidden" tabindex="-1" role="dialog" aria-hidden="true">
       <ul>
-        <li data-option-id="${id}" name="check-btn">
-          <button tabindex="0">
-            <svg class="svg__check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Tandai sudah selesai
-          </button>
+        <li>
+          ${isComplete ? crossBtn(id) : checkBtn(id)}
         </li>
-        <li data-option-id="${id}" name="edit-btn">
-          <button tabindex="0">
+        <li>
+          <button id="${id}-editBtn" tabindex="0">
             <svg class="svg__edit" style="padding: 1px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
             Ubah
           </button>
         </li>
-        <li data-option-id="${id}" name="delete-btn">
-          <button tabindex="0">
+        <li>
+          <button id="${id}-deleteBtn" tabindex="0">
             <svg class="svg__delete" style="padding: 1px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
@@ -59,11 +81,9 @@ const cardBookHtmlTemplate = ({ id, title, author, yearPublished }) => (`
     <div id="${id}-bgOverlay" class="bg__overlay hidden"></div>
 </div>
 
-`);
-
+`;
 
 // Something about modal here is the info
 // ref: https://developers.google.com/web/fundamentals/accessibility/focus/using-tabindex
-
 
 export default cardBookHtmlTemplate;
