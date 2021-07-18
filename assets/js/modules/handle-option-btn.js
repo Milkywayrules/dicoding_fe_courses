@@ -1,21 +1,98 @@
+import cardBookHtmlTemplate from "../components/card-book.js";
 import env from "../env.js";
 import getData from "./get-data.js";
+import render from "./render.js";
 import setData from "./set-data.js";
 import toggleShowOrHide from "./toggle-show-hide.js";
+
+// we do init some these const here because they are general
+// and not specific like consts in initHandleOptionBtn()
 
 // init once so every card data have one source of truth
 // and update the allData variable whenever data changes
 // so, it's kinda state here.
 let allData = getData(env.DB_KEY).data
 
+const wrappersIDList = ['left-cards', 'right-cards']
+
+
+/**
+ * 
+ * something
+ * 
+ * @param {Object} rowData Single card data
+ * 
+ */
+const toggleCompleteStatus = (rowData) => {
+  // spread the old and override with the new value.
+  const newRowData = {...rowData, isComplete: !rowData.isComplete}
+  // create a new array consist the newRowData override the old value.
+  const newAllData = allData.map(data => data.id === newRowData.id ? newRowData : data);
+  // update the initial data we get from db (this is kinda state but not really).
+  allData = newAllData
+  // update DB
+  setData(JSON.stringify(newAllData));
+
+  return newRowData;
+}
+
+/**
+ * 
+ * something
+ * 
+ */
+const handleToggleCompleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
+  const newRowData = toggleCompleteStatus(rowData);
+
+  // we do this obj here so every time toggleCompleteBtn created,
+  // this obj is created too and get the recent data from the newest document.
+  const emptyRakMessage = {
+    "left-cards": document.getElementById("true-rakStillEmpty"),
+    "right-cards": document.getElementById("false-rakStillEmpty"),
+  }
+  
+  // check current cardModal parent element (cardWrapper)
+  // and find the unmatch (opposite) parent element.
+  // The values are left-cards && right-cards.
+  const oppositeCardWrapper = wrappersIDList.find(x => cardWrapper.parentElement.id !== x)
+
+  // get left-cards or right-cards element (find emptyRakMessage and remove).
+  // this is useful because we have a default initial msg when rak is empty.
+  if (emptyRakMessage[oppositeCardWrapper]) {
+    emptyRakMessage[oppositeCardWrapper].remove()
+  }
+
+  // if the last element is deleted too, we render this emptyRakMessage.
+  // under 1 because we check first here and then remove this last child element.
+  if (cardWrapper.parentElement.children.length <= 1) {
+    const i = cardWrapper.parentElement.id === 'right-cards' ? "false" : "true";
+    const t = `<p id="${i}-rakStillEmpty" style='color: #cbd5e1; margin: 16px auto 0;'> Masih kosong nih, yuk isi... 😎😎😎 </p>`;
+    cardWrapper.parentElement.innerHTML = t
+  }
+
+  // we remove this card element
+  // before we render it in another rak so we don't get duplicate ID.
+  cardWrapper.remove();
+  // render the new card to the opposite Rak.
+  render(oppositeCardWrapper, "afterbegin", cardBookHtmlTemplate(newRowData), newRowData, allData);
+  // trigger click on bg overlay
+  // so it's like we click outside the modal.
+  bgOverlay.click();
+}
+
+
 /**
  *
  * somtehing
  *
  * @param {Element} rowData element
+ * 
  */
 const initHandleOptionBtn = (rowData) => {
+  // we do init these const because they are specific to certain rowData element.
+
   // init const
+  const cardWrapper = document.getElementById(`${rowData.id}-cardWrapper`);
   const cardOptBtn = document.getElementById(`${rowData.id}-optionBtn`);
   const cardModal = document.getElementById(`${rowData.id}-modal`);
   const cardModalMimic = document.getElementById(`${rowData.id}-modalMimic`);
@@ -32,8 +109,6 @@ const initHandleOptionBtn = (rowData) => {
   const crossBtn = document.getElementById(`${rowData.id}-crossBtn`)
   const editBtn = document.getElementById(`${rowData.id}-editBtn`)
   const deleteBtn = document.getElementById(`${rowData.id}-deleteBtn`)
-
-  // console.log(checkBtn, crossBtn, editBtn, deleteBtn);
 
   // whether is now cardModal is active or not
   let isActiveCardModal;
@@ -119,33 +194,25 @@ const initHandleOptionBtn = (rowData) => {
         };
       };
 
+      // =======================================================================
 
-      const toggleCompleteStatus = (rowData) => {
-        // spread the old and override with the new value.
-        const newRowData = {...rowData, isComplete: !rowData.isComplete}
-        // create a new array consist the newRowData override the old value.
-        const newAllData = allData.map(data => data.id === newRowData.id ? newRowData : data);
-        // update the initial data we get from db (this is kinda state but not really).
-        allData = newAllData
-        // update DB
-        setData(JSON.stringify(newAllData));
-      }
-
+      // left-cards | isComplete===true | done read
       if (crossBtn) {
         crossBtn.onclick = () => {
           // set isComplete to false (un-done read), then up to localStorage
           // rerender this particular card element to the opposite Rak
-          toggleCompleteStatus(rowData);
-          bgOverlay.click();
+          handleToggleCompleteBtn({ rowData, cardWrapper, bgOverlay });
+          // TODO: add swal Toast here
         }
       }
 
+      // right-cards | isComplete===false | not done read
       if (checkBtn) {
         checkBtn.onclick = () => {
           // set isComplete to true (done read), then up to localStorage
           // rerender this particular card element to the opposite Rak
-          toggleCompleteStatus(rowData);
-          bgOverlay.click();
+          handleToggleCompleteBtn({ rowData, cardWrapper, bgOverlay });
+          // TODO: add swal Toast here
         }
       }
 

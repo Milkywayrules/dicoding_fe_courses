@@ -10,12 +10,12 @@ import initHandleOptionBtn from "./handle-option-btn.js";
  * @param {Element} elementItSelf element
  * 
  */
-const render = (targetParentId, where, renderedEl, elementItSelf = null, dbData) => {
+const render = (targetParentId, where, renderedEl, elementItSelf = null, dbData = null) => {
   document.getElementById(`${targetParentId}`).insertAdjacentHTML(`${where}`, renderedEl);
 
   // if we provide the element itself (not the HTML template only)
   // we assume you are  going to use option button.
-  if (elementItSelf) {
+  if (elementItSelf && dbData) {
     initHandleOptionBtn(elementItSelf, dbData)
   }
 }
