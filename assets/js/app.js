@@ -6,7 +6,6 @@ import splitData from './modules/split-data.js';
 
 import env from './env.js'
 import cardBookHtmlTemplate from './components/card-book.js';
-import initHandleOptionBtn from './modules/handle-option-btn.js';
 
 try {
   // set today's year to footer

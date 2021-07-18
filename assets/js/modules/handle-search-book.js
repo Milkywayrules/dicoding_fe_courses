@@ -2,11 +2,6 @@ import cardBookHtmlTemplate from "../components/card-book.js";
 import env from "../env.js";
 import filterSearchRow from "./filter-search.js";
 import render from "./render.js";
-// import splitData from "./split-data.js";
-
-//
-const searchFormsEl = document.querySelectorAll(".search__form");
-const searchBoxesEl = document.querySelectorAll(".search__box");
 
 /**
  *
@@ -17,6 +12,9 @@ const searchBoxesEl = document.querySelectorAll(".search__box");
 // TODO: init searchbook every time localstorage data changes
 // pass a new data from local storage to init searchbook
 function initHandleSearchBook (splittedDataPerCategory) {
+  //
+  const searchFormsEl = document.querySelectorAll(".search__form");
+  const searchBoxesEl = document.querySelectorAll(".search__box");
 
   // get all search form tag
   searchFormsEl.forEach((sFormEl) => {
