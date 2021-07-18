@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Update somethinnnnnnnnnn again
-Time: 4:23 AM 7/18/2021
+Last status: #2: Option btn are now ready
+Time: 9:24 PM 7/18/2021
