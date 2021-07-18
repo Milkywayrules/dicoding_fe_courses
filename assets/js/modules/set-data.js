@@ -11,13 +11,16 @@ import env from "../env.js";
  */
 const setData = (data, key = env.DB_KEY) => {
   try {
-    if (localStorage.setItem(key, data)) {
-      return {
-        isSuccess: true,
-        isError: false,
-        method: "setData",
-      };
-    }
+    // alwaysssss forgot
+    if (typeof data === 'object') data = JSON.stringify(data);
+    
+    localStorage.setItem(key, data);
+
+    return {
+      isSuccess: true,
+      isError: false,
+      method: "setData",
+    };
   } catch (err) {
     console.error(err);
     return {

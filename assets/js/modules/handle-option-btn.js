@@ -1,8 +1,10 @@
 import cardBookHtmlTemplate from "../components/card-book.js";
 import env from "../env.js";
+import { getCurrentDevice } from "./check-use-agent.js";
 import getData from "./get-data.js";
 import render from "./render.js";
 import setData from "./set-data.js";
+import { toastFullBtn } from "./swal/mixins.js";
 import toggleShowOrHide from "./toggle-show-hide.js";
 
 // we do init some these const here because they are general
@@ -78,6 +80,94 @@ const handleToggleCompleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
   // trigger click on bg overlay
   // so it's like we click outside the modal.
   bgOverlay.click();
+}
+
+
+/**
+ * 
+ * fire form with swal v
+ * receive edited data v
+ * update current card with edited data v
+ * update allData v
+ * update to DB v
+ * fire toast: update success (?)
+ * 
+ */
+const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
+  // 
+  const { value: formEditValues, ...status } = await Swal.fire({
+    title: 'Perbarui Data Buku',
+    html: `
+      <label for="input-edit-title">Judul Buku</label>
+      <input id="input-edit-title" class="swal2-input" placeholder="Judul buku" value="${rowData.title}">
+
+      <label for="input-edit-author">Pengarang</label>
+      <input id="input-edit-author" class="swal2-input" placeholder="Nama pengarang buku" value="${rowData.author}">
+
+      <label for="input-edit-year">Tahun Terbit</label>
+      <input id="input-edit-year" class="swal2-input" placeholder="Tahun terbit" value="${rowData.yearPublished}">
+    `,
+    focusConfirm: false,
+    preConfirm: () => {
+      const obj = {}
+      obj.title = document.getElementById('input-edit-title').value
+      obj.author = document.getElementById('input-edit-author').value
+      obj.yearPublished = document.getElementById('input-edit-year').value
+
+      // loop through every key and delete key with empty string.
+      Object.keys(obj).forEach(key => {
+        if (obj[key].length < 1) delete obj[key];
+        else obj[key] = obj[key]
+      });
+
+      return obj;
+    }
+  })
+  
+  if (formEditValues && status.isConfirmed) {
+    const title = cardWrapper.querySelector(".card__title");
+    const author = cardWrapper.querySelector(".card__author");
+    const yearPublished = cardWrapper.querySelector(".card__year");
+
+    const newRowData = {...rowData, ...formEditValues}
+    // create a new array consist the newRowData override the old value.
+    allData = allData.map(data => data.id === newRowData.id ? newRowData : data);
+
+    // update the card element
+    Object.keys(newRowData).forEach(key => {
+      if (key === 'title') title.innerText = newRowData[key];
+      if (key === 'author') author.innerText = newRowData[key];
+      if (key === 'yearPublished') yearPublished.innerText = newRowData[key];
+    });
+    // Swal.fire(console.log(formEditValues))
+    const setDataStatus = setData(JSON.stringify(allData));
+    if (setDataStatus.isSuccess) {
+      // fire swal
+      toastFullBtn.fire({
+        icon: 'success',
+        title: 'Update sukses',
+        position: getCurrentDevice().isMobile ? "bottom-end" : "top-end" ,
+      });
+    };
+  };
+  // trigger click on bg overlay
+  // so it's like we click outside the modal.
+  bgOverlay.click();
+}
+
+
+
+/**
+ * 
+ * fire conf with swal 
+ * remove current card element
+ * update allData
+ * update to DB
+ * fire toast: undo
+ * 
+ */
+const handleClickDeleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
+  
 }
 
 
@@ -217,7 +307,7 @@ const initHandleOptionBtn = (rowData) => {
       }
 
       editBtn.onclick = () => {
-        console.log('edit btn clicked');
+        handleClickEditBtn({ rowData, cardWrapper, bgOverlay });
       }
 
       deleteBtn.onclick = () => {
