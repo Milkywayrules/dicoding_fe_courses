@@ -4,7 +4,7 @@
  * for all viewports/breakpoints a.k.a responsive.
  *
  */
-const initToggleRak = () => {
+const initHandleToggleRak = () => {
   // initialize const element
   const toggleArrows = document.querySelectorAll(".toggle-arrow");
   const arrowsState = [];
@@ -125,4 +125,4 @@ const initToggleRak = () => {
   });
 };
 
-export default initToggleRak;
+export default initHandleToggleRak;

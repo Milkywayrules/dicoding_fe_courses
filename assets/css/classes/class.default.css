@@ -174,7 +174,6 @@
 
 .card__option__btn {
   display: flex;
-  border-radius: 50%;
   padding: 2px 4px;
   margin: 6px;
   color: var(--text-300);
@@ -211,6 +210,12 @@
   z-index: 997;
 }
 
+.card__modal:focus,
+.card__modal__mimic:focus,
+.card__modal .right__arrow:focus {
+  outline: none;
+}
+
 .card__wrapper .right__arrow {
   position: absolute;
   width: 0; 
@@ -231,17 +236,19 @@
   gap: 1px;
 }
 
-.card__modal li {
+.card__modal button {
   display: flex;
   gap: 4px;
   padding: 8px 14px;
   align-items: center;
   color: var(--secondary-800);
   cursor: pointer;
+  border-radius: 0;
+  width: 100%;
 }
 
-.card__modal li:hover,
-.card__modal li:focus {
+.card__modal button:hover,
+.card__modal button:focus {
   outline: none;
   background-color: var(--primary-400);
   color: var(--text-100);
@@ -256,3 +263,17 @@
 .card__modal .svg__edit { color: var(--secondary-800); }
 
 .card__modal .svg__delete { color: var(--primary-500); } */
+
+.bg__overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 900;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 0;
+  left: 0;
+}
+
+/* .dialog:focus {
+  display: block;
+} */

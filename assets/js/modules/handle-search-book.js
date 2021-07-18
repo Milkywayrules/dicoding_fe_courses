@@ -16,7 +16,7 @@ const searchBoxesEl = document.querySelectorAll(".search__box");
  */
 // TODO: init searchbook every time localstorage data changes
 // pass a new data from local storage to init searchbook
-function initSearchBook (splittedDataPerCategory) {
+function initHandleSearchBook (splittedDataPerCategory) {
 
   // get all search form tag
   searchFormsEl.forEach((sFormEl) => {
@@ -86,12 +86,18 @@ function initSearchBook (splittedDataPerCategory) {
         );
       } else {
         // console.log(searchRes.length);
-        searchRes.forEach((x) =>
-          render(relativeToWhichCardsWrapper, sortDirection, cardBookHtmlTemplate(x)),
-        );
+        searchRes.forEach((rowData) => {
+          render(
+            relativeToWhichCardsWrapper,
+            sortDirection,
+            cardBookHtmlTemplate(rowData),
+            rowData,
+          );
+        });
+
       }
     }
   })
 };
 
-export default initSearchBook;
+export default initHandleSearchBook;

@@ -1,11 +1,12 @@
-import initToggleRak from './modules/handle-toggle-rak.js';
-import initSearchBook from './modules/handle-search-book.js';
+import initHandleToggleRak from './modules/handle-toggle-rak.js';
+import initHandleSearchBook from './modules/handle-search-book.js';
 import render from './modules/render.js';
 import getData from './modules/get-data.js';
 import splitData from './modules/split-data.js';
 
 import env from './env.js'
 import cardBookHtmlTemplate from './components/card-book.js';
+import initHandleOptionBtn from './modules/handle-option-btn.js';
 
 try {
   // set today's year to footer
@@ -17,11 +18,11 @@ try {
   initRenderAllData(dbData)
 
   // 
-  initToggleRak();
+  initHandleToggleRak();
 
   if (dbData) {
     // 
-    initSearchBook(splitData(dbData));
+    initHandleSearchBook(splitData(dbData));
   } else {
     console.log('DB data is empty');
   }
@@ -29,6 +30,35 @@ try {
 } catch (err) {
   console.error(err);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,27 +90,20 @@ function initRenderAllData(dbData) {
         // remove this initial message when rak buku is not empty. We can just do innerHTML = null.
         document.getElementById(`${key}-rakStillEmpty`).remove()
         
-        splittedData[key].forEach(row => {
-          const belongsToCards = row.isComplete ? 'left-cards' : 'right-cards';
+        splittedData[key].forEach(rowData => {
+          const belongsToCards = rowData.isComplete ? 'left-cards' : 'right-cards';
           const sortDirection = env.DEFAULT_SORT === 'DESCENDING' ? "afterbegin" : "beforeend";
           
-          render(belongsToCards, sortDirection, cardBookHtmlTemplate(row))
+          render(
+            belongsToCards,
+            sortDirection,
+            cardBookHtmlTemplate(rowData),
+            rowData,
+          );
         })
       })
-
-      // I should refactor this and make sure the height and width
-      // are always the same with the realOptionModal.
-      // Like, get the element by tracking current cardBookHtmlTemplate() children.
-      const realOptionModal = document.querySelector(".card__modal")
-      const clientHeight = realOptionModal.clientHeight.toString() + 'px'
-      const clientWidth = realOptionModal.clientWidth.toString() + 'px'
-      const mimicOptionModal = document.getElementsByClassName("card__modal__mimic")[0]
-    
-      mimicOptionModal.style.height = clientHeight
-      mimicOptionModal.style.width = clientWidth
   }
 }
-
 
 
 
