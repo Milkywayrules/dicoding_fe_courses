@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Fix some bug on option btn after rerendering
-Time: 2:30 AM 7/19/2021
+Last status: #2: Checkpoint
+Time: 5:05 AM 7/19/2021
