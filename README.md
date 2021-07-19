@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Toggle complete or not is done. Update/edit book's data is done. Delete specific book's data almost done, only undo functionality unfinished
-Time: 12:25 AM 7/20/2021
+Last status: #2: Clean up some stuff
+Time: 1:27 AM 7/20/2021
