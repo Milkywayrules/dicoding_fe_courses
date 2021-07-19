@@ -6,3 +6,5 @@
 @import url(./styles/style.default.css);
 @import url(./styles/style.md.css);
 @import url(./styles/style.lg.css);
+
+@import url(./styles/swal/swal.css);

@@ -4,7 +4,7 @@ import { getCurrentDevice } from "./check-use-agent.js";
 import getData from "./get-data.js";
 import render from "./render.js";
 import setData from "./set-data.js";
-import { toastFullBtn } from "./swal/mixins.js";
+import { toastFullBtn, toastBasic } from "./swal/mixins.js";
 import toggleShowOrHide from "./toggle-show-hide.js";
 
 // we do init some these const here because they are general
@@ -98,13 +98,13 @@ const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
   const { value: formEditValues, ...status } = await Swal.fire({
     title: 'Perbarui Data Buku',
     html: `
-      <label for="input-edit-title">Judul Buku</label>
+      <label for="input-edit-title" class="swal-label">Judul Buku</label>
       <input id="input-edit-title" class="swal2-input" placeholder="Judul buku" value="${rowData.title}">
 
-      <label for="input-edit-author">Pengarang</label>
+      <label for="input-edit-author" class="swal-label">Pengarang</label>
       <input id="input-edit-author" class="swal2-input" placeholder="Nama pengarang buku" value="${rowData.author}">
 
-      <label for="input-edit-year">Tahun Terbit</label>
+      <label for="input-edit-year" class="swal-label">Tahun Terbit</label>
       <input id="input-edit-year" class="swal2-input" placeholder="Tahun terbit" value="${rowData.yearPublished}">
     `,
     focusConfirm: false,
@@ -167,7 +167,14 @@ const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
  * 
  */
 const handleClickDeleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
-  
+  toastFullBtn.fire({
+    text: 'Terjadi kesalahan, silakan ulangi.',
+    icon: 'error',
+    position: getCurrentDevice().isMobile ? "bottom-end" : "top-end",
+    customClass: {
+      confirmButton: 'swal-fullBtn swal-errorBtn',
+    }
+  })
 }
 
 
@@ -311,7 +318,7 @@ const initHandleOptionBtn = (rowData) => {
       }
 
       deleteBtn.onclick = () => {
-        console.log('delete btn clicked');
+        handleClickDeleteBtn({ rowData, cardWrapper, bgOverlay })
       }
 
 

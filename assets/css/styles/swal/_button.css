@@ -1,0 +1,122 @@
+/* =========================== reset some preset =================== */
+
+
+
+:root {
+  --ring-offset-size: 0 0 0 2px;
+  --ring-shadow-size: 0 0 0 5px;
+}
+
+#swal2-html-container {
+  margin: 0 12px 8px 12px;
+}
+
+
+
+/* =========================== /reset some preset =================== */
+/* =========================== preflight =========================== */
+
+.swal-fullBtn {
+  padding: 6px 12px;
+  margin: 0 12px;
+  width: 100%;
+  border-radius: 4px;
+  font-weight: 700;
+
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* =========================== /preflight =========================== */
+/* =========================== success btn ========================== */
+
+.swal-successBtn {
+  --swalBtn-bg:var(--green-100);
+  --swalBtn-bg-hover:var(--green-300);
+  --swalBtn-txt:var(--green-700);
+  --swalBtn-ring:var(--green-600);
+
+  background-color: var(--swalBtn-bg);
+  color: var(--swalBtn-txt);
+}
+.swal-successBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.swal-successBtn:hover,
+.swal-successBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--white);
+  --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+/* =========================== /success btn ========================== */
+/* =========================== info btn ========================== */
+
+.swal-infoBtn {
+  --swalBtn-bg:var(--blue-100);
+  --swalBtn-bg-hover:var(--blue-300);
+  --swalBtn-txt:var(--blue-700);
+  --swalBtn-ring:var(--blue-600);
+
+  background-color: var(--swalBtn-bg);
+  color: var(--swalBtn-txt);
+}
+.swal-infoBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.swal-infoBtn:hover,
+.swal-infoBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--white);
+  --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+/* =========================== /info btn ========================== */
+/* =========================== warning btn ========================== */
+
+.swal-warningBtn {
+  --swalBtn-bg:var(--yellow-100);
+  --swalBtn-bg-hover:var(--yellow-300);
+  --swalBtn-txt:var(--yellow-700);
+  --swalBtn-ring:var(--yellow-600);
+
+  background-color: var(--swalBtn-bg);
+  color: var(--swalBtn-txt);
+}
+.swal-warningBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.swal-warningBtn:hover,
+.swal-warningBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--white);
+  --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+/* =========================== /warning btn ========================== */
+/* =========================== error btn ========================== */
+
+.swal-errorBtn {
+  --swalBtn-bg:var(--red-100);
+  --swalBtn-bg-hover:var(--red-300);
+  --swalBtn-txt:var(--red-700);
+  --swalBtn-ring:var(--red-600);
+
+  background-color: var(--swalBtn-bg);
+  color: var(--swalBtn-txt);
+}
+.swal-errorBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.swal-errorBtn:hover,
+.swal-errorBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--white);
+  --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+/* =========================== /error btn ========================== */
+
+
+

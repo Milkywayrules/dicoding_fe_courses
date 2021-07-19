@@ -105,12 +105,3 @@ ul {
   margin: 0;
   padding: 0;
 }
-
-.swal-confBtn {
-  padding: 8px 12px;
-  width: 100%;
-  background-color: green;
-}
-
-/* w-full mx-auto py-1 px-4 rounded font-bold
-text-green-700 bg-green-100 hover:bg-green-300 ring-green-600 focus:ring-4 */

@@ -24,7 +24,7 @@ const toastFullBtn = Swal.mixin({
   confirmButtonText: "OK",
   buttonsStyling: false, // always false, always need custom style to override the default
   customClass: {
-    confirmButton: "swal-confBtn"
+    confirmButton: "swal-confirmButton",
   },
   timer: 5000,
   timerProgressBar: true,
