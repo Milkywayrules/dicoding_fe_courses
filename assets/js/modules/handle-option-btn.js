@@ -1,10 +1,9 @@
 import cardBookHtmlTemplate from "../components/card-book.js";
 import env from "../env.js";
 import { getCurrentDevice } from "./check-use-agent.js";
-import getData from "./get-data.js";
 import render from "./render.js";
-import setData from "./set-data.js";
-import { toastFullBtn, toastBasic } from "./swal/mixins.js";
+import { deleteData, getData, setData } from "./crud-data.js";
+import { toastFullBtn, toastBasic, modalEditBook, modalConfirmation } from "./swal/mixins.js";
 import toggleShowOrHide from "./toggle-show-hide.js";
 
 // we do init some these const here because they are general
@@ -68,7 +67,7 @@ const handleToggleCompleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
   // under 1 because we check first here and then remove this last child element.
   if (cardWrapper.parentElement.children.length <= 1) {
     const i = cardWrapper.parentElement.id === 'right-cards' ? "false" : "true";
-    const t = `<p id="${i}-rakStillEmpty" style='color: #cbd5e1; margin: 16px auto 0;'> Masih kosong nih, yuk isi... 😎😎😎 </p>`;
+    const t = `<p id="${i}-rakStillEmpty" style='color: #cbd5e1; margin: 16px auto 0; text-align: center;'> Masih kosong nih, yuk isi...<br />😎😎😎 </p>`;
     cardWrapper.parentElement.innerHTML = t
   }
 
@@ -77,9 +76,21 @@ const handleToggleCompleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
   cardWrapper.remove();
   // render the new card to the opposite Rak.
   render(oppositeCardWrapper, "afterbegin", cardBookHtmlTemplate(newRowData), newRowData, allData);
-  // trigger click on bg overlay
-  // so it's like we click outside the modal.
-  bgOverlay.click();
+  
+  // firing toast
+  const title = newRowData.isComplete ? "Yeay! Buku selesai dibaca." : "Luangkan waktu baca bukunya, yaa!";
+  const icon = newRowData.isComplete ? "success" : "info";
+  toastBasic.fire({
+    title: title,
+    icon: icon,
+    position: getCurrentDevice().isMobile ? "bottom" : "top-end",
+    customClass: {
+      confirmButton: "rakbuku-swal-fullBtn rakbuku-swal-successBtn",
+      popup: "rakbuku-swal-popup",
+      title: "rakbuku-swal-title",
+    },
+  });
+  // TODO: handle error.
 }
 
 
@@ -94,42 +105,19 @@ const handleToggleCompleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
  * 
  */
 const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
-  // 
-  const { value: formEditValues, ...status } = await Swal.fire({
-    title: 'Perbarui Data Buku',
-    html: `
-      <label for="input-edit-title" class="swal-label">Judul Buku</label>
-      <input id="input-edit-title" class="swal2-input" placeholder="Judul buku" value="${rowData.title}">
-
-      <label for="input-edit-author" class="swal-label">Pengarang</label>
-      <input id="input-edit-author" class="swal2-input" placeholder="Nama pengarang buku" value="${rowData.author}">
-
-      <label for="input-edit-year" class="swal-label">Tahun Terbit</label>
-      <input id="input-edit-year" class="swal2-input" placeholder="Tahun terbit" value="${rowData.yearPublished}">
-    `,
-    focusConfirm: false,
-    preConfirm: () => {
-      const obj = {}
-      obj.title = document.getElementById('input-edit-title').value
-      obj.author = document.getElementById('input-edit-author').value
-      obj.yearPublished = document.getElementById('input-edit-year').value
-
-      // loop through every key and delete key with empty string.
-      Object.keys(obj).forEach(key => {
-        if (obj[key].length < 1) delete obj[key];
-        else obj[key] = obj[key]
-      });
-
-      return obj;
-    }
-  })
+  // Fire Swal Modal for edit form
+  const { value: formEditValues, ...status } = await modalEditBook({ rowData }).fire();
   
+  // if data from Swal Modal recieved and user click the confirmBtn (isConfirmed)
   if (formEditValues && status.isConfirmed) {
+    // const init
     const title = cardWrapper.querySelector(".card__title");
     const author = cardWrapper.querySelector(".card__author");
     const yearPublished = cardWrapper.querySelector(".card__year");
 
+    // spread old data and spread the new data into a single object.
     const newRowData = {...rowData, ...formEditValues}
+    
     // create a new array consist the newRowData override the old value.
     allData = allData.map(data => data.id === newRowData.id ? newRowData : data);
 
@@ -139,16 +127,24 @@ const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
       if (key === 'author') author.innerText = newRowData[key];
       if (key === 'yearPublished') yearPublished.innerText = newRowData[key];
     });
-    // Swal.fire(console.log(formEditValues))
+    
+    // update data to local storage
     const setDataStatus = setData(JSON.stringify(allData));
+
+    // fire swal toast for success info
     if (setDataStatus.isSuccess) {
-      // fire swal
-      toastFullBtn.fire({
-        icon: 'success',
-        title: 'Update sukses',
-        position: getCurrentDevice().isMobile ? "bottom-end" : "top-end" ,
+      // firing toast
+      toastBasic.fire({
+        title: "Data buku berhasil diperbarui.",
+        icon: "success",
+        position: getCurrentDevice().isMobile ? "bottom" : "top-end",
+        customClass: {
+          popup: "rakbuku-swal-popup",
+          title: "rakbuku-swal-title",
+        },
       });
     };
+    // TODO: handle error.
   };
   // trigger click on bg overlay
   // so it's like we click outside the modal.
@@ -160,21 +156,69 @@ const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
 /**
  * 
  * fire conf with swal 
+ * save to memento current data
  * remove current card element
  * update allData
  * update to DB
- * fire toast: undo
+ * fire toast === undo ? get from memento and setData() : null;
  * 
  */
-const handleClickDeleteBtn = ({ rowData, cardWrapper, bgOverlay }) => {
-  toastFullBtn.fire({
-    text: 'Terjadi kesalahan, silakan ulangi.',
-    icon: 'error',
-    position: getCurrentDevice().isMobile ? "bottom-end" : "top-end",
-    customClass: {
-      confirmButton: 'swal-fullBtn swal-errorBtn',
-    }
-  })
+const handleClickDeleteBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
+
+
+  const status = await modalConfirmation.fire();
+  
+  // if status.isConfirmed === true
+  if (status.isConfirmed) {
+    const copyOfAllData = allData;
+    const rowDataToBeDeleted = rowData;
+
+    const {
+      data: {
+        newCopyOfAllData,
+        oldCopyOfAllData,
+        oldCopyOfDeletedData,
+      },
+      isSuccess,
+      isError
+    } = deleteData({ copyOfAllData, rowDataToBeDeleted });
+    
+    // if deleteData.isSuccess === true
+    if (isSuccess) {
+      // update data in DB with the newest one.
+      const { isSuccess, isError } = setData(JSON.stringify(newCopyOfAllData))
+
+      // if setData.isSuccess === true
+      if (isSuccess) {
+        // override the old allData with the newest one, newCopyOfAllData.
+        allData = newCopyOfAllData;
+
+        // fire toast for info that delete is success
+        // and promp for undo-ing or not this delete action.
+        const isUndo = await toastFullBtn.fire({
+          text: 'Data berhasil dihapus.',
+          icon: 'success',
+          confirmButtonText: "Undo",
+          position: getCurrentDevice().isMobile ? "bottom-end" : "top-end",
+          customClass: {
+            confirmButton: 'rakbuku-swal-fullBtn rakbuku-swal-warningBtn',
+          },
+        });
+  
+        // if isUndo.isConfirmed === true, if not do nothing and enjoy the app again.
+        if (isUndo.isConfirmed) {
+          // undo here
+          console.log('undo here');
+        }
+      }
+
+    };
+    
+
+
+  };
+
+
 }
 
 

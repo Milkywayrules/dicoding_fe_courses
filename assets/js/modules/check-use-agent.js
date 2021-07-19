@@ -56,6 +56,8 @@ const getCurrentDevice = () => {
     iphone: false,
     ipad: false,
     isMobile: false,
+    isTablet: false, // for now only detect ipad as a tablet
+    isMobileTablet: false,
   };
 
   const android = /(android)/i.test(navigator.userAgent);
@@ -66,7 +68,9 @@ const getCurrentDevice = () => {
   if (iphone) res.iphone = true;
   if (ipad) res.ipad = true;
 
-  if (android || iphone || ipad) res.isMobile = true;
+  if (ipad) res.isTablet = true;
+  if (android || iphone) res.isMobile = true;
+  if (android || iphone || ipad) res.isMobileTablet = true;
 
   return res;
 };

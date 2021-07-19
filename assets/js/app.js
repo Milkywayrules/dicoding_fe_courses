@@ -1,7 +1,7 @@
 import initHandleToggleRak from './modules/handle-toggle-rak.js';
 import initHandleSearchBook from './modules/handle-search-book.js';
 import render from './modules/render.js';
-import getData from './modules/get-data.js';
+import { getData } from './modules/crud-data.js';
 import splitData from './modules/split-data.js';
 
 import env from './env.js'
@@ -12,14 +12,14 @@ try {
   document.getElementById('copyright-year').innerText = new Date().getFullYear();
 
   const dbData = getData().data;
-
-  // render all data to document
-  initRenderAllData(dbData)
-
+  
   // 
   initHandleToggleRak();
+  
+  if (dbData && typeof dbData === "object" && dbData.length > 0) {
+    // render all data to document
+    initRenderAllData(dbData)
 
-  if (dbData) {
     // 
     initHandleSearchBook(splitData(dbData));
   } else {

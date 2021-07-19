@@ -24,7 +24,7 @@
 
 .left__content__btn {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   background-color: var(--secondary-800);
   color: var(--text-300);
@@ -41,7 +41,7 @@
 
 .right__content__btn {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   background-color: var(--secondary-800);
   color: var(--text-300);

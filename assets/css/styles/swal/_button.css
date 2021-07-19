@@ -1,4 +1,4 @@
-/* =========================== reset some preset =================== */
+/* =========================== reset some preset ================== */
 
 
 
@@ -7,16 +7,18 @@
   --ring-shadow-size: 0 0 0 5px;
 }
 
-#swal2-html-container {
+/* #swal2-html-container {
   margin: 0 12px 8px 12px;
-}
+} */
 
 
 
-/* =========================== /reset some preset =================== */
+
+
+/* =========================== /reset some preset ================== */
 /* =========================== preflight =========================== */
 
-.swal-fullBtn {
+.rakbuku-swal-fullBtn {
   padding: 6px 12px;
   margin: 0 12px;
   width: 100%;
@@ -28,10 +30,10 @@
   transition-duration: 150ms;
 }
 
-/* =========================== /preflight =========================== */
-/* =========================== success btn ========================== */
+/* =========================== /preflight ========================== */
+/* =========================== success btn ========================= */
 
-.swal-successBtn {
+.rakbuku-swal-successBtn {
   --swalBtn-bg:var(--green-100);
   --swalBtn-bg-hover:var(--green-300);
   --swalBtn-txt:var(--green-700);
@@ -40,9 +42,9 @@
   background-color: var(--swalBtn-bg);
   color: var(--swalBtn-txt);
 }
-.swal-successBtn:hover { background-color: var(--swalBtn-bg-hover) }
-.swal-successBtn:hover,
-.swal-successBtn:focus {
+.rakbuku-swal-successBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.rakbuku-swal-successBtn:hover,
+.rakbuku-swal-successBtn:focus {
   /* ring */
   --offset-shadow: var(--ring-offset-size) var(--white);
   --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
@@ -50,10 +52,10 @@
   /* |ring */
 }
 
-/* =========================== /success btn ========================== */
-/* =========================== info btn ========================== */
+/* =========================== /success btn ======================== */
+/* =========================== info btn ============================ */
 
-.swal-infoBtn {
+.rakbuku-swal-infoBtn {
   --swalBtn-bg:var(--blue-100);
   --swalBtn-bg-hover:var(--blue-300);
   --swalBtn-txt:var(--blue-700);
@@ -62,9 +64,9 @@
   background-color: var(--swalBtn-bg);
   color: var(--swalBtn-txt);
 }
-.swal-infoBtn:hover { background-color: var(--swalBtn-bg-hover) }
-.swal-infoBtn:hover,
-.swal-infoBtn:focus {
+.rakbuku-swal-infoBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.rakbuku-swal-infoBtn:hover,
+.rakbuku-swal-infoBtn:focus {
   /* ring */
   --offset-shadow: var(--ring-offset-size) var(--white);
   --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
@@ -72,10 +74,10 @@
   /* |ring */
 }
 
-/* =========================== /info btn ========================== */
-/* =========================== warning btn ========================== */
+/* =========================== /info btn =========================== */
+/* =========================== warning btn ========================= */
 
-.swal-warningBtn {
+.rakbuku-swal-warningBtn {
   --swalBtn-bg:var(--yellow-100);
   --swalBtn-bg-hover:var(--yellow-300);
   --swalBtn-txt:var(--yellow-700);
@@ -84,9 +86,9 @@
   background-color: var(--swalBtn-bg);
   color: var(--swalBtn-txt);
 }
-.swal-warningBtn:hover { background-color: var(--swalBtn-bg-hover) }
-.swal-warningBtn:hover,
-.swal-warningBtn:focus {
+.rakbuku-swal-warningBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.rakbuku-swal-warningBtn:hover,
+.rakbuku-swal-warningBtn:focus {
   /* ring */
   --offset-shadow: var(--ring-offset-size) var(--white);
   --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
@@ -94,10 +96,10 @@
   /* |ring */
 }
 
-/* =========================== /warning btn ========================== */
-/* =========================== error btn ========================== */
+/* =========================== /warning btn ======================== */
+/* =========================== error btn =========================== */
 
-.swal-errorBtn {
+.rakbuku-swal-errorBtn {
   --swalBtn-bg:var(--red-100);
   --swalBtn-bg-hover:var(--red-300);
   --swalBtn-txt:var(--red-700);
@@ -106,9 +108,9 @@
   background-color: var(--swalBtn-bg);
   color: var(--swalBtn-txt);
 }
-.swal-errorBtn:hover { background-color: var(--swalBtn-bg-hover) }
-.swal-errorBtn:hover,
-.swal-errorBtn:focus {
+.rakbuku-swal-errorBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.rakbuku-swal-errorBtn:hover,
+.rakbuku-swal-errorBtn:focus {
   /* ring */
   --offset-shadow: var(--ring-offset-size) var(--white);
   --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
@@ -117,6 +119,54 @@
 }
 
 /* =========================== /error btn ========================== */
+/* =========================== confirm btn ========================= */
+
+.rakbuku-swal-confirmBtn {
+  --swalBtn-bg:var(--green-100);
+  --swalBtn-bg-hover:var(--green-300);
+  --swalBtn-txt:var(--green-700);
+  --swalBtn-ring:var(--green-600);
+
+  background-color: var(--swalBtn-bg);
+  color: var(--swalBtn-txt);
+}
+.rakbuku-swal-confirmBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.rakbuku-swal-confirmBtn:hover,
+.rakbuku-swal-confirmBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--white);
+  --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+/* =========================== /confirm btn ======================== */
+/* =========================== cancel btn ========================== */
+
+.rakbuku-swal-cancelBtn {
+  --swalBtn-bg:var(--secondary-100);
+  --swalBtn-bg-hover:var(--secondary-300);
+  --swalBtn-txt:var(--secondary-700);
+  --swalBtn-ring:var(--secondary-600);
+
+  background-color: var(--swalBtn-bg);
+  color: var(--swalBtn-txt);
+}
+.rakbuku-swal-cancelBtn:hover { background-color: var(--swalBtn-bg-hover) }
+.rakbuku-swal-cancelBtn:hover,
+.rakbuku-swal-cancelBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--white);
+  --ring-shadow: var(--ring-shadow-size) var(--swalBtn-ring);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+/* =========================== /cancel btn ========================= */
+
+.mb-2 {
+  margin-bottom: 8px !important;
+}
 
 
 

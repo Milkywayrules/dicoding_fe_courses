@@ -1,0 +1,101 @@
+/* =========================== reset some preset ================== */
+
+:root {
+  --ring-offset-size: 0 0 0 2px;
+  --ring-shadow-size: 0 0 0 5px;
+}
+
+/* =========================== /reset some preset ================== */
+
+/*  */
+.swal2-popup {
+  width: 350px !important;
+  max-width: 512px !important;
+}
+
+.rakbuku-swal-modal-popup {
+  background-color: var(--secondary-600) !important;
+}
+/*  */
+.rakbuku-swal-modal-actions {
+  padding: 0 1.1em !important;
+}
+
+.rakbuku-swal-modal-container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: left !important;
+}
+
+/*  */
+
+.rakbuku-swal-modal-title {
+  color: var(--white) !important;
+}
+
+.swal2-modal .rakbuku-swal-label {
+  margin-top: 14px !important;
+  font-size: .8em !important;
+  color: var(--text-300) !important;
+}
+
+.swal2-modal .rakbuku-swal-input {
+  margin-top: 6px !important;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 4px;
+}
+.swal2-modal .rakbuku-swal-input:focus {
+  background-color: var(--white);
+  /* border: 2px solid transparent; */
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--secondary-600);
+  --ring-shadow: var(--ring-shadow-size) var(--primary-500);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+.swal2-modal .rakbuku-swal-confirmBtn:hover,
+.swal2-modal .rakbuku-swal-confirmBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--secondary-600);
+  --ring-shadow: var(--ring-shadow-size) var(--green-300);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+.swal2-modal .rakbuku-swal-cancelBtn:hover,
+.swal2-modal .rakbuku-swal-cancelBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--secondary-600);
+  --ring-shadow: var(--ring-shadow-size) var(--secondary-300);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+.swal2-modal .rakbuku-swal-errorBtn:hover,
+.swal2-modal .rakbuku-swal-errorBtn:focus {
+  /* ring */
+  --offset-shadow: var(--ring-offset-size) var(--secondary-600);
+  --ring-shadow: var(--ring-shadow-size) var(--red-300);
+  box-shadow: var(--offset-shadow), var(--ring-shadow);
+  /* |ring */
+}
+
+
+
+
+
+
+
+
+.swal2-modal .rakbuku-swal- {}
+
+.swal2-modal .rakbuku-swal- {}
+
+.swal2-modal xx {}
+
+.swal2-modal xx {}
+
+.swal2-modal xx {}

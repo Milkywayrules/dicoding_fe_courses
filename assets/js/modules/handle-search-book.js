@@ -80,7 +80,7 @@ function initHandleSearchBook (splittedDataPerCategory) {
         render(
           relativeToWhichCardsWrapper,
           sortDirection,
-          "<p style='color: #cbd5e1; margin: 16px auto 0;'>Buku ngga ada... 😭😭😭</p>",
+          "<p style='color: #cbd5e1; margin: 16px auto 0; text-align: center;'>Buku ngga ada...<br />😭😭😭</p>",
         );
       } else {
         // console.log(searchRes.length);
