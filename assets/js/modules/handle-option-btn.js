@@ -164,15 +164,15 @@ const handleClickEditBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
  * 
  */
 const handleClickDeleteBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
-
-
+  // fire swal modal confirmation to delete or not
   const status = await modalConfirmation.fire();
+
+  // trigger click on bg overlay
+  // so it's like we click outside the modal.
+  bgOverlay.click();
   
   // if status.isConfirmed === true
   if (status.isConfirmed) {
-    const copyOfAllData = allData;
-    const rowDataToBeDeleted = rowData;
-
     const {
       data: {
         newCopyOfAllData,
@@ -181,7 +181,7 @@ const handleClickDeleteBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
       },
       isSuccess,
       isError
-    } = deleteData({ copyOfAllData, rowDataToBeDeleted });
+    } = deleteData({ copyOfAllData: allData, rowDataToBeDeleted: rowData });
     
     // if deleteData.isSuccess === true
     if (isSuccess) {
@@ -190,7 +190,7 @@ const handleClickDeleteBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
 
       // if setData.isSuccess === true
       if (isSuccess) {
-        // override the old allData with the newest one, newCopyOfAllData.
+        // override the old allData with the NEWest one, newCopyOfAllData.
         allData = newCopyOfAllData;
 
         // fire toast for info that delete is success
@@ -207,18 +207,30 @@ const handleClickDeleteBtn = async ({ rowData, cardWrapper, bgOverlay }) => {
   
         // if isUndo.isConfirmed === true, if not do nothing and enjoy the app again.
         if (isUndo.isConfirmed) {
-          // undo here
-          console.log('undo here');
-        }
-      }
-
+          // update data in DB with the OLD one, oldCopyOfAllData.
+          // Because we do undo.
+          const { isSuccess, isError } = setData(JSON.stringify(oldCopyOfAllData));
+          if (isSuccess) {
+            // override again allData, now with the OLD one, oldCopyOfAllData.
+            allData = oldCopyOfAllData;
+            // firing toast
+            toastBasic.fire({
+              title: "Undo berhasil. Data telah dikembalikan.",
+              icon: "success",
+              position: getCurrentDevice().isMobile ? "bottom" : "top-end",
+              customClass: {
+                popup: "rakbuku-swal-popup",
+                title: "rakbuku-swal-title",
+              },
+            });
+          };
+        };
+      };
     };
-    
-
-
   };
-
-
+  // trigger click on bg overlay
+  // so it's like we click outside the modal.
+  bgOverlay.click();
 }
 
 
