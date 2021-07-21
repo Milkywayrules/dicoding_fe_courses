@@ -60,6 +60,36 @@ header a:focus {
 /* ============================================================== main */
 
 
+section[id="add-new-btn-wrapper"] {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0 24px 24px 0;
+}
+
+#add-new-btn {
+  cursor: pointer;
+  background: var(--primary-500);
+  color: var(--white);
+  padding: 20px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  box-shadow: 0 0 16px 1px var(--secondary-900);
+
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 450ms;
+}
+
+#add-new-btn:hover,
+#add-new-btn:focus {
+  background: var(--primary-600);
+  box-shadow: 0 0 4px 4px var(--secondary-900);
+  transform: rotate(180deg);
+}
+
 main {
   margin-top: 32px;
   padding: 0 24px 0 24px;

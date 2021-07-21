@@ -101,6 +101,80 @@ export const modalEditBook = ({ rowData }) => {
 };
 
 
+/**
+ * 
+ * somtehing
+ * 
+ * @param {Object} param0 object
+ * @returns SweetAlert Mixin
+ * 
+ */
+ export const modalAddBook = () => {
+  return Swal.mixin({
+    showCancelButton: true,
+    confirmButtonText: "Simpan",
+    cancelButtonText: "Batal",
+
+    buttonsStyling: false,
+    customClass: {
+      title: "rakbuku-swal-modal-title",
+      popup: "rakbuku-swal-modal-popup",
+      actions: "rakbuku-swal-modal-actions",
+      htmlContainer: "rakbuku-swal-modal-container",
+      confirmButton: "rakbuku-swal-fullBtn rakbuku-swal-confirmBtn mb-2",
+      cancelButton: "rakbuku-swal-fullBtn rakbuku-swal-cancelBtn",
+    },
+
+    title: 'Tambah Buku Baru',
+    html: `
+      <label for="input-edit-title" class="rakbuku-swal-label">Judul Buku</label>
+      <input id="input-edit-title" class="rakbuku-swal-input" type="text" placeholder="77 Cara Menjadi Lebih Produktif" minlength="1" maxlength="100">
+  
+      <label for="input-edit-author" class="rakbuku-swal-label">Pengarang</label>
+      <input id="input-edit-author" class="rakbuku-swal-input" type="text" placeholder="Dio Ilham Djatiadi" minlength="1" maxlength="50">
+  
+      <label for="input-edit-year" class="rakbuku-swal-label">Tahun Terbit</label>
+      <input id="input-edit-year" class="rakbuku-swal-input" type="tel" placeholder="2021" minlength="1" maxlength="4">
+    `,
+    focusConfirm: false,
+    // inputValidator: (value) => {
+    //   return new Promise((resolve) => {
+    //     console.log(value.author);
+    //     if (value213 === 'oranges') {
+    //       resolve()
+    //     } else {
+    //       resolve('You need to select oranges :)')
+    //     }
+    //   })
+    // },
+    preConfirm: () => {
+      let hasError = false;
+
+      const newData = {
+        id: +new Date() + Math.random().toLocaleString() * 10000,
+        title: '',
+        author: '',
+        yearPublished: '',
+        isComplete: false,
+      };
+      newData.title = document.getElementById('input-edit-title').value;
+      newData.author = document.getElementById('input-edit-author').value;
+      newData.yearPublished = parseInt(document.getElementById('input-edit-year').value);
+      
+      if (!isNaN(newData.yearPublished)) {
+        // loop through every key and delete key with empty string.
+        Object.keys(newData).forEach(key => {
+          if (newData[key].length < 1) delete newData[key];
+          else newData[key] = newData[key];
+        });
+      } else {
+        hasError = true;
+      }
+      return {newData, hasError};
+    },
+  });
+};
+
 
 /**
  * 
