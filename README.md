@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction  
-Last status: #2: Update some  
-Time: 12:29 AM 7/22/2021  
+Last status: #2: Update add new book btn styling  
+Time: 12:31 AM 7/22/2021  
