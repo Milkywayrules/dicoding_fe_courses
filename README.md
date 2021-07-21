@@ -86,7 +86,7 @@ Jika Skenario Tes nomor 9 sudah terpenuhi dan tidak ada kendala atau masalah sel
 
 
 ## Hal Penting:
-Per waktu dan tanggal 5:23 PM 7/21/2021, aplikasi web Rakbuku masih dalam tahap pengembangan dan belum dilakukan optimasi secara visual untuk digunakan di tablet maupun desktop. Namun, secara fitur dan fungsionalitas seharusnya tidak ada kendala baik di mobile/tablet/desktop.
+Per waktu dan tanggal 11:41 PM 7/21/2021, aplikasi web Rakbuku masih dalam tahap pengembangan dan belum dilakukan optimasi secara visual untuk digunakan di tablet maupun desktop. Namun, secara fitur dan fungsionalitas seharusnya tidak ada kendala baik di mobile/tablet/desktop. (untuk per waktu dan tanggal tersebut aplikasi ini masih memiliki beberapa bug, target penyelesaian diperkirakan selesai pada 00:41 PM 8/21/2021)
 
 
 ## Pasca uji:
