@@ -6,5 +6,5 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Branch 1 done
 
 Branch 2 under construction
-Last status: #2: Clean up some stuff
-Time: 1:27 AM 7/20/2021
+Last status: #2: Update README.md
+Time: 5:45 PM 7/21/2021
