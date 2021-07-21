@@ -7,7 +7,7 @@
 
 /* =========================== /reset some preset ================== */
 
-/*  */
+/* =========================== =========================== */
 .swal2-popup {
   width: 350px !important;
   max-width: 512px !important;
@@ -28,7 +28,7 @@
   text-align: left !important;
 }
 
-/*  */
+/* =========================== =========================== */
 
 .rakbuku-swal-modal-title {
   color: var(--white) !important;
@@ -54,6 +54,12 @@
   --ring-shadow: var(--ring-shadow-size) var(--primary-500);
   box-shadow: var(--offset-shadow), var(--ring-shadow);
   /* |ring */
+}
+
+/* =========================== =========================== */
+
+.rakbuku-swal-fullBtn {
+  padding: 8px 12px;
 }
 
 .swal2-modal .rakbuku-swal-confirmBtn:hover,
@@ -83,19 +89,4 @@
   /* |ring */
 }
 
-
-
-
-
-
-
-
-.swal2-modal .rakbuku-swal- {}
-
-.swal2-modal .rakbuku-swal- {}
-
-.swal2-modal xx {}
-
-.swal2-modal xx {}
-
-.swal2-modal xx {}
+/* =========================== =========================== */

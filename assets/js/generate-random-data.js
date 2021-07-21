@@ -81,11 +81,19 @@ export const generateRandomData = () => {
 
     const { isSuccess, isError } = setData(parsedJsonData);
 
+    let msg = null;
     if (isSuccess) {
-      console.log(`---\nRandom dummy data generated to local storage!\nTotal: ${props.length}\n---`);
+      msg = `---\nRandom dummy data generated to local storage!\nTotal: ${props.length}\n---`;
+      console.log(msg);
     } else {
-      console.warn(`---\nFailed to generate random data.\n---`);
+      msg = `---\nFailed to generate random data.\n---`;
+      console.warn(msg);
       console.error(isError);
     }
+    // LOL why I bother to return this complex object :(
+    // I don't want, but idk something whispering on my mind that I must do this :(
+    return { isSuccess, isError, msg };
+  } else {
+    return { isSuccess: false, isError: false, msg: "Data not added, but not error. Remember message before this message, thank you." };
   }
 };

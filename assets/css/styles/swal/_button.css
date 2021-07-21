@@ -78,10 +78,10 @@
 /* =========================== warning btn ========================= */
 
 .rakbuku-swal-warningBtn {
-  --swalBtn-bg:var(--yellow-100);
-  --swalBtn-bg-hover:var(--yellow-300);
-  --swalBtn-txt:var(--yellow-700);
-  --swalBtn-ring:var(--yellow-600);
+  --swalBtn-bg:var(--amber-100);
+  --swalBtn-bg-hover:var(--amber-300);
+  --swalBtn-txt:var(--amber-700);
+  --swalBtn-ring:var(--amber-600);
 
   background-color: var(--swalBtn-bg);
   color: var(--swalBtn-txt);

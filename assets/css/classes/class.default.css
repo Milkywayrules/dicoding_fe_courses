@@ -109,7 +109,7 @@
 
 .results__wrapper {
   padding-top: 20px;
-  height: 65vh;
+  height: 75vh;
   overflow-y: auto;
   margin-bottom: 20px;
 }
@@ -256,14 +256,6 @@
 
 .card__modal svg { color: var(--primary-600); }
 
-/* .card__modal .svg__check { color: green; }
-
-.card__modal .svg__cross { color: red; }
-
-.card__modal .svg__edit { color: var(--secondary-800); }
-
-.card__modal .svg__delete { color: var(--primary-500); } */
-
 .bg__overlay {
   position: fixed;
   height: 100%;
@@ -273,7 +265,3 @@
   top: 0;
   left: 0;
 }
-
-/* .dialog:focus {
-  display: block;
-} */

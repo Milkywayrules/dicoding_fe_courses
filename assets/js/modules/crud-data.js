@@ -21,6 +21,7 @@ export const getData = (where = null, json = true) => {
   // how many times the app fetch data from local storage.
   console.log('---\nGet data from DB.\nLog this on purpose. You can dismiss this message safely.\n---');
   try {
+    // if the requested format is JSON, parse the JSON.
     if (json) {
       return {
         data: JSON.parse(localStorage.getItem(where)),
@@ -38,7 +39,9 @@ export const getData = (where = null, json = true) => {
         method: "getData",
       };
     }
+
   } catch (err) {
+    // do something if error occured
     // console.error(err);
     return {
       data: null,
@@ -63,7 +66,7 @@ export const setData = (data, key = env.DB_KEY) => {
   try {
     // alwaysssss forgot, do this if I forgot wkwk
     if (typeof data === "object") data = JSON.stringify(data);
-
+    // update data DB.
     localStorage.setItem(key, data);
 
     return {
@@ -90,21 +93,29 @@ export const setData = (data, key = env.DB_KEY) => {
  * Let the func do the rest (create a new object containing new all data)
  * 
  * @param {Object} param0 object
+ * 
  */
-export const deleteData = ({ copyOfAllData, rowDataToBeDeleted }) => {
+export const deleteData = (rowDataToBeDeleted, copyOfAllData, isUpdateDB = true) => {
   try {
+    // filter deleted data.
     const newCopyOfAllData = copyOfAllData.filter(x => x.id !== rowDataToBeDeleted.id);
+    // update local storage data with the new one.
+    if (isUpdateDB) {
+      var { isSuccess, isError } = setData(JSON.stringify(newCopyOfAllData));
+    }
+    // return new copy of data without the deleted data.
     return {
       data: {
         newCopyOfAllData,
         oldCopyOfAllData: copyOfAllData,
         oldCopyOfDeletedData: rowDataToBeDeleted,
       },
-      isSuccess: true,
-      isError: false,
+      isSuccess: isSuccess,
+      isError: isError,
       method: "deleteData",
     };
   } catch (err) {
+    // do something if error occured.
     console.error(err);
     return {
       data: {

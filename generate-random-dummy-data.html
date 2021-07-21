@@ -1,0 +1,15 @@
+<script>
+  // we do IIFE here
+  (async () => {
+    const res = confirm("This will generate about 500 data and only work if you have/has never add a single data using this app. Or else delete your local storage via browser setting or just use incognito/private session in your browser. Thank you!");
+    
+    if (res) {
+      // we do dynamic import here
+      const grd = await import("./assets/js/generate-random-data.js")
+      const res = grd.generateRandomData();
+      alert(res.msg);
+    }
+    // go home!
+    location.assign(location.origin);
+  })();
+</script>
