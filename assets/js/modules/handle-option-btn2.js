@@ -3,15 +3,8 @@ import env from "../env.js";
 import { getCurrentDevice } from "./check-use-agent.js";
 import render, { renderDataEmptyMessage } from "./render.js";
 import { deleteData, getData, setData } from "./crud-data.js";
-import {
-  toastFullBtn,
-  toastBasic,
-  modalEditBook,
-  modalConfirmation,
-} from "./swal/mixins.js";
+import { toastFullBtn, toastBasic, modalEditBook, modalConfirmation } from "./swal/mixins.js";
 import toggleShowOrHide from "./toggle-show-hide.js";
-import initHandleSearchBook from "./handle-search-book.js";
-import splitData from "./split-data.js";
 
 // we do init some these const here because they are general
 // and not specific like consts in initHandleOptionBtn()
@@ -20,80 +13,79 @@ import splitData from "./split-data.js";
 // and update the allData variable whenever data changes
 // so, it's kinda state here.
 // let allData = getData(env.DB_KEY).data;
-// window.allData = getData().data
 
-const wrappersIDList = ["left-cards", "right-cards"];
+const wrappersIDList = ['left-cards', 'right-cards']
+
 
 /**
- *
+ * 
  * something
- *
+ * 
  * @param {Object} rowData Single card data
- *
+ * 
  */
 const toggleCompleteStatus = ({ rowData, allData }) => {
   // spread the old and override with the new value.
-  const newRowData = { ...rowData, isComplete: !rowData.isComplete };
+  const newRowData = {...rowData, isComplete: !rowData.isComplete}
   // create a new array consist the newRowData override the old value.
-  let newAllData = allData.map((data) =>
-    data.id === newRowData.id ? newRowData : data,
-  );
+  const newAllData = allData.map(data => data.id === newRowData.id ? newRowData : data);
+  // update the initial data we get from db (this is kinda state but not really).
+  // allData = newAllData
+  // update DB
   setData(JSON.stringify(newAllData));
-  console.log('asd');
-  console.log(newAllData);
-  // for persistent data from db. I added this after decided using global var allData.
-  newAllData = getData().data;
-  console.log(newAllData);
-  console.log(window.allData);
 
   return { newRowData, newAllData };
-};
+}
 
 /**
- *
+ * 
  * something
- *
+ * 
  */
-const handleToggleCompleteBtn = ({ rowData, allData, cardWrapper }) => {
-  // do the toggle thing logic
+const handleToggleCompleteBtn = ({ rowData, allData, cardWrapper, bgOverlay }) => {
+  console.log('di toggle complete status', allData);
   const { newRowData, newAllData } = toggleCompleteStatus({ rowData, allData });
+  console.log('di toggle complete status', newAllData);
 
+  // we do this obj here so every time toggleCompleteBtn created,
+  // this obj is created too and get the recent data from the newest document.
   const emptyRakMessage = {
     "left-cards": document.getElementById("true-rakStillEmpty"),
     "right-cards": document.getElementById("false-rakStillEmpty"),
-  };
-
-  const oppositeCardWrapper = wrappersIDList.find(
-    (x) => cardWrapper.parentElement.id !== x,
-  );
-
-  if (emptyRakMessage[oppositeCardWrapper]) {
-    emptyRakMessage[oppositeCardWrapper].remove();
   }
-
-  let tmpChildren = cardWrapper.parentElement.children;
-  let kosong = 0;
-  let berisi = 0;
   
-  // search all child element an check if it's empty or not
-  // if it's empty thus they are just only for UNDO reference.
-  // if all empty we append emptyRakMsg to the top cardWrapper.
-  Array.from(tmpChildren).forEach(x => x.innerHTML !== "" ? berisi++ : kosong++);
+  // check current cardModal parent element (cardWrapper)
+  // and find the unmatch (opposite) parent element.
+  // The values are left-cards && right-cards.
+  const oppositeCardWrapper = wrappersIDList.find(x => cardWrapper.parentElement.id !== x)
 
-  // kalo udah gaada element yg berisi apus semua
-  if (berisi === 1) {
-    const prefixEmptyMessageID = cardWrapper.parentElement.id === "right-cards" ? "false" : "true";
-    const t = `<p id="${prefixEmptyMessageID}-rakStillEmpty" style='color: #cbd5e1; margin: 16px auto 0; text-align: center;'> Masih kosong nih, yuk isi...<br />😎😎😎 </p>`;
-    cardWrapper.parentElement.insertAdjacentHTML("afterbegin", t);
+  // get left-cards or right-cards element (find emptyRakMessage and remove).
+  // this is useful because we have a default initial msg when rak is empty.
+  if (emptyRakMessage[oppositeCardWrapper]) {
+    emptyRakMessage[oppositeCardWrapper].remove()
   }
 
-  // remove initial cardWrapper
-  cardWrapper.remove();
+  // if the last element is deleted too, we render this emptyRakMessage.
+  // under 1 because we check first here and then remove this last child element.
+  if (cardWrapper.parentElement.children.length <= 1) {
+    const i = cardWrapper.parentElement.id === 'right-cards' ? "false" : "true";
+    renderDataEmptyMessage({ cardWrapper, i });
+    // const i = cardWrapper.parentElement.id === 'right-cards' ? "false" : "true";
+    // const t = `<p id="${i}-rakStillEmpty" style='color: #cbd5e1; margin: 16px auto 0; text-align: center;'> Masih kosong nih, yuk isi...<br />😎😎😎 </p>`;
+    // cardWrapper.parentElement.innerHTML = t
+  }
 
+  // we remove this card element
+  // before we render it in another rak so we don't get duplicate ID.
+  cardWrapper.remove();
+  // render the new card to the opposite Rak.
+  // render(oppositeCardWrapper, "afterbegin", cardBookHtmlTemplate(newRowData), newRowData, newAllData);
+
+  // console.log(2, rowData, allData);
+  console.log('di onclick toggle complete', newAllData);
+  
   // firing toast
-  const title = newRowData.isComplete
-    ? "Yeay! Buku selesai dibaca."
-    : "Luangkan waktu baca bukunya, yaa!";
+  const title = newRowData.isComplete ? "Yeay! Buku selesai dibaca." : "Luangkan waktu baca bukunya, yaa!";
   const icon = newRowData.isComplete ? "success" : "info";
   toastBasic.fire({
     title: title,
@@ -104,63 +96,55 @@ const handleToggleCompleteBtn = ({ rowData, allData, cardWrapper }) => {
       popup: "rakbuku-swal-popup",
       title: "rakbuku-swal-title",
     },
-  });
+  })
+  // .then(x => {
+  //   console.log(newRowData);
+  //   if (x.isDismissed) initHandleOptionBtn(newRowData);
+  // });
 
-  // return array for spread into render()
-  return [
-    oppositeCardWrapper,
-    "afterbegin",
-    cardBookHtmlTemplate(newRowData),
-    newRowData,
-    newAllData,
-  ];
-};
+  console.log('~');
+  return () => render(oppositeCardWrapper, "afterbegin", cardBookHtmlTemplate(newRowData), newRowData, newAllData);
+  
+  // TODO: handle error.
+}
 
 
 /**
- *
+ * 
  * fire form with swal v
  * receive edited data v
  * update current card with edited data v
  * update allData v
  * update to DB v
  * fire toast: update success (?)
- *
+ * 
  */
 const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) => {
-  // update rowdata from alldata
-  rowData = allData.find(x => x.id === rowData.id);
   // Fire Swal Modal for edit form
-  const { value: formEditValues, ...status } = await modalEditBook({
-    rowData,
-  }).fire();
-
+  const { value: formEditValues, ...status } = await modalEditBook({ rowData }).fire();
+  
   // if data from Swal Modal recieved and user click the confirmBtn (isConfirmed)
   if (formEditValues && status.isConfirmed) {
     // const init
-    const titleEl = cardWrapper.querySelector(".card__title");
-    const authorEl = cardWrapper.querySelector(".card__author");
-    const yearPublishedEl = cardWrapper.querySelector(".card__year");
+    const title = cardWrapper.querySelector(".card__title");
+    const author = cardWrapper.querySelector(".card__author");
+    const yearPublished = cardWrapper.querySelector(".card__year");
 
     // spread old data and spread the new data into a single object.
-    const newRowData = { ...rowData, ...formEditValues };
-
+    const newRowData = {...rowData, ...formEditValues}
+    
     // create a new array consist the newRowData override the old value.
-    let newAllData = allData.map((data) =>
-      data.id === newRowData.id ? newRowData : data,
-    );
+    allData = allData.map(data => data.id === newRowData.id ? newRowData : data);
 
     // update the card element
-    Object.keys(newRowData).forEach((key) => {
-      if (key === "title") titleEl.innerText = newRowData[key];
-      if (key === "author") authorEl.innerText = newRowData[key];
-      if (key === "yearPublished") yearPublishedEl.innerText = newRowData[key];
+    Object.keys(newRowData).forEach(key => {
+      if (key === 'title') title.innerText = newRowData[key];
+      if (key === 'author') author.innerText = newRowData[key];
+      if (key === 'yearPublished') yearPublished.innerText = newRowData[key];
     });
-
+    
     // update data to local storage
-    const setDataStatus = setData(JSON.stringify(newAllData));
-    // for persistent data from db. I added this after decided using global var allData.
-    newAllData = getData().data;
+    const setDataStatus = setData(JSON.stringify(allData));
 
     // fire swal toast for success info
     if (setDataStatus.isSuccess) {
@@ -174,22 +158,14 @@ const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) 
           title: "rakbuku-swal-title",
         },
       });
-
-      // trigger click on bg overlay
-      // so it's like we click outside the modal.
-      bgOverlay.click();
-
-      return {
-        newRowData,
-        newAllData,
-      };
-    }
+    };
     // TODO: handle error.
-  }
+  };
   // trigger click on bg overlay
   // so it's like we click outside the modal.
   bgOverlay.click();
-};
+}
+
 
 
 /**
@@ -202,12 +178,9 @@ const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) 
  * fire toast === undo ? get from memento and setData() : null;
  * 
  */
- const handleClickDeleteBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) => {
+const handleClickDeleteBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) => {
   // fire swal modal confirmation to delete or not
-  const status = await modalConfirmation({
-    title: "Yakin ingin hapus buku ini?",
-    confirmButtonText: "Ya, hapus",
-  }).fire();
+  const status = await modalConfirmation.fire();
   
   // if status.isConfirmed === true
   if (status.isConfirmed) {
@@ -233,25 +206,7 @@ const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) 
       cardWrapper.innerHTML = null;
       
       // override the old allData with the NEWest one, newCopyOfAllData.
-      window.allData = newCopyOfAllData;
-
-      let tmpChildren = cardWrapper.parentElement.children;
-      let kosong = 0;
-      let berisi = 0;
-      let rakStillEmptyElID = "";
-      
-      // search all child element an check if it's empty or not
-      // if it's empty thus they are just only for UNDO reference.
-      // if all empty we append emptyRakMsg to the top cardWrapper.
-      Array.from(tmpChildren).forEach(x => x.innerHTML !== "" ? berisi++ : kosong++);
-
-      // kalo udah gaada element yg berisi apus semua
-      if (berisi === 0) {
-        const prefixEmptyMessageID = cardWrapper.parentElement.id === "right-cards" ? "false" : "true";
-        rakStillEmptyElID = `${prefixEmptyMessageID}-rakStillEmpty`;
-        const t = `<p id="${prefixEmptyMessageID}-rakStillEmpty" style='color: #cbd5e1; margin: 16px auto 0; text-align: center;'> Masih kosong nih, yuk isi...<br />😎😎😎 </p>`;
-        cardWrapper.parentElement.insertAdjacentHTML("afterbegin", t);
-      }
+      allData = newCopyOfAllData;
 
       // fire toast for info that delete is success
       // and promp for undo-ing or not this delete action.
@@ -272,13 +227,11 @@ const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) 
         const { isSuccess, isError } = setData(JSON.stringify(oldCopyOfAllData));
         
         if (isSuccess) {
-          const rakStillEmptyMsg = document.getElementById(rakStillEmptyElID);
-          rakStillEmptyMsg ? rakStillEmptyMsg.remove() : null;
           // render again card from copyOfCardWrapper to previous cardWrapper.
           cardWrapper.replaceWith(copyOfCardWrapper);
 
           // override again allData, now with the OLD one, oldCopyOfAllData.
-          window.allData = oldCopyOfAllData;
+          allData = oldCopyOfAllData;
 
           // firing toast
           toastBasic.fire({
@@ -290,20 +243,6 @@ const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) 
               title: "rakbuku-swal-title",
             },
           });
-
-          // if the user do undo
-          return {
-            oldRowData: rowData,
-            newAllData: window.allData,
-            isUndo: true,
-          };
-        };
-      } else {
-        // if the user not do undo.
-        return {
-          oldRowData: rowData,
-          newAllData: window.allData,
-          isUndo: false,
         };
       };
     };
@@ -315,17 +254,16 @@ const handleClickEditBtn = async ({ rowData, allData, cardWrapper, bgOverlay }) 
 };
 
 
-
-
 /**
  *
  * somtehing
  *
  * @param {Element} rowData element
- *
+ * 
  */
-const initHandleOptionBtn = (rowData, dbData) => {
-  window.allData = dbData;
+const initHandleOptionBtn = (rowData, allData) => {
+  // const allData = getData().data;
+  console.log('di init handle opt btn', allData);
   // we do init these const because they are specific to certain rowData element.
 
   // init const
@@ -337,17 +275,17 @@ const initHandleOptionBtn = (rowData, dbData) => {
   const bgOverlay = document.getElementById(`${rowData.id}-bgOverlay`);
 
   // init focusable element inside the modal.
-  const allFocusableEl = cardModal.querySelectorAll("button");
+  const allFocusableEl = cardModal.querySelectorAll('button');
   const tabLastIdx = parseInt(allFocusableEl.length);
   const firstFocusableEl = allFocusableEl[0];
-  const lastFocusableEl = allFocusableEl[tabLastIdx - 1];
+  const lastFocusableEl = allFocusableEl[tabLastIdx-1];
 
-  const checkBtn = document.getElementById(`${rowData.id}-checkBtn`);
-  const crossBtn = document.getElementById(`${rowData.id}-crossBtn`);
-  const editBtn = document.getElementById(`${rowData.id}-editBtn`);
-  const deleteBtn = document.getElementById(`${rowData.id}-deleteBtn`);
+  const checkBtn = document.getElementById(`${rowData.id}-checkBtn`)
+  const crossBtn = document.getElementById(`${rowData.id}-crossBtn`)
+  const editBtn = document.getElementById(`${rowData.id}-editBtn`)
+  const deleteBtn = document.getElementById(`${rowData.id}-deleteBtn`)
 
-  const propsHandleClick = { rowData, allData, cardWrapper, bgOverlay };
+  const handleClickProps = { rowData, allData, cardWrapper, bgOverlay };
 
   // whether is now cardModal is active or not
   let isActiveCardModal;
@@ -364,8 +302,8 @@ const initHandleOptionBtn = (rowData, dbData) => {
     cardModal.setAttribute("aria-modal", "true");
 
     // set mocal mimic height and width
-    const clientHeight = cardModal.clientHeight.toString() + "px";
-    const clientWidth = cardModal.clientWidth.toString() + "px";
+    const clientHeight = cardModal.clientHeight.toString() + 'px';
+    const clientWidth = cardModal.clientWidth.toString() + 'px';
     cardModalMimic.style.height = clientHeight;
     cardModalMimic.style.width = clientWidth;
 
@@ -398,7 +336,8 @@ const initHandleOptionBtn = (rowData, dbData) => {
             } else {
               // moving backward the idx
               idx--;
-            }
+            };
+
           } else {
             if (idx === tabLastIdx - 1) {
               // set to the first index of btn
@@ -410,9 +349,9 @@ const initHandleOptionBtn = (rowData, dbData) => {
             } else {
               // moving forward the idx
               idx++;
-            }
-          }
-        }
+            };
+          };
+        };
 
         // only trigger Escape key event when cardModal is active
         if (ev.key === "Escape" && ev.code === "Escape") {
@@ -429,84 +368,40 @@ const initHandleOptionBtn = (rowData, dbData) => {
           toggleShowOrHide(bgOverlay, show, hidden);
           // give back the focus to option btn
           cardOptBtn.focus();
-        }
+        };
       };
 
       // =======================================================================
 
       // left-cards | isComplete===true | done read
       if (crossBtn) {
-        crossBtn.onclick = () => {
-          // update props everytime event trigerred
-          propsHandleClick.allData = window.allData;
-          // do logic
-          const renderProps = handleToggleCompleteBtn(propsHandleClick);
-          // render el
-          render(...renderProps);
-          console.log(2, renderProps[renderProps.length - 1]);
-          // get all data from array and assign to global var
-          window.allData = renderProps[renderProps.length - 1];
-          // init again search functionality
-          initHandleSearchBook(splitData(window.allData));
-        };
+        crossBtn.addEventListener("click", () => handleClickCrossBtn({...handleClickProps, crossBtn}), { once: true });
+        crossBtn.removeEventListener("click", () => handleClickCrossBtn(handleClickProps), { once: true });
       }
 
       // right-cards | isComplete===false | not done read
       if (checkBtn) {
         checkBtn.onclick = () => {
-          console.log(propsHandleClick.allData);
-          console.log(window.allData);
-          // update props everytime event trigerred
-          propsHandleClick.allData = window.allData;
-          // do logic
-          const renderProps = handleToggleCompleteBtn(propsHandleClick);
-          // render el
-          render(...renderProps);
-          // get all data from array and assign to global var
-          window.allData = renderProps[renderProps.length - 1];
-          // init again search functionality
-          initHandleSearchBook(splitData(window.allData));
-        };
+          // set isComplete to true (done read), then up to localStorage
+          // rerender this particular card element to the opposite Rak
+          console.log('ini ONCLICK', allData);
+          const u = handleToggleCompleteBtn(handleClickProps);
+          console.log("0u", u);
+          // TODO: add swal Toast here
+        }
       }
 
       editBtn.onclick = () => {
-        // update props everytime event trigerred
-        propsHandleClick.allData = window.allData;
-        // do logic
-        handleClickEditBtn(propsHandleClick).then(res => {
-          // get all data from array and assign to global var
-          window.allData = res.newAllData;
-          // init again opt btn functionality
-          initHandleOptionBtn(res.newRowData, res.newAllData);
-          // init again search functionality
-          initHandleSearchBook(splitData(res.newAllData));
-        });
+        handleClickEditBtn(handleClickProps);
       }
 
       deleteBtn.onclick = () => {
-        // ref-from: ~~delete cardWrapper
-        Array.from(cardWrapper.parentElement.children).forEach(x => { if (x.innerHTML === "") x.remove() });
-
-        // update props everytime event trigerred
-        propsHandleClick.allData = window.allData;
-        // do logic
-        handleClickDeleteBtn(propsHandleClick).then(res => {
-          // if undo we init the opt btn again
-          if (res.isUndo) {
-            // init again opt btn functionality
-            initHandleOptionBtn(res.oldRowData, res.newAllData);
-          } else {
-            // this is the first approach. We add one more to ensure
-            // all empty cardWrapper are deleted before deleting the new one again.
-            // ref: ~~delete cardWrapper
-            document.getElementById(`${res.oldRowData.id}-cardWrapper`).remove();
-          }
-          // init again search functionality
-          initHandleSearchBook(splitData(res.newAllData));
-        });
+        handleClickDeleteBtn(handleClickProps)
       }
-    }
-  };
+
+
+    };
+  }
 
   bgOverlay.onclick = () => {
     // set the cardModal is not active anymore,
@@ -514,7 +409,7 @@ const initHandleOptionBtn = (rowData, dbData) => {
     // will not trigger outside the modal.
     isActiveCardModal = false;
     // toggle whether the modal is shown or not
-    // when the bgOverlay is present, it should
+    // when the bgOverlay is present, it should 
     // toggle the cardModal to hidden.
     toggleShowOrHide(cardModal);
     toggleShowOrHide(cardModalMimic);
@@ -526,3 +421,11 @@ const initHandleOptionBtn = (rowData, dbData) => {
 };
 
 export default initHandleOptionBtn;
+
+
+
+
+function handleClickCrossBtn({ rowData, allData, cardWrapper, bgOverlay }) {
+  const x =  handleToggleCompleteBtn({ rowData, allData, cardWrapper, bgOverlay });
+  x()
+}

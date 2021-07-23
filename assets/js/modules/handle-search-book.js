@@ -12,6 +12,10 @@ import render from "./render.js";
 // TODO: init searchbook every time localstorage data changes
 // pass a new data from local storage to init searchbook
 function initHandleSearchBook (splittedDataPerCategory) {
+  // 
+  // let { data: dbData, isError} = getData();
+  // splittedDataPerCategory = splitData(window.allData);
+  console.log('initHandleSearchBook');
   //
   const searchFormsEl = document.querySelectorAll(".search__form");
   const searchBoxesEl = document.querySelectorAll(".search__box");
@@ -23,7 +27,7 @@ function initHandleSearchBook (splittedDataPerCategory) {
     sFormEl.onsubmit = (ev) => {
       ev.preventDefault();
 
-      console.log("form submitted");
+      console.log("form submitted, nothing to do here.");
     };
   });
 
@@ -63,7 +67,6 @@ function initHandleSearchBook (splittedDataPerCategory) {
       // if there is no data in this particular category (after splitted)
       if (!rakData) return;
 
-
       // empty the html first before rendereing the new one
       document.getElementById(relativeToWhichCardsWrapper).innerHTML = null;
 
@@ -74,8 +77,7 @@ function initHandleSearchBook (splittedDataPerCategory) {
       const searchRes = rakData
         .map((data) => filterSearchRow(data, keywordVal))
         .filter((fromArrMap) => fromArrMap !== undefined);
-        
-      // tell somtehing
+
       if (searchRes.length === 0) {
         render(
           relativeToWhichCardsWrapper,
@@ -90,10 +92,11 @@ function initHandleSearchBook (splittedDataPerCategory) {
             sortDirection,
             cardBookHtmlTemplate(rowData),
             rowData,
+            window.allData,
           );
         });
-
       }
+
     }
   })
 };

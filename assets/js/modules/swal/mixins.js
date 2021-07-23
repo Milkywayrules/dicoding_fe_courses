@@ -181,20 +181,22 @@ export const modalEditBook = ({ rowData }) => {
  * something
  * 
  */
-export const modalConfirmation = Swal.mixin({
-  title: 'Yakin ingin hapus buku ini?',
-  confirmButtonText: "Ya, hapus",
-  cancelButtonText: "Batal",
+export const modalConfirmation = ({ title, confirmButtonText, cancelButtonText }) => {
+  return Swal.mixin({
+    title: "Apakah Anda yakin?",
+    confirmButtonText: "Ya, yakin",
+    cancelButtonText: "Batal",
 
-  showCancelButton: true,
-  focusConfirm: false,
-  buttonsStyling: false,
-  customClass: {
-    title: "rakbuku-swal-modal-title",
-    popup: "rakbuku-swal-modal-popup",
-    actions: "rakbuku-swal-modal-actions",
-    htmlContainer: "rakbuku-swal-modal-container",
-    confirmButton: "rakbuku-swal-fullBtn rakbuku-swal-errorBtn mb-2",
-    cancelButton: "rakbuku-swal-fullBtn rakbuku-swal-cancelBtn",
-  },
-});
+    showCancelButton: true,
+    focusConfirm: false,
+    buttonsStyling: false,
+    customClass: {
+      title: "rakbuku-swal-modal-title",
+      popup: "rakbuku-swal-modal-popup",
+      actions: "rakbuku-swal-modal-actions",
+      htmlContainer: "rakbuku-swal-modal-container",
+      confirmButton: "rakbuku-swal-fullBtn rakbuku-swal-errorBtn mb-2",
+      cancelButton: "rakbuku-swal-fullBtn rakbuku-swal-cancelBtn",
+    },
+  }
+)};
