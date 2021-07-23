@@ -6,7 +6,7 @@ Rakbuku
 
 
 ## Akses melalui:
-- Development: [di sini](https://60f7f69ffe5aad02267043d5--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
+- Development: [di sini](https://60fa9f74afa977bb769df6e2--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
 - Production: [di sini](https://rakbuku-dicoding.netlify.app/)
 
 
@@ -80,13 +80,16 @@ Aplikasi berbasis web yang ditujukan untuk mengelola daftar buku bacaan. Aplikas
    4. Khusus untuk proses hapus data buku, terdapat fitur *undo* yang dapat digunakan untuk mengembalikan data terakhir yang dihapus. Jika tombol *undo* yang terdapat di notifikasi setelah proses hapus data diklik/ditekan, maka data di basis data dan di tampilan akan dikembalikan. Jika notifikasi sudah hilang atau halaman dimuat ulang (*refresh*), maka data akan terhapus secara permanen.
    5. Dalam seluruh proses di sub bagian ini, jika ada satu data yang salah atau proses penyimpanan data ke basis data gagal, maka muncul notifikasi gagal.
 8. Lakukan pencarian menggunakan kotak pencarian yang dimiliki oleh masing-masing rak buku (kategori) yang berwarna putih dan terdapat ikon kaca pembesar di sebelah kanannya, kotak pencarian terdapat di bawah tombol untuk memilih rak buku (kategori). Jika data buku yang dicari ditemukan, maka data buku yang relevan dengan kata kunci pencarian akan ditampilkan dan buku lainnya akan dihilangkan dari tampilan. Jika data buku tidak satupun ditemukan, maka akan tampil teks "Buku ngga ada...😭😭😭". Batasan pencarian terdapat di bagian Fitur di atas.
-9. Muat ulang (*refresh*) halaman untuk melihat semua perubahan apakah sudah benar-benar tersimpan di basis data atau belum. Jika tampilan sebelum dan sesudah halaman dimuat ulang tetap sama, maka selamat Anda telah berhasil mengikuti langkah-langkah dalam proses tes mikro ini.
+9. Lakukan kembali proses pada tahap ketujuh dan tidak harus sesuai dengan urutannya. Bisa dilakukan berulang-ulang untuk meminimalisir kemungkinan *bug* dengan memaksimalkan jumlah uji coba.
+10. Muat ulang (*refresh*) halaman untuk melihat semua perubahan apakah sudah benar-benar tersimpan di basis data atau belum. Jika tampilan sebelum dan sesudah halaman dimuat ulang tetap sama, maka selamat Anda telah berhasil mengikuti langkah-langkah dalam proses tes mikro ini.
 
-Jika Skenario Tes nomor 9 sudah terpenuhi dan tidak ada kendala atau masalah selama proses tes berlangsung, silakan untuk mencoba seluruh fitur secara acak di luar alur yang dijelaskan di atas. Jika terdapat kendala atau masalah silakan untuk menyempatkan dan menghubungi kontak yang terdapat di paling bawah dokumen ini atau dapat membuka situs pribadi milik penulis yang dapat dilihat di bagian paling bawah dari aplikasi web Rakbuku itu sendiri. Kami akan sangat senang untuk dapat mendengar dan membicarakan terkait aplikasi web Rakbuku.
+Jika sampai Skenario Tes nomor 10 sudah terpenuhi dan tidak ada kendala atau masalah selama proses tes berlangsung, silakan untuk mencoba seluruh fitur secara acak di luar alur yang dijelaskan di atas. Jika terdapat kendala atau masalah silakan untuk menyempatkan dan menghubungi kontak yang terdapat di paling bawah dokumen ini atau dapat membuka situs pribadi milik penulis yang dapat dilihat di bagian paling bawah dari aplikasi web Rakbuku itu sendiri. Kami akan sangat senang untuk dapat mendengar dan membicarakan terkait aplikasi web Rakbuku.
 
 
 ## Hal Penting:
-Per waktu dan tanggal 11:41 PM 7/21/2021, aplikasi web Rakbuku masih dalam tahap pengembangan dan belum dilakukan optimasi secara visual untuk digunakan di tablet maupun desktop. Namun, secara fitur dan fungsionalitas seharusnya tidak ada kendala baik di mobile/tablet/desktop. (untuk per waktu dan tanggal tersebut aplikasi ini masih memiliki beberapa bug, target penyelesaian diperkirakan selesai pada 00:41 PM 8/21/2021)
+Per waktu dan tanggal 5:58 PM 7/23/2021, aplikasi web Rakbuku masih dalam tahap pengembangan dan belum dilakukan optimasi secara visual untuk digunakan di tablet maupun desktop. Namun, secara fitur dan fungsionalitas seharusnya tidak ada kendala baik di mobile/tablet/desktop.  
+
+(untuk per waktu dan tanggal 11:41 PM 7/21/2021, aplikasi ini masih memiliki beberapa bug, target penyelesaian diperkirakan selesai pada 00:41 PM 7/24/2021)
 
 
 ## Pasca uji:
