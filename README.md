@@ -6,7 +6,7 @@ Rakbuku
 
 
 ## Akses melalui:
-- Development: [di sini](https://60fa9f74afa977bb769df6e2--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
+- Development: [di sini](https://60fbb156362bb589c4742fb6--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
 - Production: [di sini](https://rakbuku-dicoding.netlify.app/)
 
 
@@ -87,6 +87,11 @@ Jika sampai Skenario Tes nomor 10 sudah terpenuhi dan tidak ada kendala atau mas
 
 
 ## Hal Penting:
+Edit#2:  
+Per waktu dan tanggal 13:17 PM 7/24/2021, aplikasi web Rakbuku sudah masuk tahap produksi dan sejauh ini belum ditemukan kembali *bug* yang *fatal*. Secara visual dan fungsionalitas sudah disesuaikan untuk masing-masing gawai yang digunakan.
+
+
+Edit#1:  
 Per waktu dan tanggal 5:58 PM 7/23/2021, aplikasi web Rakbuku masih dalam tahap pengembangan dan belum dilakukan optimasi secara visual untuk digunakan di tablet maupun desktop. Namun, secara fitur dan fungsionalitas seharusnya tidak ada kendala baik di mobile/tablet/desktop.  
 
 (untuk per waktu dan tanggal 11:41 PM 7/21/2021, aplikasi ini masih memiliki beberapa bug, target penyelesaian diperkirakan selesai pada 00:41 PM 7/24/2021)
