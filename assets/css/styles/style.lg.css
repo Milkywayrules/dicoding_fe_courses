@@ -3,8 +3,22 @@
 @media (min-width: 1024px) {
   
   header {
-    padding: 24px 192px;
+    padding: 24px 240px;
     font-size: 1em;
+  }
+  
+  main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+
+  section[id="add-new-btn-wrapper"] {
+    margin: 0 96px 48px 0;
+  }
+
+  #add-new-btn {
+    padding: 28px;
   }
   
 }

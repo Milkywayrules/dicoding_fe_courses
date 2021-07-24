@@ -60,6 +60,22 @@ header a:focus {
 /* ============================================================== main */
 
 
+main {
+  margin-top: 32px;
+  padding: 0 24px 0 24px;
+}
+
+main #main-title,
+main #main-desc {
+  text-align: center;
+}
+
+main #main-desc {
+  margin-top: 4px;
+  padding: 0 48px;
+  color: var(--text-300);
+}
+
 section[id="add-new-btn-wrapper"] {
   position: fixed;
   bottom: 0;
@@ -88,22 +104,6 @@ section[id="add-new-btn-wrapper"] {
   background: var(--primary-600);
   box-shadow: 0 0 4px 4px var(--secondary-900);
   transform: rotate(180deg);
-}
-
-main {
-  margin-top: 32px;
-  padding: 0 24px 0 24px;
-}
-
-main #main-title,
-main #main-desc {
-  text-align: center;
-}
-
-main #main-desc {
-  margin-top: 4px;
-  padding: 0 48px;
-  color: var(--text-300);
 }
 
 section[id="contents-wrapper"] {

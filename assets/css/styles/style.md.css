@@ -3,12 +3,22 @@
 @media (min-width: 768px) {
 
   header {
-    padding: 24px 96px;
-    font-size: 1rem;
+    padding: 24px 120px;
+    font-size: 1em;
   }
 
   header nav {
     gap: 40px;
+  }
+
+  /*  */
+
+  main {
+    padding: 24px 120px;
+  }
+
+  section[id="add-new-btn-wrapper"] {
+    margin: 0 48px 48px 0;
   }
 
 }
