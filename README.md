@@ -1,20 +1,21 @@
-# Aplikasi Web Rakbuku (Shelfbook)
+# Aplikasi Web Rakbuku (*Shelfbook*)
 
 
 ## Nama:
 Rakbuku
 
 
-## Akses melalui:
-- Development: [di sini](https://60fbb156362bb589c4742fb6--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
-- Production: [di sini](https://rakbuku-dicoding.netlify.app/)
+## Akses Melalui:
+- *Production*: [di sini](https://rakbuku-dicoding.netlify.app/)
+- *Development*: [di sini](https://60fbb156362bb589c4742fb6--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
+- *Github Repo*: [di sini](https://github.com/Milkywayrules/dicoding_fe_courses/tree/2-belajar_membuat_frontend_web_untuk_pemula)
 
 
 ## Deskripsi:
 Aplikasi berbasis web yang ditujukan untuk mengelola daftar buku bacaan. Aplikasi dibangun hanya menggunakan HTML, CSS, dan Javascript. Menggunakan *library Sweetalert2* untuk notifikasi dan pesan popup, tanpa *framework* dan *library* lainnya. Menggunakan **local storage* browser* sebagai basis data utama.
 
 
-## Pra uji:
+## Pra Uji:
 ### A. Syarat minimum:
 1. Perangkat:
    - Desktop:
@@ -65,8 +66,8 @@ Aplikasi berbasis web yang ditujukan untuk mengelola daftar buku bacaan. Aplikas
 -  Pencarian di masing-masing rak buku (kategori), pencarian bisa dilakukan untuk mencari Judul Buku, Nama Pengarang, atau Tahun Terbit di rak buku terkait.
 
 
-## Proses tes:
-### A. Skenario Tes:
+## Proses Tes:
+### A. Skenario tes:
 1. Buka salah satu rak buku (kategori) dengan klik/tekan (*click/tap*).
 2. Akan tampil kotak pencarian di bagian atas dan Daftar Buku yang masih kosong yang menampilkan teks "Masih kosong nih, yuk isi... 😎😎😎".
 3. Bila sekarang fitur pencarian digunakan tidak akan terjadi apapun.
@@ -97,15 +98,15 @@ Per waktu dan tanggal 5:58 PM 7/23/2021, aplikasi web Rakbuku masih dalam tahap 
 (untuk per waktu dan tanggal 11:41 PM 7/21/2021, aplikasi ini masih memiliki beberapa bug, target penyelesaian diperkirakan selesai pada 00:41 PM 7/24/2021)
 
 
-## Pasca uji:
+## Pasca Uji:
 --
 
 
-## Disclaimer:
+## *Disclaimer*:
 Aplikasi web ini dibangun dengan tujuan sebagai tugas *submission* di salah satu *platform digital* untuk belajar pemrograman, Dicoding. Seluruh fitur terbatas hanya sesuai dengan ketentuan dan persyaratan dari pihak Dicoding yang tertera di modul *submission* pada kelas Belajar Membuat Front-End Web untuk Pemula. Terlepas dari fitur, di sisi *UI* dan *UX* seluruhnya dibuat senyaman mungkin layaknya *production level app*. Namun, terlepas itu semua kami sangat menerima saran dan masukan yang dapat menambah nilai dan manfaat terhadap aplikasi ini untuk digunakan lebih luas lagi dan mungkin masuk ke fase yang lebih serius kedepannya.
 
 
-## Terima kasih
+## Terima Kasih
 
 Terima kasih telah membaca dan mengikuti tahapan ini.
 
