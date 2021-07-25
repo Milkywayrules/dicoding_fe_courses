@@ -1,4 +1,11 @@
-# Aplikasi Web Rakbuku (*Shelfbook*)
+# Dicoding Front-end Learning Path Courses
+
+## Belajar dasar pemrograman web (2)
+
+## Aplikasi Web Rakbuku (*Shelfbook*)
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/595c4ca8-63f6-4b0a-9877-bc8570df8e17/deploy-status)](https://app.netlify.com/sites/rakbuku-dicoding/deploys)
 
 
 ## Nama:
@@ -6,9 +13,9 @@ Rakbuku
 
 
 ## Akses Melalui:
-- *Production*: [di sini](https://rakbuku-dicoding.netlify.app/)
-- *Development*: [di sini](https://60fbb156362bb589c4742fb6--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
-- *Github Repo*: [di sini](https://github.com/Milkywayrules/dicoding_fe_courses/tree/2-belajar_membuat_frontend_web_untuk_pemula)
+- *Live*: [di sini](https://rakbuku-dicoding.netlify.app/)
+- *Repo*: [di sini](https://github.com/Milkywayrules/dicoding_fe_courses/tree/2-belajar_membuat_frontend_web_untuk_pemula)
+- *Development*: [di sini](https://60fd984011c0dfd1e3fa5381--rakbuku-dicoding.netlify.app/) (spesifik terhadap dokumen ini)
 
 
 ## Deskripsi:
@@ -23,7 +30,7 @@ Aplikasi berbasis web yang ditujukan untuk mengelola daftar buku bacaan. Aplikas
    - Mobile/Tablet:
      Menggunakan peramban Chrome for Android 91++, Firefox for Andro 89++, Safari on iOS 10++, Opera Mobile 62++, Android Browser 91++, UC Browser for Andro 12.12++, atau Samsung Internet 5++.
 
-     Disarankan untuk menggunakan Chrome atau Firefox, baik untuk desktop ataupun mobile/tablet.
+   Disarankan untuk menggunakan Chrome atau Firefox, baik untuk desktop ataupun mobile/tablet.
 
 2. Penyimpanan:
    - Seluruh data buku disimpan di dalam *local storage* yang terpasang pada setiap peramban. Jika fitur penyimpanan tidak berfungsi dengan baik, bisa dilakukan pengecekan pada peramban yang digunakan apakah fitur *local storage* dapat digunakan atau tidak. Bila masih tidak bisa dilakukan perbaikan, maka silakan gunakan peramban yang lain.
@@ -66,6 +73,26 @@ Aplikasi berbasis web yang ditujukan untuk mengelola daftar buku bacaan. Aplikas
 -  Pencarian di masing-masing rak buku (kategori), pencarian bisa dilakukan untuk mencari Judul Buku, Nama Pengarang, atau Tahun Terbit di rak buku terkait.
 
 
+## *Tech Stack* dan Lainnya:
+- *HTML5 (Semantic).*
+- *CSS3 (Flexbox, variables, responsive at 768px and 1024px, and modularized CSS).*
+- *Local fonts, Fira Sans (Woff and Woff2 format).*
+- *Mobile first and accessibility first in mind.*
+- *Every single elements are perfectly tabable in approriate order.*
+- *Modularized javaScript.*
+- *Using a lot of ES6++ syntax, like async await function, .forEach(), .map(), .some(), .filter(), .values(), .keys(), .includes(), .find(), etc.*
+- *Custom SweetAlert 2 for notifications and modals.*
+- *Local Storage for storing books data.*
+- *Navigator Web API to check user's device.*
+
+*On 0 book data:*
+- *Scored 96, 96, 100, and 100 for Performance, Accessibility, Best Practices, and SEO respectively on [Lighthouse](https://developers.google.com/web/tools/lighthouse).*
+- *Scored 100 on [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights).*
+
+*On 495 books data:*
+- *Scored 89, 97, 100, and 100 for Performance, Accessibility, Best Practices, and SEO respectively on [Lighthouse](https://developers.google.com/web/tools/lighthouse).*
+
+
 ## Proses Tes:
 ### A. Skenario tes:
 1. Buka salah satu rak buku (kategori) dengan klik/tekan (*click/tap*).
@@ -88,11 +115,11 @@ Jika sampai Skenario Tes nomor 10 sudah terpenuhi dan tidak ada kendala atau mas
 
 
 ## Hal Penting:
-Edit#2:  
+*Edit#2:*  
 Per waktu dan tanggal 13:17 PM 7/24/2021, aplikasi web Rakbuku sudah masuk tahap produksi dan sejauh ini belum ditemukan kembali *bug* yang *fatal*. Secara visual dan fungsionalitas sudah disesuaikan untuk masing-masing gawai yang digunakan.
 
 
-Edit#1:  
+*Edit#1:*  
 Per waktu dan tanggal 5:58 PM 7/23/2021, aplikasi web Rakbuku masih dalam tahap pengembangan dan belum dilakukan optimasi secara visual untuk digunakan di tablet maupun desktop. Namun, secara fitur dan fungsionalitas seharusnya tidak ada kendala baik di mobile/tablet/desktop.  
 
 (untuk per waktu dan tanggal 11:41 PM 7/21/2021, aplikasi ini masih memiliki beberapa bug, target penyelesaian diperkirakan selesai pada 00:41 PM 7/24/2021)
@@ -107,7 +134,6 @@ Aplikasi web ini dibangun dengan tujuan sebagai tugas *submission* di salah satu
 
 
 ## Terima Kasih
-
 Terima kasih telah membaca dan mengikuti tahapan ini.
 
 *Warm regards*,  
@@ -115,7 +141,6 @@ Dio Ilham Djatiadi, *(kinda) creator of Rakbuku*.
 
 
 ## Kontak:
-
 [Website](https://dioilham.com)  
 [E-mail](mailto:hai@dioilham.com?cc=projectwithdio@gmail.com&subject=Aplikasi%20Rakbuku)  
 [Github](https://github.com/Milkywayrules)  
