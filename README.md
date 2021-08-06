@@ -5,8 +5,8 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 Branch 1 done
 
-Branch 2 done  
+Branch 2 done
 
-
-Last status: #2: Update the README.md and up lighthouse tests  
-Time: 12:39 AM 7/26/2021  
+Branch 3 init
+Last status: #3: Init branch README.md  
+Time: 1:12 PM 8/6/2021
