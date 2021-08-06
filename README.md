@@ -1,6 +1,6 @@
 # Dicoding Front-end Learning Path Courses
 
-## Belajar dasar pemrograman web (2)
+## Belajar membuat front-end web untuk pemula (2)
 
 ## Aplikasi Web Rakbuku (*Shelfbook*)
 
