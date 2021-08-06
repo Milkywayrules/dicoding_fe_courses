@@ -8,5 +8,5 @@ Branch 1 done
 Branch 2 done
 
 Branch 3 init
-Last status: #3: Init branch README.md  
-Time: 1:12 PM 8/6/2021
+Last status: #3: Bootstrapped the project  
+Time: 4:47 AM 8/7/2021
