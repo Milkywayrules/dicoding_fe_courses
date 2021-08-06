@@ -1,0 +1,45 @@
+{
+  "name": "anime-finder",
+  "version": "1.0.0",
+  "description": "Update your anime trend with Anime Finder, easy & fast.",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "dev": "webpack --config webpack.dev.js",
+    "serve": "webpack serve --open --config webpack.dev.js --port 8000",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milkywayrules/dicoding_fe_courses.git"
+  },
+  "keywords": [
+    "Anime",
+    "Finder",
+    "Dicoding"
+  ],
+  "author": "Dio Ilham Djatiadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Milkywayrules/dicoding_fe_courses/issues"
+  },
+  "homepage": "https://github.com/Milkywayrules/dicoding_fe_courses#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.0.0",
+    "webpack": "^5.41.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "regenerator-runtime": "^0.13.9",
+    "sweetalert2": "^11.0.18"
+  }
+}

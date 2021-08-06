@@ -1,0 +1,106 @@
+/* 
+ * 
+ * Only style the scroll when the screen are large++
+ * I do here bcs this is the part of preflight.
+ * 
+ * There's still some problem with this approach,
+ * result on Firefox and Chrome are different.
+ * But, Opera GX had/have/has the same result as Chrome.
+ * 
+ * The expectation is the result on Chrome and Opera GX.
+ * 
+ * Apparently, I satisfied with the Firefox result too.
+ * 
+ * I leave this note here for my future projects, sorry Reviewer xixi
+ * 
+ */
+@media (min-width: 1024px) {
+  /* SCROLLBAR STYLING */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #444444 #777777;
+  }
+
+  /* !: Stated here 🎉 */
+  /* The emerging W3C standard that is currently Firefox-only */
+  /* Works on Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 14px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #777777;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #444444;
+    border-radius: 10px;
+    border: 3px solid #777777;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-st);
+  background-color: var(--secondary-900);
+  color: var(--text-50);
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-500);
+}
+
+a:hover {
+  color: var(--primary-100);
+}
+a:focus {
+  outline: 2px dotted var(--primary-500);
+}
+
+label {
+  font-size: 0.875em;
+}
+
+button {
+  outline: none;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  align-items: center;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+}
+
+svg {
+  height: 16px;
+  width: 16px;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

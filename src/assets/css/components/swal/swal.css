@@ -1,0 +1,17 @@
+
+
+
+@import url(./_button.css);
+@import url(./_form.css);
+
+/* TODO: i should keep this swal modules tidy */
+
+.swal2-toast.rakbuku-swal-popup {
+  box-shadow: 0 0 10px 2px var(--secondary-800) !important;
+  background-color: var(--text-50) !important;
+}
+
+.swal2-toast .rakbuku-swal-title {
+  margin: 4px 12px 4px 12px !important;
+  line-height: 24px !important;
+}

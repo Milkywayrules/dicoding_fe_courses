@@ -1,0 +1,27 @@
+/*  */
+
+/* SCREEN: md */
+@media (min-width: 768px) {
+}
+
+/* SCREEN: lg */
+@media (min-width: 1024px) {
+}
+
+/* SCREEN: base */
+footer {
+  padding: 24px 24px;
+  color: var(--text-50);
+  background-color: var(--secondary-900);
+
+  font-size: 0.75em;
+}
+
+footer div {
+  display: flex;
+}
+
+footer div p {
+  margin: 0 auto;
+  text-align: center;
+}

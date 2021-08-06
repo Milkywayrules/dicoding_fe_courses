@@ -1,0 +1,50 @@
+:root {
+  --font-st: "Fira Sans", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-nd: Roboto, "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  --black: black;
+  --white: white;
+
+  --primary-50: #fff7ed; /* RS */
+  --primary-100: #ffedd5; /* RS */
+  --primary-300: #fdba74; /* RS */
+  --primary-400: #fb923c; /* RS */
+  --primary-500: #f97316; /* RS */
+  --primary-600: #ea580c; /* RS */
+  --primary-700: #c2410c; /* RS */
+
+  --secondary-100: #f1f5f9; /* BLGR */
+  --secondary-300: #cbd5e1; /* BLGR */
+  --secondary-600: #475569; /* BLGR */
+  --secondary-700: #334155;
+  --secondary-800: #1e293b; /* BLGR */
+  --secondary-900: #0f172a; /* BLGR */
+
+  --text-50: #f8fafc; /* BLGR */
+  --text-100: #f1f5f9; /* BLGR */
+  --text-300: #cbd5e1; /* BLGR */
+
+  --green-100: #d1fae5;
+  --green-300: #6ee7b7;
+  --green-600: #059669;
+  --green-700: #047857;
+
+  --blue-100: #dbeafe;
+  --blue-300: #93c5fd;
+  --blue-600: #2563eb;
+  --blue-700: #2563eb;
+
+  --amber-100: #fef3c7;
+  --amber-300: #fcd34d;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+
+  --red-100: #ffe4e6;
+  --red-300: #fda4af;
+  --red-600: #e11d48;
+  --red-700: #be123c;
+}
+
+/* Thank you tailwindcss */

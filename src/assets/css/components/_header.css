@@ -1,0 +1,74 @@
+/*  */
+
+/* SCREEN: md */
+@media (min-width: 768px) {
+  header {
+    padding: 24px 120px;
+    font-size: 1em;
+  }
+
+  header nav {
+    gap: 40px;
+  }
+}
+
+/* SCREEN: lg */
+@media (min-width: 1024px) {
+  header {
+    padding: 24px 240px;
+    font-size: 1em;
+  }
+}
+
+/* SCREEN: base */
+header {
+  /* position: fixed; */
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--secondary-800);
+  box-shadow: 0 0 10px 2px var(--secondary-900);
+  z-index: 99999;
+}
+
+header #header-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 0.875em;
+}
+
+header #navbar-logo {
+  color: var(--text-50);
+  font-weight: 700;
+  font-size: 1.5em;
+}
+header #navbar-logo > span {
+  color: var(--secondary-600);
+}
+header #navbar-logo:hover {
+  color: var(--primary-500);
+}
+header #navbar-logo:focus {
+  color: var(--primary-500);
+  outline: 2px dotted var(--primary-500);
+}
+
+header nav {
+  display: flex;
+  gap: 16px;
+}
+
+header a {
+  color: var(--text-50);
+}
+
+header a:hover {
+  color: var(--primary-500);
+}
+header a:focus {
+  color: var(--primary-500);
+  outline: 2px dotted var(--primary-500);
+}
