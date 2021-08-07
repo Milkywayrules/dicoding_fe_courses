@@ -1,4 +1,4 @@
-import { UTILS } from '../const';
+import { UTILS } from '../../const';
 
 /**
  *

@@ -2,6 +2,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 const path = require('path');
 
 // use [contenthash] for better and specific hashing related to "the content"
@@ -54,9 +57,32 @@ module.exports = {
       filename: 'assets/css/[name].[contenthash].css',
       chunkFilename: 'assets/css/[id].[contenthash].css',
     }),
+    // handle & generate favicons
+    new FaviconsWebpackPlugin({
+      logo: './static/images/icon/favicon-310.png',
+      prefix: '',
+      publicPath: '/static/images/icon',
+      outputPath: './static/images/icon',
+      cache: true,
+      inject: true, // inject these icons to html tag
+      favicons: {
+        theme_color: '#EA580C', // match with inside of index.html (orange-600)
+        icons: {
+          // `boolean` or `{ offset, background, mask, overlayGlow, overlayShadow }` or an array of sources
+          favicons: true,
+          android: true,
+          appleIcon: true,
+          appleStartup: false,
+          coast: false,
+          firefox: false,
+          windows: false,
+          yandex: false,
+        },
+      },
+    }),
   ],
   optimization: {
-    // split js for better cache and split runtime aka node_modules
+    // split js for better cache and split runtime aka node_modules etc
     moduleIds: 'deterministic',
     runtimeChunk: 'single',
     splitChunks: {
@@ -72,6 +98,15 @@ module.exports = {
     //   chunks: 'all',
     // },
     minimizer: [
+      // js minified by default in webpack 5
+      // but we use multiple minimizer, so we init the terser again here
+      new TerserPlugin({
+        terserOptions: {
+          // keep_classnames: true,
+          // keep_fnames: true,
+          mangle: false, // minified var etc names
+        },
+      }),
       // minify css
       new CssMinimizerPlugin({
         minimizerOptions: {

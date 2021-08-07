@@ -10,6 +10,6 @@ export default class Main extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = 'asdwq';
+    this.innerHTML = 'asdwqas';
   }
 }

@@ -1,5 +1,6 @@
 {
   "name": "anime-finder",
+  "short_name": "af",
   "version": "1.0.0",
   "description": "Update your anime trend with Anime Finder, easy & fast.",
   "private": true,
@@ -7,7 +8,8 @@
   "scripts": {
     "dev": "webpack --config webpack.dev.js",
     "serve": "webpack serve --open --config webpack.dev.js --port 8000",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "rm:dist": "rm -r ./dist"
   },
   "repository": {
     "type": "git",
@@ -30,8 +32,11 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "css-minimizer-webpack-plugin": "^3.0.2",
+    "favicons": "^6.2.2",
+    "favicons-webpack-plugin": "^5.0.2",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",

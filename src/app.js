@@ -3,7 +3,7 @@ import regeneratorRuntime from 'regenerator-runtime';
 // import style
 import './assets/css/main.css';
 // import
-import { APP_META_DATA } from './js/const.js';
+import { APP_META_DATA } from './const.js';
 import './js/components/custom/_init.js';
 import axios from 'axios';
 import { SEARCH_ANIME_QUERY } from './js/query';
