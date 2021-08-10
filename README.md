@@ -9,6 +9,6 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Add querying and fetching related functions and couple of utlis function
+#3: Add dedicated files for type defs using JSDocs
 
-Time: 10:00 AM 8/10/2021
+Time: 10:03 AM 8/10/2021
