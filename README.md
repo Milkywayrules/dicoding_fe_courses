@@ -9,6 +9,6 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Add lz-string package for compress and decompress string
+#3: #3: Add NO_SECRET_KEY to const
 
-Time: 9:55 AM 8/10/2021
+Time: 9:56 AM 8/10/2021
