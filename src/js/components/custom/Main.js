@@ -1,15 +1,14 @@
 // @ts-check
-//
-export default class Main extends HTMLElement {
+import CustomHTMLElement from './CustomHTMLElement';
+
+export default class Main extends CustomHTMLElement {
   constructor() {
-    super();
-  }
-
-  connectedCallback() {
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = 'asdwqas';
+    super(stringHTML);
   }
 }
+
+const stringHTML = `
+  <main>
+    content goes here
+  </main>
+`;
