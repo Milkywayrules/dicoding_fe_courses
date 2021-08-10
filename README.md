@@ -9,6 +9,6 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Add some schema
+#3: These are left behind... I should up this in today's first commit
 
-Time: 10:05 AM 8/10/2021
+Time: 10:07 AM 8/10/2021
