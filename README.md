@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Adjust something
+#3: Fix some type defs
 
 Time:  
-3:51 AM 8/11/2021
+3:53 AM 8/11/2021
