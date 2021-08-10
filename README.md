@@ -9,6 +9,6 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: These are left behind... I should up this in today's first commit
+#3: Add a new type defs using JSDocs
 
-Time: 10:07 AM 8/10/2021
+Time: 11:30 PM 8/10/2021
