@@ -45,10 +45,11 @@ const useFetchDataLoader = async (queryObj, variables) => {
           const cleanRowData = JSON.parse(
             LZString.decompressFromUTF16(rowData.payload),
           );
+
           return {
             isSuccess: true,
             hasError: false,
-            payload: cleanRowData,
+            payload: { data: cleanRowData },
             status: 200,
             statusText: 'OK',
             from: 'useFetchDataLoader:local',

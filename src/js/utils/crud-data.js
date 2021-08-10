@@ -32,7 +32,7 @@ export const useFetchAPI = async (query, variables) => {
     return {
       isSuccess: true,
       hasError: false,
-      payload: res.data,
+      payload: res,
       status: res.status,
       statusText: res.statusText,
     };
