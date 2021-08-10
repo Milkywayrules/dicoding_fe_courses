@@ -2,8 +2,9 @@
 import LZString from 'lz-string';
 import { useFetchAPI } from './crud-data';
 import handleCacheToSS from './handleCacheToSS';
-import tryParseJsonString from './isContainJson';
+import tryParseJsonString from './tryParseJsonString';
 import optimizeQueryString from './optimizeQueryString';
+import '../types';
 
 /**
  *
@@ -73,7 +74,7 @@ const useFetchDataLoader = async (queryObj, variables) => {
     return {
       isSuccess: true,
       hasError: false,
-      payload: res.payload.data,
+      payload: res.payload,
       status: res.status,
       statusText: res.statusText,
       from: 'useFetchDataLoader:remote',

@@ -1,6 +1,7 @@
 // @ts-check
 
-import tryParseJsonString from './isContainJson';
+import tryParseJsonString from './tryParseJsonString';
+import '../types';
 
 /**
  *

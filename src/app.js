@@ -1,7 +1,7 @@
 // @ts-check
-// import style
+// import regeneratorRuntime from 'regenerator-runtime';
 import './assets/css/main.css';
-// import
+import regeneratorRuntime from 'regenerator-runtime';
 import { APP_META_DATA } from './const';
 import './js/components/custom/_init';
 import searchAnime from './js/schema/queries/searchAnime';
@@ -38,21 +38,20 @@ initApp();
 const searchForm = document.getElementById('search-form');
 const searchField = document.getElementById('search-field');
 
-searchForm.onsubmit = (ev) => {
+searchForm.onsubmit = async (ev) => {
   ev.preventDefault();
   const searchField = ev.target[0];
 
   const val = searchField.value;
 
   if (val) {
-    handleSearchAnime(val).then(({ hasError, payload, from }) => {
-      /**
-       * @type {SearchAnimePayload}
-       */
-      const asd = payload;
-      asd.Page.media.forEach((x) => {
-        console.log(`${x.title.english} \n ${x.title.native}`);
-      });
+    const { hasError, payload, from } = await handleSearchAnime(val);
+    // we know that this kin dof request always give us SearchAnimePayload
+    // so we cast it here using JSDocs, not TS.
+    const payloadData = /** @type {SearchAnimePayload} */ (payload.data);
+
+    payloadData.Page.media.forEach((x) => {
+      console.log(`${x.title.english} \n ${x.title.native}`);
     });
   }
 };

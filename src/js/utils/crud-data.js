@@ -1,6 +1,7 @@
 // @ts-check
 import axios from 'axios';
 import { UTILS } from '../../const';
+import '../types';
 
 // create custom axios instance
 const axiosClient = axios.create({

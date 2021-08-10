@@ -1,7 +1,7 @@
-//
-
+// @ts-check
 import searchAnime from '../schema/queries/searchAnime';
 import useFetchDataLoader from './useFetchDataLoader';
+import '../types';
 
 // :try request to SS first by matching the request.query.name,
 //   ::if found a match, do find the variables stored into id in the object
@@ -24,11 +24,8 @@ const handleSearchAnime = async (keyword) => {
     page: 1,
     perPage: 5,
   };
-
   const query = searchAnime;
-
   const res = await useFetchDataLoader(query, variables);
-
   return res;
 };
 
