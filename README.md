@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Abstract and try some custom components
+#3: Fix fetch response from remote/local
 
 Time:  
-3:54 AM 8/11/2021
+4:25 AM 8/11/2021
