@@ -11,4 +11,4 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 Last status:  
 #3: Add a new type defs using JSDocs
 
-Time: 11:30 PM 8/10/2021
+Time: 11:31 PM 8/10/2021
