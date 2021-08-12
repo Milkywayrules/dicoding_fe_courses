@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Fix fetch response from remote/local
+#3: Add @vaadin/router and update npm scripts
 
 Time:  
-4:25 AM 8/11/2021
+11:55 PM 8/12/2021
