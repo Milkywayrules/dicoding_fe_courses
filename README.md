@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Updates
+#3: Restructure components folder
 
 Time:  
-11:58 PM 8/12/2021
+11:59 PM 8/12/2021
