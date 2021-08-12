@@ -35,7 +35,7 @@
 /**
  * asdasdasdasdasd
  * @typedef APIPayload
- * @property {{ data: (SearchAnimePayload | AnimeDetailPayload) }} data specific queried data
+ * @property {{ data: (__notFound | SearchAnimePayload | AnimeDetailPayload) }} data specific queried data
  */
 
 /**
