@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Add @vaadin/router and update npm scripts
+#3: Update webpack conf for historyapi fallback and netlify redirects too
 
 Time:  
-11:55 PM 8/12/2021
+11:56 PM 8/12/2021
