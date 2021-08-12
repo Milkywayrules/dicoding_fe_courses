@@ -11,12 +11,48 @@ const path = require('path');
 
 module.exports = {
   entry: {
+    router: './src/router.js',
     app: './src/app.js',
   },
   output: {
+    publicPath: '/', // add this for devServer historyfallback
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+  },
+  optimization: {
+    // split js for better cache and split runtime aka node_modules etc
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+    // splitChunks: {
+    //   chunks: 'all',
+    // },
+    minimizer: [
+      // js minified by default in webpack 5
+      // but we use multiple minimizer, so we init the terser again here
+      new TerserPlugin({
+        terserOptions: {
+          // keep_classnames: true,
+          // keep_fnames: true,
+          mangle: false, // minified var etc names
+        },
+      }),
+      // minify css
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        },
+      }),
+    ],
   },
   module: {
     rules: [
@@ -81,38 +117,4 @@ module.exports = {
       },
     }),
   ],
-  optimization: {
-    // split js for better cache and split runtime aka node_modules etc
-    moduleIds: 'deterministic',
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-    // splitChunks: {
-    //   chunks: 'all',
-    // },
-    minimizer: [
-      // js minified by default in webpack 5
-      // but we use multiple minimizer, so we init the terser again here
-      new TerserPlugin({
-        terserOptions: {
-          // keep_classnames: true,
-          // keep_fnames: true,
-          mangle: false, // minified var etc names
-        },
-      }),
-      // minify css
-      new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
-        },
-      }),
-    ],
-  },
 };
