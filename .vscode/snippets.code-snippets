@@ -1,0 +1,105 @@
+{
+  // Place your 3-belajar_fundamental_front_end_web_development workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  // "(deprecated) Create Custom HTML Element Component, extends CustomHTMLElement": {
+  //   "prefix": "cchec",
+  //   "body": [
+  //     "// @ts-check",
+  //     "import CustomHTMLElement from '../CustomHTMLElement';",
+  //     "",
+  //     "const stringHTML = `",
+  //     "\t$0",
+  //     "`;",
+  //     "",
+  //     "class ${1:$TM_FILENAME_BASE} extends CustomHTMLElement {",
+  //     "\tconstructor() {",
+  //     "\t\tsuper(stringHTML);",
+  //     "\t}",
+  //     "}",
+  //     "",
+  //     "export default ${1:$TM_FILENAME_BASE};",
+  //     ""
+  //   ],
+  //   "description": "(deprecated) Create custom HTML element component and extends from CustomHTMLElement class"
+  // },
+  "Create Custom HTML Element Component, extends CustomHTMLElement": {
+    "prefix": "cchec",
+    "body": [
+      "// @ts-check",
+      "",
+      "/**",
+      " *",
+      " * describe_something_here",
+      " *",
+      " */",
+      " export default class ${1:$TM_FILENAME_BASE} extends HTMLElement {",
+      "  // An instance of the element is created or upgraded.",
+      "  // Useful for initializing state, setting up event listeners,",
+      "  // or creating a shadow dom. See the spec for restrictions",
+      "  // on what you can do in the constructor.",
+      "  constructor() {",
+      "    super();",
+      "  }",
+      "",
+      "  ${3:eventHandler1}(ev) {$4}",
+      "",
+      "  // Called every time the element is inserted into the DOM.",
+      "  // Useful for running setup code, such as fetching resources or rendering.",
+      "  // Generally, you should try to delay work until this time.",
+      "  connectedCallback() {",
+      "    this.render();",
+      "    // add event listener here",
+      "    this.addEventListener('${2:eventName1}', this.${3:eventHandler1})$5",
+      "}",
+      "",
+      "  // Array of attributes to be watched by attributeChangedCallback()",
+      "  static get observedAttributes() {",
+      "    return [$6];",
+      "  }",
+      "",
+      "  // Called when an observed attribute has been",
+      "  // added, removed, updated, or replaced.",
+      "  // Also called for initial values when",
+      "  // an element is created by the parser, or upgraded.",
+      "  // Note: only attributes listed in the observedAttributes property",
+      "  // will receive this callback.",
+      "  attributeChangedCallback(name, oldVal, newVal) {$7}",
+      "",
+      "  // Rendering HTML template string defined per component.",
+      "  render() {",
+      "    this.innerHTML = htmlTemplate;$8",
+      "  }",
+      "",
+      "  // Called every time the element is removed from the DOM.",
+      "  // Useful for running clean up code.",
+      "  disconnectedCallback() {$9}",
+      "}",
+      "",
+      "// ------------------------------------------ Custom vars & props -------",
+      "",
+      "const props = {$10};",
+      "",
+      "// ------------------------------------------------ HTML template -------",
+      "",
+      "const htmlTemplate = `",
+      "  $0",
+      "`;",
+      ""
+    ],
+    "description": "Create custom HTML element component and extends from CustomHTMLElement class"
+  }
+}
