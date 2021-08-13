@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Scrape pages components. I'm stick to dynamic <main> tag as a target.
+#3: idk why these files are not showing in my list before staging.........
 
 Time:  
-3:56 AM 8/14/2021
+3:58 AM 8/14/2021
