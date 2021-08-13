@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Type defs update with more flexible and tight rule
+#3: Scrape pages components. I'm stick to dynamic <main> tag as a target.
 
 Time:  
-3:55 AM 8/14/2021
+3:56 AM 8/14/2021
