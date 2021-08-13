@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Add handlers and add client routing to the app.
+#3: Remove and optimize some utils
 
 Time:  
-4:01 AM 8/14/2021
+4:03 AM 8/14/2021
