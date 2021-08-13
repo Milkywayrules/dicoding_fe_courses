@@ -5,7 +5,7 @@
  * describe_something_here
  *
  */
-export default class Notfound extends HTMLElement {
+export default class NotfoundPage extends HTMLElement {
   // An instance of the element is created or upgraded.
   // Useful for initializing state, setting up event listeners,
   // or creating a shadow dom. See the spec for restrictions
@@ -19,8 +19,8 @@ export default class Notfound extends HTMLElement {
   connectedCallback() {
     this.render();
 
-    if (this.location.search) {
-    }
+    /** @type {import("@vaadin/router")._RouterLocation} */
+    this.location;
   }
 
   // Rendering HTML template string defined per component.
@@ -35,6 +35,10 @@ const props = {};
 
 // ------------------------------------------------ HTML template -------
 
+const compName = NotfoundPage.name.toLowerCase();
+
 const htmlTemplate = `
-  <h1>Not Found.</h1>
+  <div class="${compName}__">
+    <h1>Not Found.</h1>
+  </div>
 `;

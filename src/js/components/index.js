@@ -5,10 +5,21 @@ import { UTILS } from '../../const.js';
 import Header from './macro/Header.js';
 import Footer from './macro/Footer.js';
 import Main from './macro/Main.js';
-import Notfound from './macro/Notfound.js';
+import NotfoundPage from './macro/NotfoundPage.js';
+import Mock from './macro/Mock.js';
+import SearchAnime from './macro/SearchAnime.js';
+import DetailAnime from './macro/DetailAnime.js';
 
 // list of component
-const elements = [Header, Footer, Main, Notfound];
+const elements = [
+  NotfoundPage,
+  Header,
+  Footer,
+  Main,
+  Mock,
+  SearchAnime,
+  DetailAnime,
+];
 
 // tag suffix
 const af = UTILS.APP_PREFIX_SHORT;
