@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Restructure components folder
+#3: Ripped app.js
 
 Time:  
-11:59 PM 8/12/2021
+3:53 AM 8/14/2021
