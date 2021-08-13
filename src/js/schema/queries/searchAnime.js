@@ -1,3 +1,6 @@
+/**
+ * @type {QueryStructure}
+ */
 const searchAnime = {
   name: 'query:searchAnime',
   schema: `
@@ -12,15 +15,27 @@ const searchAnime = {
         }
         media(search: $search, type: ANIME) {
           id
-          idMal
+          averageScore
+          seasonYear
+          episodes
+          duration
+          format
+          status
           title {
             romaji
             english
             native
           }
+          genres
+          coverImage {
+            large
+            medium
+            color
+          }
+          description
         }
       }
-    }
+    }  
   `,
 };
 

@@ -1,3 +1,6 @@
+/**
+ * @type {QueryStructure}
+ */
 const genreCollection = {
   name: 'query:genreCollection',
   schema: `

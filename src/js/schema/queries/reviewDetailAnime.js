@@ -1,3 +1,6 @@
+/**
+ * @type {QueryStructure}
+ */
 const reviewDetailAnime = {
   name: 'query:reviewDetailAnime',
   schema: `
