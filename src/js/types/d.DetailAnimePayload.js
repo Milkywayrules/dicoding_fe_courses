@@ -1,6 +1,6 @@
 // -----------------------------------------------
 /**
- * @typedef AnimeDetailPayload
+ * @typedef DetailAnimePayload
  * @property {FullMedia} Media
  */
 // -----------------------------------------------

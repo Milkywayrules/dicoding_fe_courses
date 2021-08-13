@@ -1,7 +1,10 @@
-const animeDetail = {
-  name: 'query:animeDetail',
+/**
+ * @type {QueryStructure}
+ */
+const detailAnime = {
+  name: 'query:detailAnime',
   schema: `
-    query animeDetail($mediaID: Int) {
+    query detailAnime($mediaID: Int) {
       Media(id: $mediaID, type: ANIME) {
         id
         title {
@@ -160,4 +163,4 @@ const animeDetail = {
   `,
 };
 
-export default animeDetail;
+export default detailAnime;

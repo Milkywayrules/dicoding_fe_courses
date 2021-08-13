@@ -1,7 +1,10 @@
-const reviewListAnime = {
-  name: 'query:reviewListAnime',
+/**
+ * @type {QueryStructure}
+ */
+const listReviewDetailAnime = {
+  name: 'query:listReviewDetailAnime',
   schema: `
-    query reviewListAnime($mediaID: Int) {
+    query listReviewDetailAnime($mediaID: Int) {
       Page(page: 1, perPage: 20) {
         reviews(mediaId: $mediaID, sort: CREATED_AT_DESC, mediaType: ANIME) {
           id
@@ -17,4 +20,4 @@ const reviewListAnime = {
   `,
 };
 
-export default reviewListAnime;
+export default listReviewDetailAnime;
