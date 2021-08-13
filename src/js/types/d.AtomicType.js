@@ -15,3 +15,8 @@
  * @property {String} [native] xxx
  */
 // -----------------------------------------------
+/**
+ * @typedef QueryStructure
+ * @prop {string} name
+ * @prop {string} schema
+ */

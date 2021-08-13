@@ -1,10 +1,10 @@
 /**
- * @typedef __notFound
- * @prop {__notFoundItem} __notFound
+ * @typedef __NotFound
+ * @prop {__NotFoundItem} __notFound
  */
 
 /**
- * @typedef __notFoundItem
+ * @typedef __NotFoundItem
  * @prop {String} [message]
  * @prop {number} [status]
  * @prop {()=>{}} [handler]
