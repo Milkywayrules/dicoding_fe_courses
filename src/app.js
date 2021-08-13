@@ -2,64 +2,94 @@
 // import regeneratorRuntime from 'regenerator-runtime';
 import regeneratorRuntime from 'regenerator-runtime';
 import './assets/css/main.css';
-import './js/components/custom/_init';
-import { APP_META_DATA, UTILS } from './const';
-import searchAnime from './js/schema/queries/searchAnime';
-import handleSearchAnime from './js/utils/handleSearchAnime';
+import './js/components';
 
 // init main app
-const initApp = async () => {
-  // set today's year to footer
-  const appInitYear = APP_META_DATA.APP_INIT_YEAR;
-  const currYear = new Date().getFullYear();
-  document.getElementById('copyright-year').innerText = (
-    appInitYear == currYear ? currYear : `${appInitYear}-${currYear}`
-  ).toString();
+(async () => {
+  console.log('app init');
 
-  const variables = {
-    search: 'one piece',
-    page: 1,
-    perPage: 5,
-  };
+  // setTimeout(() => {
+  //   // history.pushState(null, '', '/anime/21/one-piece////12');
+  //   // history.go('/anime/21/one-piece////12');
+  //   // history.replaceState(null, '', '/anime/21/one-piece////12');
+  //   location.assign('/anime/21/one-piece////12');
+  // }, 3000);
+  // console.log(location);
 
-  const query = searchAnime;
-};
+  // const query = detailAnime;
+  // const variables = { mediaID: 2 };
 
-initApp();
+  // const d = await handleMock({
+  //   handlerType: 'DETAIL_ANIME',
+  //   query,
+  //   variables,
+  // });
 
-const searchForm = document.getElementById('search-form');
-const searchField = document.getElementById('search-field');
+  // console.log(d);
+})();
 
-const tableNameSearchField = `${UTILS.DB_NAME}:searchField`;
+// // --------------------------------------------------------------------------------
 
-// @ts-ignore
-searchField.value = sessionStorage.getItem(tableNameSearchField);
+// const searchForm = document.getElementById('search-form');
+// const searchField = document.getElementById('search-field');
 
-searchField.oninput = (ev) => {
-  sessionStorage.setItem(tableNameSearchField, ev.target.value);
-};
+// const tableNameSearchField = `${UTILS.DB_NAME}:searchField`;
 
-searchForm.onsubmit = async (ev) => {
-  ev.preventDefault();
-  const searchField = ev.target[0];
+// // @ts-ignore
+// searchField.value = sessionStorage.getItem(tableNameSearchField);
 
-  /**
-   * @type {String}
-   */
-  const val = searchField.value;
+// searchField.oninput = (ev) => {
+//   sessionStorage.setItem(tableNameSearchField, ev.target.value);
+// };
 
-  if (val) {
-    // ini udah bener serius, suka tiba2 muncul error Page masih pertanyaan...
-    const { hasError, payload, from } = await handleSearchAnime(
-      val.toLowerCase(),
-    );
+// searchForm.onsubmit = async (ev) => {
+//   ev.preventDefault();
+//   const searchField = ev.target[0];
 
-    // we know that this kin dof request always give us SearchAnimePayload
-    // so we cast it here using JSDocs, not TS.
-    const payloadData = /** @type {SearchAnimePayload} */ (payload.data.data);
+//   /**
+//    * @type {String}
+//    */
+//   const val = searchField.value;
 
-    payloadData.Page.media.forEach((x) => {
-      console.log(`${x.id} \n ${x.title.english} \n ${x.title.native}`);
-    });
-  }
-};
+//   if (val) {
+//     // ini udah bener serius, suka tiba2 muncul error Page masih pertanyaan...
+//     const res = await handleSearchAnime(val.toLowerCase().trim());
+
+//     // we know that this kin dof request always give us SearchAnimePayload
+//     // so we cast it here using JSDocs, not TS.
+//     // const payloadData = /** @type {SearchAnimePayload} */ (payload.data.data);
+
+//     // payloadData.Page.media.forEach((x) => {
+//     //   console.log(`${x.id} \n ${x.title.english} \n ${x.title.native}`);
+//     // });
+//     // console.log(`${payloadData.Page.media.length} results`);
+//   }
+// };
+
+// // --------------------------------------------------------------------------------
+
+// const searchIDForm = document.getElementById('search-id-form');
+// const searchIDField = document.getElementById('search-id-field');
+
+// const tableNameSearchIDField = `${UTILS.DB_NAME}:searchIDField`;
+
+// // @ts-ignore
+// searchIDField.value = sessionStorage.getItem(tableNameSearchIDField);
+
+// searchIDField.oninput = (ev) => {
+//   sessionStorage.setItem(tableNameSearchIDField, ev.target.value);
+// };
+
+// searchIDForm.onsubmit = async (ev) => {
+//   ev.preventDefault();
+//   const searchIDField = ev.target[0];
+
+//   /**
+//    * @type {String}
+//    */
+//   const ID = searchIDField.value;
+
+//   if (ID) {
+//     const res = await handleDetailAnime(parseInt(ID));
+//   }
+// };
