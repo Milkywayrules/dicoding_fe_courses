@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Ripped app.js
+#3: Update some schemas
 
 Time:  
-3:53 AM 8/14/2021
+3:54 AM 8/14/2021
