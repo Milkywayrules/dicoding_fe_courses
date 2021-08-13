@@ -51,7 +51,7 @@ export const genJWT = async ({ query, issuer }) => {
     .sign(secretKey);
 
   return { jwt, secretKey };
-  // { query: __graphql_result__, issuer: 'query:animeDetail'}
+  // { query: __graphql_result__, issuer: 'query:detailAnime'}
   // const jwt = await new SignJWT({ 'urn:example:claim': true })
   //   .setProtectedHeader({ alg: 'RS256' })
   //   // .setJti('jwt')

@@ -1,10 +1,11 @@
 // @ts-check
+import '../types';
 import LZString from 'lz-string';
 import { useFetchAPI } from './crud-data';
-import handleCacheToSS from './handleCacheToSS';
+import handleCacheToSS from '../handlers/handleCacheToSS';
+import optimizeSchemaString from './optimizeSchemaString';
 import tryParseJsonString from './tryParseJsonString';
-import optimizeQueryString from './optimizeQueryString';
-import '../types';
+import handleFetch404 from '../handlers/handleFetch404';
 
 /**
  *
@@ -25,7 +26,7 @@ const useFetchDataLoader = async (queryObj, variables) => {
      */
     const tableDataStr = sessionStorage.getItem(tableName);
 
-    // if we have the table.
+    // if we have the table in DB.
     // else fetch from API.
     if (tableDataStr) {
       /**
@@ -34,7 +35,7 @@ const useFetchDataLoader = async (queryObj, variables) => {
        */
       const tableData = tryParseJsonString(tableDataStr); // return undefined | json
 
-      // if the content is array and have > 0 data.
+      // if the table data is an array and have > 0 data (must).
       // else go out and fetch from API.
       if (Array.isArray(tableData) && tableData.length > 0) {
         const rowData = tableData.find((row) => row.id === rowID);
@@ -60,14 +61,29 @@ const useFetchDataLoader = async (queryObj, variables) => {
 
     // fetch from API, because we dont have cached data on SS
     const res = await useFetchAPI(
-      optimizeQueryString(queryObj.schema),
+      optimizeSchemaString(queryObj.schema),
       variables,
     );
 
-    if (res.status < 200 && res.status >= 300) throw res.hasError;
+    if (res.status !== 404 && (res.status < 200 || res.status >= 300)) {
+      console.log('lah');
+      throw res;
+    }
+
+    // handle if requested data is not found, so we can handle this better later.
+    if (!res.payload && res.status === 404) {
+      const payload404 = await handleFetch404({
+        message: 'Data Not Found.',
+        tableName,
+        variables,
+      });
+
+      res.payload = payload404.payload;
+      // after this, the structure to be returned are all the same
+    }
 
     // set data to SS
-    const newCachedData = await handleCacheToSS(tableName, {
+    await handleCacheToSS(tableName, {
       id: JSON.stringify(variables),
       payload: LZString.compressToUTF16(JSON.stringify(res.payload.data)),
     });
@@ -81,13 +97,13 @@ const useFetchDataLoader = async (queryObj, variables) => {
       from: 'useFetchDataLoader:remote',
     };
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     return {
       isSuccess: false,
-      hasError: err,
+      hasError: err.hasError,
       payload: null,
-      status: 0,
-      statusText: null,
+      status: err.status,
+      statusText: err.statusText,
       from: 'useFetchDataLoader:null',
     };
   }

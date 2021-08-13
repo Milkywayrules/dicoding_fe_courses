@@ -11,12 +11,16 @@ const axiosClient = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
+  // validateStatus: (status) => {
+  //   // only resolve this kind of request status, else catch
+  //   return (status >= 200 && status < 300) || status === 404;
+  // },
 });
 
 // Imma just trying jsdocs more advanced for auto-completion.
 /**
  *
- * Fecth data from server.
+ * Fetch data from server. We assume 404
  *
  * @param {string} query - graphql schema query
  * @param {Variables} [variables] - variables to pass into query
@@ -24,10 +28,12 @@ const axiosClient = axios.create({
  *
  */
 export const useFetchAPI = async (query, variables) => {
-  const data = JSON.stringify({ query, variables });
   try {
+    const data = JSON.stringify({ query, variables });
     // axios
     const res = await axiosClient({ data });
+
+    // console.log(0, res);
 
     return {
       isSuccess: true,
@@ -37,20 +43,38 @@ export const useFetchAPI = async (query, variables) => {
       statusText: res.statusText,
     };
   } catch (err) {
-    // internal axios err or some unexpected
-    if (axios.isAxiosError(err)) {
-      err = `Axios: ${err}`;
-      console.error(err);
+    console.clear();
+    // set default
+    let status = -1;
+    let statusText = '';
+
+    if (err.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      // and I don't care about handling errors too advanced for this project now.
+      status = err.response.data.errors[0].status;
+      err = { message: err.response.data.errors[0].message };
+    } else if (err.request) {
+      // The request was made but no response was received
+      // `err.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
     } else {
-      err = `Unexpected: ${err}`;
-      console.error(err);
+      // internal axios err or some unexpected
+      if (axios.isAxiosError(err)) {
+        err = `Axios: ${err.message}`;
+
+        // Something happened in setting up the request that triggered an Error
+      } else {
+        err = `Unexpected: ${err.message}`;
+      }
     }
+
     return {
       isSuccess: false,
       hasError: err,
       payload: null,
-      status: err.status,
-      statusText: err.statusText,
+      status,
+      statusText,
     };
   }
 };
