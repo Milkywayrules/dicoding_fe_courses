@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: idk why these files are not showing in my list before staging.........
+#3: Create some components for prototyping
 
 Time:  
-3:58 AM 8/14/2021
+3:59 AM 8/14/2021
