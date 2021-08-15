@@ -6,14 +6,18 @@
  * - and so on
  *
 */
-@import url("./utils/_variables.css");
+@import url('./utils/_variables.css');
 
-@import url("./base/_fonts.css");
-@import url("./base/_preflight.css");
+@import url('./base/_fonts.css');
+@import url('./base/_preflight.css');
+@import url('./base/_utilities_class.css');
 
-@import url("./components/_header.css");
-@import url("./components/_main.css");
-@import url("./components/_footer.css");
+@import url('./components/_header.css');
+@import url('./components/_main.css');
+@import url('./components/_footer.css');
+@import url('./components/_app_homepage.css');
+@import url('./components/_searchform.css');
+@import url('./components/_app_mainTitle.css');
 
-@import url("./components/swal/swal.css");
-@import url("./vendor/sweetalert2.min.css");
+@import url('./components/swal/swal.css');
+@import url('./vendor/sweetalert2.min.css');

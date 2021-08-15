@@ -36,7 +36,7 @@
 
 .swal2-modal .rakbuku-swal-label {
   margin-top: 14px !important;
-  font-size: .8em !important;
+  font-size: 0.8em !important;
   color: var(--text-300) !important;
 }
 
@@ -51,7 +51,7 @@
   /* border: 2px solid transparent; */
   /* ring */
   --offset-shadow: var(--ring-offset-size) var(--secondary-600);
-  --ring-shadow: var(--ring-shadow-size) var(--primary-500);
+  --ring-shadow: var(--ring-shadow-size) var(--primary-300);
   box-shadow: var(--offset-shadow), var(--ring-shadow);
   /* |ring */
 }

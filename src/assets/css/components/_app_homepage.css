@@ -1,0 +1,108 @@
+/*  */
+
+@media (min-width: 1024px) {
+  /* SCROLLBAR STYLING */
+  .cards-x {
+    scrollbar-width: thin;
+    scrollbar-color: #444444 #777777;
+  }
+
+  /* !: Stated here 🎉 */
+  /* The emerging W3C standard that is currently Firefox-only */
+  /* Works on Chrome/Edge/Safari */
+  .cards-x::-webkit-scrollbar {
+    height: 10px;
+  }
+  .cards-x::-webkit-scrollbar-track {
+    background: #777777;
+  }
+  .cards-x::-webkit-scrollbar-thumb {
+    background-color: #444444;
+    border-radius: 0px;
+    border: 2px solid #777777;
+  }
+}
+#app-homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 32px 0;
+  color: var(--text-200);
+}
+
+/*  */
+
+.cards-x-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/*  */
+
+.cards-x-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards-x-head h2 {
+  font-size: 1.125em;
+  letter-spacing: 1px;
+}
+
+/*  */
+
+.cards-x {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 12px;
+}
+
+/*  */
+
+.card-wrapper a {
+  outline: none;
+  width: 120px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: var(--text-400);
+}
+.card-wrapper a:hover {
+  color: var(--primary-300);
+}
+
+.card-wrapper .img-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 2/3;
+  box-shadow: 0 0 10px 2px var(--secondary-850);
+}
+
+.card-wrapper .img-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 2/3;
+}
+
+.card-wrapper .content-wrappers {
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+}
+
+.card-wrapper .content-wrapper .title {
+  margin-left: 2px;
+  font-weight: 400;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+}

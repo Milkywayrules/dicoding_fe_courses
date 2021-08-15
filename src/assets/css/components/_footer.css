@@ -10,15 +10,17 @@
 
 /* SCREEN: base */
 footer {
-  padding: 24px 24px;
-  color: var(--text-50);
-  background-color: var(--secondary-900);
+  padding: 24px 96px;
+  color: var(--secondary-300);
+  background-color: var(--secondary-850);
 
   font-size: 0.75em;
 }
 
-footer div {
+footer > div {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 footer div p {

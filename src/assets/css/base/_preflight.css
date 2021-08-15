@@ -25,15 +25,15 @@
   /* The emerging W3C standard that is currently Firefox-only */
   /* Works on Chrome/Edge/Safari */
   *::-webkit-scrollbar {
-    width: 14px;
+    width: 10px;
   }
   *::-webkit-scrollbar-track {
     background: #777777;
   }
   *::-webkit-scrollbar-thumb {
     background-color: #444444;
-    border-radius: 10px;
-    border: 3px solid #777777;
+    border-radius: 0px;
+    border: 2px solid #777777;
   }
 }
 
@@ -60,16 +60,26 @@ h2 {
   line-height: 2rem;
 }
 
+h3 {
+  font-size: 1.125rem;
+  line-height: 1rem;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
 a {
   text-decoration: none;
-  color: var(--primary-500);
+  color: var(--primary-300);
 }
 
 a:hover {
   color: var(--primary-100);
 }
 a:focus {
-  outline: 2px dotted var(--primary-500);
+  outline: 2px dotted var(--primary-300);
 }
 
 label {

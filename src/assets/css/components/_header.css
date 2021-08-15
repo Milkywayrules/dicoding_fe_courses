@@ -4,7 +4,7 @@
 @media (min-width: 768px) {
   header {
     padding: 24px 120px;
-    font-size: 1em;
+    /* font-size: 1em; */
   }
 
   header nav {
@@ -16,7 +16,7 @@
 @media (min-width: 1024px) {
   header {
     padding: 24px 240px;
-    font-size: 1em;
+    /* font-size: 1em; */
   }
 }
 
@@ -24,20 +24,20 @@
 header {
   /* position: fixed; */
   width: 100%;
-  padding: 16px 24px;
-  background: var(--secondary-800);
+  padding: 16px 16px;
+  background: var(--secondary-850);
   box-shadow: 0 0 10px 2px var(--secondary-900);
   z-index: 99999;
 }
 
 header #header-wrapper {
-  max-width: 1280px;
+  max-width: 1024px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  font-size: 0.875em;
+  /* font-size: 0.875em; */
 }
 
 header #navbar-logo {
@@ -49,11 +49,11 @@ header #navbar-logo > span {
   color: var(--secondary-600);
 }
 header #navbar-logo:hover {
-  color: var(--primary-500);
+  color: var(--primary-300);
 }
 header #navbar-logo:focus {
-  color: var(--primary-500);
-  outline: 2px dotted var(--primary-500);
+  color: var(--primary-300);
+  outline: 2px dotted var(--primary-300);
 }
 
 header nav {
@@ -66,9 +66,9 @@ header a {
 }
 
 header a:hover {
-  color: var(--primary-500);
+  color: var(--primary-300);
 }
 header a:focus {
-  color: var(--primary-500);
-  outline: 2px dotted var(--primary-500);
+  color: var(--primary-300);
+  outline: 2px dotted var(--primary-300);
 }
