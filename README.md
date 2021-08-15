@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Custom VSCode snippets and update index.html
+#3: Update stylings
 
 Time:  
-4:05 AM 8/14/2021
+10:07 PM 8/15/2021
