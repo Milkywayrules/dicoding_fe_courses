@@ -78,14 +78,43 @@ props.rangeYear = (
 const htmlTemplate = `
   <footer>
     <div>
+      <div>
+        <p class="bold text-white">AnimeFinder</p>
+        <p>Update your anime trend with AnimeFinder, easy & fast.</p>
+      </div>
       <p>
         <span> © <span id="copyright-year">${props.rangeYear}</span> - </span>
         <a
-          href="https://dioilham.com"
+          href="${APP_META_DATA.APP_AUTHOR.WEBSITE}"
           rel="noopener noreferrer"
           target="_blank"
         >
-          @Bushidodev
+          @${APP_META_DATA.APP_AUTHOR.STAGE_NAME}
+        </a>
+      </p>
+      <p>
+        <a
+          href="${APP_META_DATA.APP_AUTHOR.GITHUB.URL}"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Github
+        </a>
+        -
+        <a
+          href="${APP_META_DATA.APP_AUTHOR.LINKEDIN.URL}"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          LinkedIn
+        </a>
+        -
+        <a
+          href="${APP_META_DATA.APP_AUTHOR.INSTAGRAM.URL}"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Instagram
         </a>
       </p>
     </div>

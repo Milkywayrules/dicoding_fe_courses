@@ -1,27 +1,29 @@
 // @ts-check
 
-import { APP_META_DATA } from '../../../const';
-
 /**
  *
  * describe_something_here
  *
  */
-export default class Header extends HTMLElement {
+export default class Loading extends HTMLElement {
   // An instance of the element is created or upgraded.
   // Useful for initializing state, setting up event listeners,
   // or creating a shadow dom. See the spec for restrictions
   // on what you can do in the constructor.
   constructor() {
     super();
-    this.render();
-    // add event listener here
   }
+
+  eventHandler1(ev) {}
 
   // Called every time the element is inserted into the DOM.
   // Useful for running setup code, such as fetching resources or rendering.
   // Generally, you should try to delay work until this time.
-  connectedCallback() {}
+  connectedCallback() {
+    this.render();
+    // add event listener here
+    this.addEventListener('eventName1', this.eventHandler1);
+  }
 
   // Array of attributes to be watched by attributeChangedCallback()
   static get observedAttributes() {
@@ -38,7 +40,7 @@ export default class Header extends HTMLElement {
 
   // Rendering HTML template string defined per component.
   render() {
-    this.innerHTML = htmlTemplate;
+    this.innerHTML = htmlTemplate();
   }
 
   // Called every time the element is removed from the DOM.
@@ -52,21 +54,6 @@ const props = {};
 
 // ------------------------------------------------ HTML template -------
 
-const htmlTemplate = `
-  <header>
-    <div id="header-wrapper">
-      <a href="/" id="navbar-logo">D<span>io</span></a>
-      <nav>
-        <div>
-          <a href="${APP_META_DATA.APP_AUTHOR.GITHUB.URL}">Github</a>
-        </div>
-        <div>
-          <a href="${APP_META_DATA.APP_AUTHOR.LINKEDIN.URL}">LinkedIn</a>
-        </div>
-        <div>
-          <a href="${APP_META_DATA.APP_AUTHOR.INSTAGRAM.URL}">Instagram</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+const htmlTemplate = () => `
+  <center><h4>Loading...</h4></center>
 `;

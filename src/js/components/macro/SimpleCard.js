@@ -1,27 +1,41 @@
 // @ts-check
 
-import { APP_META_DATA } from '../../../const';
-
 /**
  *
  * describe_something_here
  *
  */
-export default class Header extends HTMLElement {
+export default class SimpleCard extends HTMLElement {
   // An instance of the element is created or upgraded.
   // Useful for initializing state, setting up event listeners,
   // or creating a shadow dom. See the spec for restrictions
   // on what you can do in the constructor.
   constructor() {
     super();
-    this.render();
-    // add event listener here
   }
 
   // Called every time the element is inserted into the DOM.
   // Useful for running setup code, such as fetching resources or rendering.
   // Generally, you should try to delay work until this time.
-  connectedCallback() {}
+  connectedCallback() {
+    this.render();
+  }
+
+  get contentID() {
+    return parseInt(this.getAttribute('contentID'));
+  }
+
+  get contentTitle() {
+    return this.getAttribute('contentTitle');
+  }
+
+  get imgSrc() {
+    return this.getAttribute('imgSrc');
+  }
+
+  get bgColor() {
+    return this.getAttribute('bgColor');
+  }
 
   // Array of attributes to be watched by attributeChangedCallback()
   static get observedAttributes() {
@@ -38,7 +52,12 @@ export default class Header extends HTMLElement {
 
   // Rendering HTML template string defined per component.
   render() {
-    this.innerHTML = htmlTemplate;
+    this.innerHTML = htmlTemplate({
+      contentID: this.contentID,
+      contentTitle: this.contentTitle,
+      imgSrc: this.imgSrc,
+      bgColor: this.bgColor,
+    });
   }
 
   // Called every time the element is removed from the DOM.
@@ -52,21 +71,24 @@ const props = {};
 
 // ------------------------------------------------ HTML template -------
 
-const htmlTemplate = `
-  <header>
-    <div id="header-wrapper">
-      <a href="/" id="navbar-logo">D<span>io</span></a>
-      <nav>
-        <div>
-          <a href="${APP_META_DATA.APP_AUTHOR.GITHUB.URL}">Github</a>
-        </div>
-        <div>
-          <a href="${APP_META_DATA.APP_AUTHOR.LINKEDIN.URL}">LinkedIn</a>
-        </div>
-        <div>
-          <a href="${APP_META_DATA.APP_AUTHOR.INSTAGRAM.URL}">Instagram</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+/**
+ * @param {{contentID: number, contentTitle: string, imgSrc: string, bgColor: string}} data
+ * @returns {string}
+ */
+const htmlTemplate = ({ contentID, contentTitle, imgSrc, bgColor }) => `
+  <div class="card-wrapper">
+    <a href="/anime/${contentID}">
+      <div class="img-wrapper">
+        <img
+          style="background-color:${bgColor !== 'null' ? bgColor : 'black'};"
+          src="${imgSrc}"
+          alt="${contentTitle} poster"
+          loading=lazy
+        />
+      </div>
+      <div class="content-wrapper">
+        <h5 class="title">${contentTitle}</h5>
+      </div>
+    </a>
+  </div>
 `;

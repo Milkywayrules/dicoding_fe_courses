@@ -88,7 +88,7 @@ export default class SearchAnime extends HTMLElement {
 
   // Rendering HTML template string defined per component.
   render(isLoading = false) {
-    if (isLoading) this.innerHTML = loadingHtmlTemplate();
+    if (isLoading) this.innerHTML = '<af-loading></af-loading>';
     else this.innerHTML = htmlTemplate();
   }
 
@@ -102,10 +102,6 @@ export default class SearchAnime extends HTMLElement {
 const props = {};
 
 // ------------------------------------------------ HTML template -------
-
-const loadingHtmlTemplate = (props) => `
-  <center><h4>Loading...</h4></center>
-`;
 
 const htmlTemplate = (props) => `
   <h2>Data loaded...</h2>

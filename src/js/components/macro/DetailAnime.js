@@ -37,37 +37,56 @@ export default class DetailAnime extends HTMLElement {
     // render loading after all validation complete
     this.render(true);
 
-    // then fetch data and render the actual data
-    const rawRes = useFetchDataLoader(detailAnime, { mediaID: idParam }).then(
-      (rawRes) => {
-        const res = prettierResponse(rawRes);
+    (async () => {
+      let rawRes;
+      let res;
 
-        // render not found
-        if (res.hasError) this.render(404);
+      try {
+        // then fetch data and render the actual data
+        rawRes = await useFetchDataLoader(detailAnime, {
+          mediaID: idParam,
+        });
 
-        /** @type {DetailAnimePayload} */
-        // @ts-ignore
-        const data = res.data;
+        if (rawRes.hasError) throw rawRes.hasError;
 
-        const animeTitle = data.Media.title.english.replace(/ /gi, '-');
+        res = prettierResponse(rawRes);
+      } catch (err) {
+        if (err.message) console.error('Error occurred: ', err.message);
+        else console.error(err);
 
-        const pathnameArr = this.location.pathname.split('/');
+        this.render(404);
+        return;
+      }
 
-        // for replacing url to /anime/:id/:title
-        if (!pathnameArr[pathnameArr.length - 1] || pathnameArr.length < 4) {
-          history.replaceState(
-            null,
-            '',
-            // and do .replace() for removing multiple slash '///'
-            `${this.location.pathname}/${animeTitle}`.replace(/\/{2,}/g, '/'),
-          );
-        }
+      // render not found
+      // @ts-ignore
+      if (res.data.__notFound || res.status === 404) {
+        this.render(404);
+        return;
+      }
 
-        // render not isLoading and pass the data
-        // @ts-ignore
-        this.render(false, res.data);
-      },
-    );
+      /** @type {DetailAnimePayload} */
+      // @ts-ignore
+      const data = res.data;
+
+      const animeTitle = data.Media.title.english.replace(/ /gi, '-');
+
+      const pathnameArr = this.location.pathname.split('/');
+
+      // for replacing url to /anime/:id/:title
+      if (!pathnameArr[pathnameArr.length - 1] || pathnameArr.length < 4) {
+        history.replaceState(
+          null,
+          '',
+          // and do .replace() for removing multiple slash '///'
+          `${this.location.pathname}/${animeTitle}`.replace(/\/{2,}/g, '/'),
+        );
+      }
+
+      // render not isLoading and pass the data
+      // @ts-ignore
+      this.render(false, res.data);
+    })();
   }
 
   // Array of attributes to be watched by attributeChangedCallback()
@@ -90,7 +109,9 @@ export default class DetailAnime extends HTMLElement {
    * @param {DetailAnimePayload} data zzz
    */
   render(isLoading = false, data = null) {
-    if (isLoading) this.innerHTML = loadingHtmlTemplate();
+    if (isLoading === 404)
+      this.innerHTML = `<af-notfoundpage></af-notfoundpage>`;
+    else if (isLoading) this.innerHTML = `<af-loading></af-loading>`;
     else this.innerHTML = htmlTemplate(data);
   }
 
@@ -104,10 +125,6 @@ export default class DetailAnime extends HTMLElement {
 const props = {};
 
 // ------------------------------------------------ HTML template -------
-
-const loadingHtmlTemplate = () => `
-  <center><h4>Loading...</h4></center>
-`;
 
 /**
  * zz
