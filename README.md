@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: prettify index.html haha
+#3: Strip index.html, now index ready to be shipped
 
 Time:  
-5:11 PM 8/16/2021
+9:50 PM 8/16/2021
