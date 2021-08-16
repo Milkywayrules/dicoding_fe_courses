@@ -23,66 +23,7 @@
 
     <af-header></af-header>
 
-    <main id="app-body">
-      <af-searchform></af-searchform>
-
-      <section id="app-mainTitle">
-        <center>
-          <h1>Anime Finder</h1>
-          <p>
-            Update your anime trend with
-            AnimeFinder,&nbsp;easy&nbsp;&&nbsp;fast.
-          </p>
-        </center>
-      </section>
-
-      <section id="app-searchform">
-        <h2>Browse your fav Anime</h2>
-        <form class="search-form">
-          <input
-            type="search"
-            name="search-box"
-            class="search-box"
-            placeholder="Search by anime title"
-            autocomplete="off"
-          />
-          <button type="submit" class="search-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                style="stroke-width: 3px"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </button>
-        </form>
-      </section>
-
-      <section id="app-homepage">
-        <!-- horizontal cards -->
-        <div class="cards-x-container">
-          <af-xcardsheader textTitle="Most Popular"></af-xcardsheader>
-          <div id="top-popular" class="cards-x">
-            <af-xlistanime type="top-popular"></af-xlistanime>
-          </div>
-        </div>
-
-        <!-- horizontal cards -->
-        <div class="cards-x-container">
-          <af-xcardsheader textTitle="Top Trending"></af-xcardsheader>
-          <div id="top-trending" class="cards-x">
-            <af-xlistanime type="top-trending"></af-xlistanime>
-          </div>
-        </div>
-      </section>
-    </main>
+    <main id="app-body"></main>
 
     <af-footer></af-footer>
   </body>
