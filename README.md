@@ -9,7 +9,7 @@ Setiap submission per course ditempatkan di masing-masing branch sesuai dengan n
 
 **Branch 3: develop in progress**  
 Last status:  
-#3: Add and update some components
+#3: prettify index.html haha
 
 Time:  
-10:09 PM 8/15/2021
+5:11 PM 8/16/2021
