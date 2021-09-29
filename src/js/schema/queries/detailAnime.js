@@ -30,6 +30,7 @@ const detailAnime = {
         duration
         updatedAt
         coverImage {
+          extraLarge
           large
           medium
           color

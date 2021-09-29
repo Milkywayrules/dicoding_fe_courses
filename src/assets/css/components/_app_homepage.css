@@ -90,7 +90,7 @@
   aspect-ratio: 2/3;
 }
 
-.card-wrapper .content-wrappers {
+.card-wrapper .content-wrapper {
   -webkit-line-clamp: 2;
   overflow: hidden;
   display: -webkit-box;

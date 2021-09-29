@@ -1,6 +1,6 @@
 .ring {
   --offset-shadow: 0 0 0 2px var(--secondary-700);
-  --ring-shadow: 0 0 0 4px var(--primary-500);
+  --ring-shadow: 0 0 0 4px var(--primary-300);
   box-shadow: var(--offset-shadow), var(--ring-shadow);
 }
 
@@ -12,9 +12,7 @@
   display: block;
 }
 
-
 /* ================================================================== */
-
 
 .both__content__wrapper {
   background: var(--secondary-700);
@@ -57,15 +55,13 @@
 }
 
 .toggle__btn__active {
-  border-top: solid 2px var(--primary-500);
+  border-top: solid 2px var(--primary-300);
   background-color: var(--secondary-700);
   color: var(--text-50);
   font-weight: 700;
 }
 
-
 /* ============================================================== */
-
 
 .form__wrapper {
   padding: 24px 16px;
@@ -82,30 +78,26 @@
 
 .search__box {
   flex-grow: 1;
-  padding: .5rem 0 .5rem .75rem;
+  padding: 0.5rem 0 0.5rem 0.75rem;
 }
 
 .search__btn {
   display: flex;
-  padding: .3rem .3rem .3rem .3rem;
+  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   margin-right: 2px;
-  
+
   /* background-color: var(--primary-600); */
   color: var(--primary-600);
   border: 2px solid transparent;
 }
 .search__btn:hover {
-  color: var(--primary-400);
+  color: var(--primary-300);
 }
 .search__btn:focus {
-  border: 2px solid var(--primary-500);
+  border: 2px solid var(--primary-300);
 }
 
-
-
 /* ================================================================ */
-
-
 
 .results__wrapper {
   padding-top: 20px;
@@ -165,11 +157,11 @@
 }
 
 .card__author {
-  font-size: .875em;
+  font-size: 0.875em;
 }
 
 .card__year {
-  font-size: .875em;
+  font-size: 0.875em;
 }
 
 .card__option__btn {
@@ -191,7 +183,7 @@
   right: 40px;
   top: -20px;
   background-color: var(--white);
-  font-size: .75em;
+  font-size: 0.75em;
   color: var(--secondary-800);
   border-radius: 4px;
   z-index: 999;
@@ -203,7 +195,7 @@
   right: 40px;
   top: -20px;
   background-color: var(--white);
-  font-size: .75em;
+  font-size: 0.75em;
   color: var(--secondary-800);
   border-radius: 4px;
   box-shadow: 0 0 12px 2px var(--secondary-800);
@@ -218,11 +210,11 @@
 
 .card__wrapper .right__arrow {
   position: absolute;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  
+
   border-left: 15px solid var(--white);
   right: 28px;
   top: 18px;
@@ -250,11 +242,13 @@
 .card__modal button:hover,
 .card__modal button:focus {
   outline: none;
-  background-color: var(--primary-400);
+  background-color: var(--primary-300);
   color: var(--text-100);
 }
 
-.card__modal svg { color: var(--primary-600); }
+.card__modal svg {
+  color: var(--primary-600);
+}
 
 .bg__overlay {
   position: fixed;

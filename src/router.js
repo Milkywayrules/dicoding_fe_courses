@@ -23,7 +23,17 @@ router.setRoutes([
       { path: '/:id/(.*)', redirect: '/review/:id' },
     ],
   },
-  { path: '/search', component: 'af-searchanime' },
+  {
+    path: '/search',
+    // component: 'af-searchanimelayout',
+    // children: [{ path: '/as', component: 'af-searchanimeresult' }],
+    action: (ctx, commands) => {
+      const kParam = new URLSearchParams(ctx.search).get('k');
+
+      if (kParam) return commands.component('af-searchanimelayout');
+      else return commands.redirect('/');
+    },
+  },
   { path: '/mock', component: 'af-mock' },
   { path: '(.*)', component: 'af-notfoundpage' },
 ]);

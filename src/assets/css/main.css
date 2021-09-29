@@ -18,6 +18,7 @@
 @import url('./components/_app_homepage.css');
 @import url('./components/_searchform.css');
 @import url('./components/_app_mainTitle.css');
+@import url('./components/_app_searchResult.css');
 
 @import url('./components/swal/swal.css');
 @import url('./vendor/sweetalert2.min.css');

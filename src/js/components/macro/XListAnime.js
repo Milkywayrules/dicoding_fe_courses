@@ -190,6 +190,7 @@ const htmlTemplate = (data, id) => {
     (item) =>
       (injectedHtml = injectedHtml.concat(
         `<af-simplecard
+          cardType="horizontal"
           contentID="${item.contentID}"
           contentTitle="${
             item.contentTitle.english

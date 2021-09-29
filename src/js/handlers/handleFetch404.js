@@ -12,7 +12,7 @@ import handleCacheToSS from './handleCacheToSS';
  */
 const handleFetch404 = async ({ tableName, variables, message }) => {
   //
-  const mimicAxiosResponse = { data: { __notFound: { message } } };
+  const mimicAxiosResponse = { data: { __notFound: { message, status: 404 } } };
 
   await handleCacheToSS(tableName, {
     id: JSON.stringify(variables),

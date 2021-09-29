@@ -28,6 +28,7 @@ const searchAnime = {
           }
           genres
           coverImage {
+            extraLarge
             large
             medium
             color

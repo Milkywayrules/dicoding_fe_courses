@@ -7,13 +7,20 @@ import Footer from './macro/Footer.js';
 import Main from './macro/Main.js';
 import NotfoundPage from './macro/NotfoundPage.js';
 import Mock from './macro/Mock.js';
-import SearchAnime from './macro/SearchAnime.js';
 import DetailAnime from './macro/DetailAnime.js';
 import Loading from './macro/Loading.js';
-import SearchForm from './macro/SearchForm.js';
 import SimpleCard from './macro/SimpleCard.js';
 import XListAnime from './macro/XListAnime.js';
 import XCardsHeader from './macro/XCardsHeader.js';
+import MainTitle from './macro/MainTitle.js';
+import Homepage from './macro/Homepage.js';
+
+import SearchForm from './macro/afSearchanime/SearchForm.js';
+import Asd from './macro/afSearchanime/Asd.js';
+import SearchAnimeResult from './macro/afSearchanime/SearchAnimeResult.js';
+
+// import SearchAnime from './macro/search_comp/SearchAnime.js';
+// import SearchForm from './macro/search_comp/SearchForm.js';
 
 // list of component
 const elements = [
@@ -22,13 +29,16 @@ const elements = [
   Footer,
   Main,
   Mock,
-  SearchAnime,
   DetailAnime,
   Loading,
-  SearchForm,
   SimpleCard,
   XListAnime,
   XCardsHeader,
+  MainTitle,
+  Homepage,
+  SearchForm,
+  Asd,
+  SearchAnimeResult,
 ];
 
 // tag suffix

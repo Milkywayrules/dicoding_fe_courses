@@ -1,7 +1,12 @@
-#app-searchform h2 {
-  font-size: 1.25em;
+af-searchform h2 {
+  font-size: 1.5em;
   color: var(--text-200);
 }
+
+/* #app-searchform h2 {
+  font-size: 1.25em;
+  color: var(--text-200);
+} */
 
 .form-wrapper {
   /* padding: 24px 0; */

@@ -1,0 +1,75 @@
+/*  */
+
+#app-searchResult {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 32px 0;
+  color: var(--text-200);
+}
+
+#app-searchResult .search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 24px;
+  justify-content: center;
+}
+
+#app-searchResult .search-container af-simplecard {
+  min-width: 100px;
+  max-width: 120px;
+  display: flex;
+  flex: 1 1 0%;
+}
+
+#app-searchResult .search-container af-simplecard a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-card-wrapper a {
+  outline: none;
+  width: 120px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: var(--text-400);
+}
+.search-card-wrapper a:hover {
+  color: var(--primary-300);
+}
+
+.search-card-wrapper .img-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 2/3;
+  box-shadow: 0 0 10px 2px var(--secondary-850);
+}
+
+.search-card-wrapper .img-wrapper img {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 2/3;
+}
+
+.search-card-wrapper .content-wrapper {
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+}
+
+.search-card-wrapper .content-wrapper .title {
+  margin-left: 2px;
+  font-weight: 400;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+}

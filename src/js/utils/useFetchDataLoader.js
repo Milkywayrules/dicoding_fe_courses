@@ -66,7 +66,7 @@ const useFetchDataLoader = async (queryObj, variables) => {
     );
 
     if (res.status !== 404 && (res.status < 200 || res.status >= 300)) {
-      console.log('lah');
+      // console.error('Error occurred: ', res.hasError.message);
       throw res;
     }
 

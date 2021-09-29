@@ -10,7 +10,7 @@
 
 /* SCREEN: base */
 footer {
-  padding: 24px 96px;
+  padding: 24px 48px;
   color: var(--secondary-300);
   background-color: var(--secondary-850);
 

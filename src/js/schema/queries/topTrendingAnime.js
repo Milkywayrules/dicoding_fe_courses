@@ -28,6 +28,7 @@ const topTrendingAnime = {
           }
           genres
           coverImage {
+            extraLarge
             large
             medium
             color

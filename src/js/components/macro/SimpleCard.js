@@ -21,6 +21,10 @@ export default class SimpleCard extends HTMLElement {
     this.render();
   }
 
+  get cardType() {
+    return this.getAttribute('cardType');
+  }
+
   get contentID() {
     return parseInt(this.getAttribute('contentID'));
   }
@@ -52,12 +56,21 @@ export default class SimpleCard extends HTMLElement {
 
   // Rendering HTML template string defined per component.
   render() {
-    this.innerHTML = htmlTemplate({
-      contentID: this.contentID,
-      contentTitle: this.contentTitle,
-      imgSrc: this.imgSrc,
-      bgColor: this.bgColor,
-    });
+    if (this.cardType === 'horizontal') {
+      this.innerHTML = xCardHtmlTemplate({
+        contentID: this.contentID,
+        contentTitle: this.contentTitle,
+        imgSrc: this.imgSrc,
+        bgColor: this.bgColor,
+      });
+    } else if (this.cardType === 'vertical') {
+      this.innerHTML = yCardHtmlTemplate({
+        contentID: this.contentID,
+        contentTitle: this.contentTitle,
+        imgSrc: this.imgSrc,
+        bgColor: this.bgColor,
+      });
+    }
   }
 
   // Called every time the element is removed from the DOM.
@@ -75,8 +88,30 @@ const props = {};
  * @param {{contentID: number, contentTitle: string, imgSrc: string, bgColor: string}} data
  * @returns {string}
  */
-const htmlTemplate = ({ contentID, contentTitle, imgSrc, bgColor }) => `
+const xCardHtmlTemplate = ({ contentID, contentTitle, imgSrc, bgColor }) => `
   <div class="card-wrapper">
+    <a href="/anime/${contentID}">
+      <div class="img-wrapper">
+        <img
+          style="background-color:${bgColor !== 'null' ? bgColor : 'black'};"
+          src="${imgSrc}"
+          alt="${contentTitle} poster"
+          loading=lazy
+        />
+      </div>
+      <div class="content-wrapper">
+        <h5 class="title">${contentTitle}</h5>
+      </div>
+    </a>
+  </div>
+`;
+
+/**
+ * @param {{contentID: number, contentTitle: string, imgSrc: string, bgColor: string}} data
+ * @returns {string}
+ */
+const yCardHtmlTemplate = ({ contentID, contentTitle, imgSrc, bgColor }) => `
+  <div class="search-card-wrapper">
     <a href="/anime/${contentID}">
       <div class="img-wrapper">
         <img
