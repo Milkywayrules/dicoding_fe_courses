@@ -131,7 +131,25 @@ const props = {};
  * @param {DetailAnimePayload} param0 zz
  * @returns zz
  */
-const htmlTemplate = ({ Media }) => `
-  <h2>Data loaded...</h2>
-  ${console.log(Media.title.english)}
-`;
+const htmlTemplate = ({ Media }) => {
+  return `
+  <a href="../../"><- Back Home</a>
+  <br />
+  <img src="${Media.bannerImage}" alt="${Media.title.english}'s Banner" width="480px"/>
+  <br/>
+  <img src="${Media.coverImage.large}" alt="${Media.title.english}'s Banner" />
+  <h2>${Media.title.english} - (${Media.title.romaji})</h2>
+  <h5>avg. score: ${Media.averageScore}/100</h5>
+  <h5>duration: ${Media.duration} minutes</h5>
+  <h5>end date: ${Media.endDate.day}-${Media.endDate.month}-${Media.endDate.year}</h5>
+  <h5>episodes: ${Media.episodes} eps</h5>
+  <h5>format: ${Media.format}</h5>
+  <h5>genres: ${Media.genres}</h5>
+  <h5>mean score: ${Media.meanScore}</h5>
+  <h5>status: ${Media.status}</h5>
+
+  <br />
+  <h5>description:</h5>
+  <p>${Media.description}</p>
+  `;
+}

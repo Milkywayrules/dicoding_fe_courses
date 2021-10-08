@@ -16,7 +16,6 @@ import MainTitle from './macro/MainTitle.js';
 import Homepage from './macro/Homepage.js';
 
 import SearchForm from './macro/afSearchanime/SearchForm.js';
-import Asd from './macro/afSearchanime/Asd.js';
 import SearchAnimeResult from './macro/afSearchanime/SearchAnimeResult.js';
 
 // import SearchAnime from './macro/search_comp/SearchAnime.js';
@@ -37,7 +36,6 @@ const elements = [
   MainTitle,
   Homepage,
   SearchForm,
-  Asd,
   SearchAnimeResult,
 ];
 

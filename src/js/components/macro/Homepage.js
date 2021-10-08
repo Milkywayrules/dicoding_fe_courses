@@ -56,15 +56,18 @@ export default class Homepage extends HTMLElement {
 const props = {};
 
 // ------------------------------------------------ HTML template -------
-
+// !TODO: kerjain ini bikin halaman detail anime dan hapus search form.
+// !TODO: minimalisir fitur yg penting selesai dulu dan requirements-nya terpenuhi semua.
 const htmlTemplate = `
   <section id="app-mainTitle">
     <af-mainTitle></af-mainTitle>
   </section>
 
+  <!--
   <section id="app-searchform">
     <af-searchform></af-searchform>
   </section>
+  -->
 
   <section id="app-homepage">
     <!-- horizontal cards -->
