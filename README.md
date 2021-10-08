@@ -25,6 +25,8 @@ Konten di dalam Verasic Story versi *Dicoding* ini didapatkan dari *[web.dev](ht
 
 API menggunakan open public graphql api dari anilist.co. Fitur yang dibangun dalam aplikasi Anime Finder ini terdiri dari fitur pencarian (belum rampung), lihat detail anime, detail karakter anime, detail studio anime, detail pengisi suara, detail komentar per anime, relasi antara anime dengan segala hal yang terlibat seperti pengisi suara, episode, stream platform, studio, dll. Karena keterbatasan waktu yang dimiliki pengembang, maka seluruh rancangan ini tidak terimplementasi sepenuhnya, sehingga hanya terdapat halaman detail anime dan halaman utama dengan 2 bagian, yaitu Most Popular dan Top Trending.
 
+Pengambilan data dari API sudah dilakukan cache pada web local storage, sehingga bila memuat halaman yang sama untuk kedua kalinya sudah tidak perlu memakai resource dari API (di internal Anime Finder menggunakan data loader yg dibuat semaksimal dan seringkas mungkin). Cache iini valid untuk waktu yg sudah ditentukan.
+
 Terima kasih sebelumnya atas perpanjangan waktunya, semoga masih dapat kesempatan untuk belajar dan menyelesaikan kelas expert selanjutnya.
 
 <!-- - Hanya menampilkan konten yang didapatkan dari *[web.dev/fast](https://web.dev/fast)* dan seluruhnya diterjemahkan secara manual menggunakan *Google Translate* dari Bahasa Inggris ke Bahasa Indonesia.
